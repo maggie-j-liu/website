@@ -1,16 +1,26 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/*
 a {
-  color: inherit;
-  text-decoration: none;
+    @apply font-semibold text-blue-600;
 }
+*/
+/*
 
-* {
-  box-sizing: border-box;
+.katex .hdashline, 
+.katex .hline, 
+.katex .mfrac .frac-line, 
+.katex .overline .overline-line, 
+.katex .rule, 
+.katex .underline .underline-line {
+    border-color: currentColor;
+}
+.katex .mtable .vertical-separator {
+    border-color: currentColor;
+}
+*/
+.katex * {
+    border-color: currentColor;
 }
