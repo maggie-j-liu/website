@@ -33,8 +33,6 @@ const DarkModeToggle = () => {
     }, []);
 
     const setTheme = (pref) => {
-        console.log('setting theme');
-        console.log(pref);
         setDarkTheme(pref === 'dark' ? true : false);
         storeUserSetPreference(pref);
         if (pref === 'dark') {

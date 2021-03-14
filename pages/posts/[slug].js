@@ -20,16 +20,16 @@ export default function PostPage({ source, frontMatter, headings, slug }) {
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossOrigin="anonymous" />
             </Head>
             <NavBar />
-            <div className={'min-w-full p-20 pt-28 flex flex-col justify-center items-center bg-blog-main-light dark:bg-blog-main-dark'}>
-                <TableOfContents headings={headings} slug={slug} />
-                <h1 className={'text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
+            <div className={'min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark'}>
+                <h1 className={'col-start-2 col-end-5 justify-self-center self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <article className={'flex flex-col items-center min-w-full prose dark:prose-dark'}>
-                    <main className={'line-numbers p-10 w-3/4 bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-dark-50'}>
-                        {content}
-                    </main>
-                </article>
+                <div className={'max-w-none col-start-2 col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-dark-50'}>
+                    {content}
+                </div>
+                <div className={'col-start-5 col-end-6 row-start-1 row-end-3'}>
+                    <TableOfContents headings={headings} slug={slug}/>
+                </div>
             </div>
         </>
     );
