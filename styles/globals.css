@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-a {
-    @apply font-semibold text-blue-600;
-}
-*/
-/*
-
-.katex .hdashline, 
-.katex .hline, 
-.katex .mfrac .frac-line, 
-.katex .overline .overline-line, 
-.katex .rule, 
-.katex .underline .underline-line {
-    border-color: currentColor;
-}
-.katex .mtable .vertical-separator {
-    border-color: currentColor;
-}
-*/
 .katex * {
     border-color: currentColor;
 }

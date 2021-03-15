@@ -85,16 +85,17 @@ module.exports = {
                             textDecoration: 'none',
                             fontWeight: 600,
                             '&:hover': {
-                                textDecoration: 'underline'
+                                textDecoration: 'underline',
+                                color: theme('colors.blog.contrast.500'),
+                            },
                         },
                         'a code': {
-                            color: 'inherit'
+                            color: 'inherit',
                         },
                         thead: {
                             color: 'inherit',
-                        }
                         },
-                    }
+                    },
                 },
                 dark: {
                     css: {
@@ -125,7 +126,8 @@ module.exports = {
                             textDecoration: 'none',
                             fontWeight: 600,
                             '&:hover': {
-                                textDecoration: 'underline'
+                                textDecoration: 'underline',
+                                color: theme('colors.blog.contrast.300'),
                             },
                         },
                         'a code': {

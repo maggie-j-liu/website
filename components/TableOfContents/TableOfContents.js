@@ -4,7 +4,7 @@ import useActiveAnchor from './useActiveAnchor';
 
 const TableOfContents = ({ headings, slug }) => {
     const anchors = React.useMemo(() => headings.map(heading => heading.anchor), [headings]);
-    const activeAnchor = useActiveAnchor(anchors, '0px 0px 0px 0px');
+    const activeAnchor = useActiveAnchor(anchors);
     const activeStyle = 'text-blog-contrast-500 dark:text-blog-contrast-300 underline';
     const normalStyle = 'hover:text-blog-contrast-500 dark:hover:text-blog-contrast-300 hover:underline'
     return (
