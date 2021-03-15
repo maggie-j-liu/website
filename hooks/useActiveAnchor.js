@@ -4,22 +4,29 @@ const useActiveAnchor = (itemIds) => {
     let [activeAnchor, setActiveAnchor] = React.useState(undefined);
     React.useEffect(() => {
         function onScroll() {
+            const viewport = window.innerHeight;
+            //target height to switch section
+            const target = viewport / 4;
             const heights = itemIds.map(id => {
                 const element = document.getElementById(id);
-                const rect = element.getBoundingClientRect();
-                return {top: rect.top, id: id};
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    return {top: rect.top, id: id};
+                }
+                return {top: 0, id: ''}
             });
-            let first = 0, last = heights.length - 1;
-            while (first < last) {
-                let mid = first + Math.floor((last - first) / 2);
-                if (heights[mid].top >= 0) {
-                    last = mid;
+            let low = 0, high = heights.length;
+            while (low < high) {
+                let mid = low + Math.floor((high - low) / 2);
+                if (heights[mid].top >= target) {
+                    high = mid;
                 }
                 else {
-                    first = mid + 1;
+                    low = mid + 1;
                 }
             }
-            setActiveAnchor(heights[first].id);
+            const idx = Math.max(0, low - 1);
+            setActiveAnchor(heights[idx].id);
         }
         window.addEventListener('scroll', onScroll, {
             capture: true,

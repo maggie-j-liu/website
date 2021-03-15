@@ -41,19 +41,13 @@
 
  /* Inline code */
  .dark :not(pre) > code {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    padding-top: 0.125rem;
-    padding-bottom: 0.125rem;
-    border-radius: 0.25rem;
-    background-color: #374151;
-    white-space: normal;
+    @apply bg-blog-gray-600 px-1 py-0.5 rounded whitespace-normal;
 }
 
  .dark :not(pre) > code[class*="language-"] {
-     padding: .1em;
-     border-radius: .3em;
-     white-space: normal;
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
  }
 
 

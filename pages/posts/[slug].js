@@ -19,12 +19,12 @@ export default function PostPage({ source, frontMatter, headings, slug }) {
             <Head>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossOrigin="anonymous" />
             </Head>
-            <NavBar />
+            <NavBar page='blog'/>
             <div className={'min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark'}>
                 <h1 className={'col-start-2 col-end-5 justify-self-center self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <div className={'max-w-none col-start-2 col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-dark-50'}>
+                <div className={'max-w-full col-start-2 col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
                     {content}
                 </div>
                 <div className={'col-start-5 col-end-6 row-start-1 row-end-3'}>

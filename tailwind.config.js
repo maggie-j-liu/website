@@ -21,7 +21,7 @@ module.exports = {
                     primary: colors.blue,
                     secondary: colors.indigo,
                     contrast: colors.fuchsia,
-                    dark: colors.blueGray,
+                    gray: colors.blueGray,
                     main: {
                         light: colors.white,
                         dark: colors.blueGray[900],
@@ -31,7 +31,7 @@ module.exports = {
                     primary: colors.cyan,
                     secondary: colors.teal,
                     contrast: colors.amber,
-                    dark: colors.blueGray,
+                    gray: colors.gray,
                     header: colors.cyan,
                     main: {
                         light: colors.white,
@@ -42,6 +42,7 @@ module.exports = {
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
+                        color: theme('colors.blog.gray.700'),
                         h1: {
                             color: theme('colors.blog.header.800'),
                             fontWeight: 'bold',
@@ -95,6 +96,12 @@ module.exports = {
                         thead: {
                             color: 'inherit',
                         },
+                        'ol > li::before': {
+                            color: theme('colors.blog.contrast.600'),
+                        },
+                        'ul > li::before': {
+                            backgroundColor: theme('colors.blog.contrast.600'),
+                        }
                     },
                 },
                 dark: {
@@ -138,7 +145,13 @@ module.exports = {
                         },
                         tr: {
                             borderColor: theme('colors.gray.400')
-                        }
+                        },
+                        'ol > li::before': {
+                            color: theme('colors.blog.contrast.600'),
+                        },
+                        'ul > li::before': {
+                            backgroundColor: theme('colors.blog.constrast.600'),
+                        },
                     },
                 },
             }),

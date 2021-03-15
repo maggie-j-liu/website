@@ -14,7 +14,7 @@ export default function Home({posts}) {
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <NavBar />
+            <NavBar page='home'/>
             <div className={'bg-gradient-to-b from-home-secondary-100 to-home-contrast-50 dark:from-home-secondary-900 dark:to-home-contrast-900 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center'}>
                 <h1 className={'text-8xl font-bold bg-gradient-to-br from-home-primary-700 to-home-contrast-300 dark:from-home-primary-400 dark:to-home-contrast-300 text-transparent bg-clip-text mb-8'}>
                     Hello, world!
