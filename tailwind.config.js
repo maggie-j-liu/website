@@ -1,7 +1,9 @@
 const { normalizeConfig } = require('next/dist/next-server/server/config-shared');
 const colors = require('tailwindcss/colors');
 module.exports = {
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    purge: {
+        content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    },
     darkMode: 'class', // or 'media' or 'class'
     theme: {
         minWidth: {

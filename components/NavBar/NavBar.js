@@ -3,9 +3,18 @@ import DarkModeToggle from '../DarkModeToggle/DarkModeToggle'
 import Link from 'next/link';
 
 const NavBar = ({ page }) => {
-    const bgcolors = `bg-${page}-gray-50 dark:bg-${page}-gray-800`;
-    const textcolors = `text-${page}-primary-500 dark:${page}-primary-500`;
-    const linkhover = `hover:text-${page}-contrast-500 dark:hover:text-${page}-contrast-300`;
+    let bgcolors, textcolors, linkhover;
+    if (page == 'blog') {
+        bgcolors = `bg-blog-gray-50 dark:bg-blog-gray-800`;
+        textcolors = `text-blog-primary-500 dark:blog-primary-500`;
+        linkhover = `hover:text-blog-contrast-500 dark:hover:text-blog-contrast-300`;
+    }
+    else {
+        bgcolors = `bg-home-gray-50 dark:bg-home-gray-800`;
+        textcolors = `text-home-primary-500 dark:home-primary-500`;
+        linkhover = `hover:text-home-contrast-500 dark:hover:text-home-contrast-300`;
+    }
+    
     return (
         <nav className={`min-w-full fixed z-10 py-4 px-8 flex items-center space-x-4 ${bgcolors} ${textcolors}`}>
             <div className={linkhover}>

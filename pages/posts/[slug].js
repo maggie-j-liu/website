@@ -3,7 +3,6 @@ import matter from 'gray-matter';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import path from 'path';
-import Link from 'next/link';
 import Head from 'next/head';
 import AllComponents from '../../components/AllComponents';
 import NavBar from '../../components/NavBar/NavBar';
