@@ -1,9 +1,6 @@
-const { normalizeConfig } = require('next/dist/next-server/server/config-shared');
 const colors = require('tailwindcss/colors');
 module.exports = {
-    purge: {
-        content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-    },
+    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
         minWidth: {
@@ -19,6 +16,9 @@ module.exports = {
                 teal: colors.teal,
                 cyan: colors.cyan,
                 lightblue: colors.lightBlue,
+                normalgray: colors.gray,
+                bluegray: colors.blueGray,
+                fuchsia: colors.fuchsia,
                 home: {
                     primary: colors.blue,
                     secondary: colors.indigo,

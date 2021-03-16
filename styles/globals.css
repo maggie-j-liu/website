@@ -5,3 +5,23 @@
 .katex * {
     border-color: currentColor;
 }
+.blog-navbar {
+    @apply 
+        bg-blog-gray-50 dark:bg-blog-gray-800
+        text-blog-primary-500 dark:text-blog-primary-500;
+}   
+.blog-navbar > * {
+    @apply
+        hover:text-blog-contrast-500 dark:hover:text-blog-contrast-300;
+}
+
+.home-navbar {
+    @apply
+        bg-home-gray-50 dark:bg-home-gray-800
+        text-home-primary-500 dark:text-home-primary-500
+}
+
+.home-navbar > * {
+    @apply
+        hover:text-home-contrast-500 dark:hover:text-home-contrast-300;
+}
