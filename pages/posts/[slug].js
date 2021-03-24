@@ -11,7 +11,7 @@ import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import { getAnchor } from '../../utils/anchor';
 
 const components = AllComponents;
-export default function PostPage({ source, frontMatter, headings, slug }) {
+export default function PostPage({ source, frontMatter, headings }) {
     const content = hydrate(source, {components});
     return (
         <>
@@ -27,7 +27,7 @@ export default function PostPage({ source, frontMatter, headings, slug }) {
                     {content}
                 </div>
                 <div className={'col-start-5 col-end-6 row-start-1 row-end-3'}>
-                    <TableOfContents headings={headings} slug={slug}/>
+                    <TableOfContents headings={headings}/>
                 </div>
             </div>
         </>
@@ -37,6 +37,7 @@ export default function PostPage({ source, frontMatter, headings, slug }) {
 export const getStaticProps = async ({params}) => {
     const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
     const source = fs.readFileSync(postFilePath);
+    console.log(source);
     const { content, data } = matter(source);
     const lines = content.split('\n');
     //console.log(lines);
@@ -76,7 +77,6 @@ export const getStaticProps = async ({params}) => {
             source: mdxSource,
             frontMatter: data,
             headings: headings,
-            slug: params.slug,
         },
     }
 }
