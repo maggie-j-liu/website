@@ -3,13 +3,6 @@ module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
-        minWidth: {
-            '0': '0',
-            '25': '25%',
-            '50': '50%',
-            '75': '75%',
-            'full': '100%',
-        },
         extend: {
             colors: {
                 orange: colors.orange,
@@ -108,22 +101,13 @@ module.exports = {
                 },
                 dark: {
                     css: {
-                        h1: {
+                        'h1, h2': {
                             color: theme('colors.blog.header.300'),
                         },
-                        h2: {
-                            color: theme('colors.blog.header.300'),
-                        },
-                        h3: {
+                        'h3, h4': {
                             color: theme('colors.blog.header.200'),
                         },
-                        h4: {
-                            color: theme('colors.blog.header.200'),
-                        },
-                        h5: {
-                            color: theme('colors.blog.header.100'),
-                        },
-                        h6: {
+                        'h5, h6': {
                             color: theme('colors.blog.header.100'),
                         },
                         code: {
@@ -161,10 +145,7 @@ module.exports = {
     },
     variants: {
         typography: ['dark'],
-        extend: {
-            borderRadius: ['hover'],
-            borderWidth: ['hover']
-        },
+        extend: {},
     },
     plugins: [require('@tailwindcss/typography')],
 }
