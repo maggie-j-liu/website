@@ -25,3 +25,11 @@
     @apply
         hover:text-home-contrast-500 dark:hover:text-home-contrast-300;
 }
+
+.focus-invisible:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+.focus-invisible:focus:not(:focus-visible) {
+    outline: none;
+}

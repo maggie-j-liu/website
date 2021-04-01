@@ -29,8 +29,9 @@ export default function Home({posts}) {
                             e.preventDefault();
                             postsRef.current.scrollIntoView({ behavior: 'smooth' });
                         }}
+                        className={'focus-invisible text-home-primary-400 dark:text-home-primary-200 w-12 h-12 absolute top-3/4 animate-bounce'}
                     >
-                        <svg className="text-home-primary-400 dark:text-home-primary-200 w-12 h-12 absolute top-3/4 animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
                         </svg>
                     </a>

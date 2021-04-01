@@ -47,17 +47,10 @@ export const getStaticProps = async ({ params }) => {
             headings.push({text: headtext, anchor: getAnchor(headtext)});
         }
     });
-    //console.log(headings);
-    const linenumcontent = content.replace(/```[^\s]+/g, '$&[class="line-numbers"]');
-    const mdxSource = await renderToString(linenumcontent, {
+    const mdxSource = await renderToString(content, {
         components: AllComponents,
         mdxOptions: {
             remarkPlugins: [
-                [
-                    require('remark-prism'), {
-                        plugins: ['line-numbers']
-                    },
-                ],
                 [
                     require('remark-math'),
                 ],
