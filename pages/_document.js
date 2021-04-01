@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+//https://www.joshwcomeau.com/react/dark-mode/
 function setInitialColorMode() {
     function getInitialColorMode() {
         const persistedPreference = window.localStorage.getItem("theme");
@@ -38,10 +39,8 @@ function setInitialColorMode() {
 }
 
 // our function needs to be a string
-const blockingSetInitialColorMode = `(function() {
-        ${setInitialColorMode.toString()}
-        setInitialColorMode();
-})()
+const blockingSetInitialColorMode = `(${setInitialColorMode.toString()}
+)()
 `;
 
 export default class MyDocument extends Document {
@@ -54,7 +53,7 @@ export default class MyDocument extends Document {
                         dangerouslySetInnerHTML={{
                             __html: blockingSetInitialColorMode,
                         }}
-                    ></script>
+                    />
                     <Main />
                     <NextScript />
                 </body>

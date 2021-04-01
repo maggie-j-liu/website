@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { postsDir } from '../../utils/postsDir';
+import { postsDir } from '../utils/postsDir';
 
 const formatDate = (date) => {
     let parsed;

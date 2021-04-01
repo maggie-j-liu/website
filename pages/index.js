@@ -4,8 +4,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import Head from 'next/head';
-import NavBar from '../components/NavBar/NavBar';
-import PostList from '../components/PostList/PostList';
+import NavBar from '../components/NavBar';
+import PostList from '../components/PostList';
 import { POSTS_PATH, postFilePaths } from '../utils/posts';
 
 export default function Home({posts}) {

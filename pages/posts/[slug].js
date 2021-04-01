@@ -5,8 +5,8 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import path from 'path';
 import Head from 'next/head';
 import AllComponents from '../../components/AllComponents';
-import NavBar from '../../components/NavBar/NavBar';
-import TableOfContents from '../../components/TableOfContents/TableOfContents';
+import NavBar from '../../components/NavBar';
+import TableOfContents from '../../components/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import { getAnchor } from '../../utils/anchor';
 

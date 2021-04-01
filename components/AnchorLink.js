@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import { getAnchor } from '../../utils/anchor';
-import useLink from '../../hooks/useLink';
+import { getAnchor } from '../utils/anchor';
+import useLink from '../hooks/useLink';
 
 const CustomLink = ({ anchor, size }) => {
     const link = useLink();

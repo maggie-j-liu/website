@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import useActiveAnchor from '../../hooks/useActiveAnchor';
-import useLink from '../../hooks/useLink';
+import useActiveAnchor from '../hooks/useActiveAnchor';
+import useLink from '../hooks/useLink';
 
 const TableOfContents = ({ headings }) => {
     const anchors = React.useMemo(() => headings.map(heading => heading.anchor), [headings]);

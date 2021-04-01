@@ -1,4 +1,4 @@
-import AnchorLink from './AnchorLink/AnchorLink'
+import AnchorLink from './AnchorLink'
 
 const AllComponents = {
     ...AnchorLink
