@@ -34,7 +34,7 @@ const PostList = React.forwardRef((props, ref) => {
                         href={`/${postsDir}/[slug]`}
                         key={post.filePath}
                     >
-                        <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 rounded-md shadow-md'}>
+                        <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
                             <p className={'text-sm text-gray-400 font-semibold'}>
                                 {post.data.date ? formatDate(post.data.date) : <br />}
                             </p>

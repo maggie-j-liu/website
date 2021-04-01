@@ -10,9 +10,8 @@ import TableOfContents from '../../components/TableOfContents/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import { getAnchor } from '../../utils/anchor';
 
-const components = AllComponents;
 export default function PostPage({ source, frontMatter, headings }) {
-    const content = hydrate(source, {components});
+    const content = hydrate(source, {components: AllComponents});
     return (
         <>
             <Head>
@@ -34,10 +33,9 @@ export default function PostPage({ source, frontMatter, headings }) {
     );
 }
 
-export const getStaticProps = async ({params}) => {
+export const getStaticProps = async ({ params }) => {
     const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
     const source = fs.readFileSync(postFilePath);
-    console.log(source);
     const { content, data } = matter(source);
     const lines = content.split('\n');
     //console.log(lines);
@@ -52,7 +50,7 @@ export const getStaticProps = async ({params}) => {
     //console.log(headings);
     const linenumcontent = content.replace(/```[^\s]+/g, '$&[class="line-numbers"]');
     const mdxSource = await renderToString(linenumcontent, {
-        components,
+        components: AllComponents,
         mdxOptions: {
             remarkPlugins: [
                 [

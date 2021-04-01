@@ -7,6 +7,9 @@ const TableOfContents = ({ headings }) => {
     const anchors = React.useMemo(() => headings.map(heading => heading.anchor), [headings]);
     const activeAnchor = useActiveAnchor(anchors);
     const link = useLink();
+    if (!link.query.slug) {
+        return null;
+    }
     const activeStyle = 'text-blog-contrast-500 dark:text-blog-contrast-300 underline';
     const normalStyle = 'hover:text-blog-contrast-500 dark:hover:text-blog-contrast-300 hover:underline'
     return (

@@ -1,11 +1,14 @@
 module.exports = {
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    webpack: (config, { isServer }) => {
         if (!isServer)
         {
-            config.node = {
-                fs: 'empty'
+            config.resolve.fallback = {
+                fs: false
             }
         }
         return config;
     },
+    future: {
+        webpack5: true,
+    }
 }

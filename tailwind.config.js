@@ -161,7 +161,10 @@ module.exports = {
     },
     variants: {
         typography: ['dark'],
-        extend: {},
+        extend: {
+            borderRadius: ['hover'],
+            borderWidth: ['hover']
+        },
     },
     plugins: [require('@tailwindcss/typography')],
 }

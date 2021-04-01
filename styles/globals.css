@@ -6,8 +6,8 @@
     border-color: currentColor;
 }
 .blog-navbar {
+    backdrop-filter: saturate(180%) blur(20px);
     @apply 
-        bg-blog-gray-50 dark:bg-blog-gray-800
         text-blog-primary-500 dark:text-blog-primary-500;
 }   
 .blog-navbar > * {
@@ -16,9 +16,9 @@
 }
 
 .home-navbar {
+    backdrop-filter: saturate(180%) blur(20px);
     @apply
-        bg-home-gray-50 dark:bg-home-gray-800
-        text-home-primary-500 dark:text-home-primary-500
+        text-home-primary-500 dark:text-home-primary-500;
 }
 
 .home-navbar > * {
