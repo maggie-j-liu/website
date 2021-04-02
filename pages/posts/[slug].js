@@ -53,7 +53,7 @@ export const getStaticProps = async ({ params }) => {
             remarkPlugins: [
                 [
                     require('remark-math'),
-                ],
+                ]
             ],
             rehypePlugins: [
                 [
