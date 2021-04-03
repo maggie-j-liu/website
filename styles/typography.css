@@ -1,0 +1,55 @@
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply mt-4 mb-6;
+}
+
+.prose h3, .prose h4 {
+    @apply font-semibold;
+}
+
+.prose h5, .prose h6 {
+    @apply font-medium;
+}
+
+.prose h1 {
+    @apply text-4xl;
+}
+
+.prose h2 {
+    @apply text-3xl;
+}
+
+.prose h3 {
+    @apply text-2xl;
+}
+
+.prose h4 {
+    @apply text-xl;
+}
+
+.prose h5 {
+    @apply text-lg;
+}
+
+.prose h6 {
+    @apply text-base
+}
+
+.prose h1, .prose h2 {
+    @apply text-blog-header-800 font-bold;
+}
+
+.prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-blog-header-700;
+}
+
+.dark .prose h1, .dark .prose h2 {
+    @apply text-blog-header-300;
+}
+
+.dark .prose h3, .dark .prose h4 {
+    @apply text-blog-header-200;
+}
+
+.dark .prose h5, .dark .prose h6 {
+    @apply text-blog-header-100;
+}

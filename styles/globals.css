@@ -5,11 +5,13 @@
 .katex * {
     border-color: currentColor;
 }
+
 .blog-navbar {
     backdrop-filter: saturate(180%) blur(20px);
     @apply 
         text-blog-primary-500 dark:text-blog-primary-500;
 }   
+
 .blog-navbar > * {
     @apply
         hover:text-blog-contrast-500 dark:hover:text-blog-contrast-300;

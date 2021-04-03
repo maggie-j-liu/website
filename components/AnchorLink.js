@@ -12,7 +12,7 @@ const CustomLink = ({ anchor, size }) => {
                 hash: anchor
             }}
         >
-            <a className={'absolute top-20 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 duration-75 p-1'} style={{color: '#A1A1AA', textDecoration: 'none'}}>
+            <a className={'absolute top-0 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 duration-75 p-1'} style={{color: '#A1A1AA', textDecoration: 'none'}}>
                 <svg width={`${2.5-0.25*size}rem`} height={`${2.5-0.25*size}rem`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                 </svg>
@@ -25,10 +25,13 @@ const Heading = ({ size, children }) => {
     const Tag = `h${size}`;
     const anchor = getAnchor(children);
     return (
-        <Tag id={anchor} className={'group relative'} style={{marginTop: '-5rem', paddingTop: '5rem', position: 'relative'}}>
-            <CustomLink anchor={anchor} size={size}/>
-            {children}
-        </Tag>
+        <>
+            <div id={anchor} className={'h-20 -mt-20'}/>
+            <Tag className={'group relative'}>
+                <CustomLink anchor={anchor} size={size}/>
+                {children}
+            </Tag>
+        </>
     );
 };
 

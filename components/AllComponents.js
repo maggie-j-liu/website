@@ -1,9 +1,11 @@
 import AnchorLink from './AnchorLink'
 import CodeBlock from './CodeBlock';
+import Footnote from './Footnote';
 
 const AllComponents = {
     ...CodeBlock,
-    ...AnchorLink
+    ...AnchorLink,
+    ...Footnote
 };
 
 export default AllComponents;

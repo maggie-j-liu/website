@@ -38,35 +38,6 @@ module.exports = {
                 DEFAULT: {
                     css: {
                         color: theme('colors.blog.gray.700'),
-                        h1: {
-                            color: theme('colors.blog.header.800'),
-                            fontWeight: 'bold',
-                        },
-                        h2: {
-                            color: theme('colors.blog.header.800'),
-                            fontWeight: 'bold',
-                            fontSize: theme('fontSize.3xl[0]'),
-                        },
-                        h3: {
-                            color: theme('colors.blog.header.700'),
-                            fontWeight: '600',
-                            fontSize: theme('fontSize.2xl[0]'),
-                        },
-                        h4: {
-                            color: theme('colors.blog.header.700'),
-                            fontWeight: '600',
-                            fontSize: theme('fontSize.xl[0]'),
-                        },
-                        h5: {
-                            color: theme('colors.blog.header.700'),
-                            fontWeight: '500',
-                            fontSize: theme('fontSize.lg[0]'),
-                        },
-                        h6: {
-                            color: theme('colors.blog.header.700'),
-                            fontWeight: '500',
-                            fontSize: theme('fontSize.base[0]'),
-                        },
                         code: {
                             fontWeight: 'inherit',
                         },
@@ -101,15 +72,6 @@ module.exports = {
                 },
                 dark: {
                     css: {
-                        'h1, h2': {
-                            color: theme('colors.blog.header.300'),
-                        },
-                        'h3, h4': {
-                            color: theme('colors.blog.header.200'),
-                        },
-                        'h5, h6': {
-                            color: theme('colors.blog.header.100'),
-                        },
                         code: {
                             color: 'inherit',
                             fontWeight: 'inherit',
