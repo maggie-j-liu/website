@@ -1,25 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { postsDir } from '../utils/postsDir';
-
-const formatDate = (date) => {
-    let parsed;
-    if (date.search('-') !== -1) {
-        parsed = date.split('-').map(s => parseInt(s));
-    }
-    else {
-        parsed = date.split('/');
-    }
-    if (parsed[2] < 1000) {
-        parsed[2] += 2000;
-    }
-    const options = { month: "long", day: "numeric", year: "numeric" };
-    const formattedDate = new Date(parsed[2], parsed[0] - 1, parsed[1]).toLocaleDateString(
-        'en-US',
-        options
-    );
-    return formattedDate;
-}
+import formatDate from '../utils/formatDate';
 
 const PostList = React.forwardRef((props, ref) => {
     return (
@@ -34,7 +16,7 @@ const PostList = React.forwardRef((props, ref) => {
                         href={`/${postsDir}/[slug]`}
                         key={post.filePath}
                     >
-                        <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
+                        <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
                             <p className={'text-sm text-gray-400 font-semibold'}>
                                 {post.data.date ? formatDate(post.data.date) : <br />}
                             </p>

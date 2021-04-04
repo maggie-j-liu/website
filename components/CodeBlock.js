@@ -1,31 +1,26 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism, dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-const CodeBlock = ({ children, className }) => {
+const CodeBlock = ({ children, className, linenums, start }) => {
     const lang = className?.replace('language-', '');
-    let theme = prism;
-    if (typeof document !== 'undefined' && document?.documentElement?.classList.contains('dark')) theme = dark;
-    let linenums = true;
-    if (!className || lang == 'text') linenums = false;
+    if (linenums == undefined) {
+        if (!className || lang === 'text') linenums = false;
+        else linenums = true;
+    }
+    start = parseInt(start);
+    if (isNaN(start)) {
+        start = 1;
+    }
     return (
         <SyntaxHighlighter 
-            language={lang} 
-            style={theme} 
-            showLineNumbers={linenums} 
+            language={lang}
+            showLineNumbers={linenums}
+            startingLineNumber={start}
             useInlineStyles={false} 
             codeTagProps={{style: {}}} 
-            PreTag={PreWithLang}
             lineNumberStyle={{color: '#999'}}
+            className={className || 'language-text'}
         >
             {children.trim()}
         </SyntaxHighlighter>
-    );
-}
-
-const PreWithLang = ({ children, language }) => {
-    return (
-        <pre className={`language-${language}`}>
-            {children}
-        </pre>
     );
 }
 

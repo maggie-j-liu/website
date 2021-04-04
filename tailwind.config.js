@@ -38,6 +38,9 @@ module.exports = {
                 DEFAULT: {
                     css: {
                         color: theme('colors.blog.gray.700'),
+                        blockquote: {
+                            color: theme('colors.blog.gray.800')
+                        },
                         code: {
                             fontWeight: 'inherit',
                         },
@@ -72,6 +75,9 @@ module.exports = {
                 },
                 dark: {
                     css: {
+                        blockquote: {
+                            color: 'inherit'
+                        },
                         code: {
                             color: 'inherit',
                             fontWeight: 'inherit',

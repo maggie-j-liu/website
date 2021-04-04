@@ -22,10 +22,10 @@ export default function PostPage({ source, frontMatter, headings }) {
                 <h1 className={'col-start-2 col-end-5 justify-self-center self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <div className={'max-w-full col-start-2 col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
+                <div className={'max-w-full px-10 lg:px-0 col-start-1 col-end-6 lg:col-start-2 lg:col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
                     {content}
                 </div>
-                <div className={'col-start-5 col-end-6 row-start-1 row-end-3'}>
+                <div className={'col-start-5 col-end-6 row-start-1 row-end-3 hidden lg:block'}>
                     <TableOfContents headings={headings}/>
                 </div>
             </div>
