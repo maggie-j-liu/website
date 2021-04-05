@@ -14,7 +14,7 @@
 
 .blog-navbar > * {
     @apply
-        hover:text-blog-primary-600 dark:hover:text-blog-primary-300;
+        hover:text-blog-primary-500 dark:hover:text-blog-primary-300;
 }
 
 .home-navbar {

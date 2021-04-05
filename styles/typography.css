@@ -53,3 +53,13 @@
 .dark .prose h5, .dark .prose h6 {
     @apply text-blog-header-100;
 }
+
+/* Inline code */
+.prose :not(pre, a) > code, :not(pre) > code {
+    @apply text-blog-primary-600 bg-blog-primary-50 p-1 rounded-sm whitespace-normal;
+}
+
+/* Inline code */
+.dark .prose :not(pre, a) > code, .dark :not(pre) > code {
+    @apply bg-blog-primary-900 text-blog-primary-100 p-1 rounded-sm whitespace-normal;
+}

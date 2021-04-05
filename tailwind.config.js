@@ -51,7 +51,7 @@ module.exports = {
                             content: 'none',
                         },
                         a: {
-                            color: theme('colors.blog.secondary.600'),
+                            color: theme('colors.blog.secondary.500'),
                             textDecoration: 'none',
                             fontWeight: 600,
                             '&:hover': {
@@ -79,7 +79,6 @@ module.exports = {
                             color: 'inherit'
                         },
                         code: {
-                            color: 'inherit',
                             fontWeight: 'inherit',
                         },
                         a: {
