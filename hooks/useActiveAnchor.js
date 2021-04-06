@@ -3,6 +3,9 @@ import React from 'react';
 const useActiveAnchor = (itemIds) => {
     let [activeAnchor, setActiveAnchor] = React.useState(undefined);
     React.useEffect(() => {
+        if (!itemIds.length) {
+            return null;
+        }
         function onScroll() {
             const viewport = window.innerHeight;
             //target height to switch section

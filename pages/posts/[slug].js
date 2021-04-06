@@ -9,8 +9,10 @@ import NavBar from '../../components/NavBar';
 import TableOfContents from '../../components/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import { getAnchor } from '../../utils/anchor';
+import SideBar from '../../components/SideBar';
+import getSortedPosts from '../../lib/getSortedPosts';
 
-export default function PostPage({ source, frontMatter, headings }) {
+export default function PostPage({ source, frontMatter, headings, prev, next }) {
     const content = hydrate(source, {components: AllComponents});
     return (
         <>
@@ -22,10 +24,13 @@ export default function PostPage({ source, frontMatter, headings }) {
                 <h1 className={'col-start-2 col-end-5 justify-self-center self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <div className={'max-w-full px-10 lg:px-0 col-start-1 col-end-6 lg:col-start-2 lg:col-end-5 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
+                <div className={'hidden lg:block col-start-1 col-end-2 row-start-2 row-end-3 pl-8'}>
+                    <SideBar prev={prev} next={next} />
+                </div>
+                <div className={'max-w-full px-10 md:pr-0 lg:pl-0 col-start-1 col-end-6 md:col-end-5 lg:col-start-2 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
                     {content}
                 </div>
-                <div className={'col-start-5 col-end-6 row-start-1 row-end-3 hidden lg:block'}>
+                <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-8'}>
                     <TableOfContents headings={headings}/>
                 </div>
             </div>
@@ -34,6 +39,10 @@ export default function PostPage({ source, frontMatter, headings }) {
 }
 
 export const getStaticProps = async ({ params }) => {
+    const posts = getSortedPosts();
+    const postIndex = posts.findIndex(post => post.slug === params.slug);
+    const prev = posts[postIndex - 1] || null;
+    const next = posts[postIndex + 1] || null;
     const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
     const source = fs.readFileSync(postFilePath);
     const { content, data } = matter(source);
@@ -67,14 +76,16 @@ export const getStaticProps = async ({ params }) => {
         props: {
             source: mdxSource,
             frontMatter: data,
-            headings: headings,
+            headings,
+            prev,
+            next
         },
     }
 }
 
 export const getStaticPaths = async () => {
     const paths = postFilePaths
-        .map((path) => path.replace(/\.mdx?$/, ''))
+        .map((path) => path.replace(/\.mdx$/, ''))
         .map((slug) => ({ params: { slug } }));
     return {
         paths,

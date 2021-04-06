@@ -47,8 +47,10 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head />
-                <body className={'bg-home-main-light dark:bg-home-main-dark'}>
+                <Head>
+                    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+                </Head>
+                <body className={'bg-home-main-light dark:bg-home-main-dark font-sans'}>
                     <script
                         dangerouslySetInnerHTML={{
                             __html: blockingSetInitialColorMode,

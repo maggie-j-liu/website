@@ -7,7 +7,6 @@
 }
 
 .blog-navbar {
-    backdrop-filter: saturate(180%) blur(20px);
     @apply 
         text-blog-gray-500 dark:text-blog-gray-300;
 }   
@@ -18,7 +17,6 @@
 }
 
 .home-navbar {
-    backdrop-filter: saturate(180%) blur(20px);
     @apply
         text-home-primary-500 dark:text-home-primary-500;
 }

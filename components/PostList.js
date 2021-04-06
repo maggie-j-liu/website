@@ -12,9 +12,9 @@ const PostList = React.forwardRef((props, ref) => {
             <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto py-4 gap-8'}>
                 {props.posts.map((post) => (
                     <Link
-                        as={`/${postsDir}/${post.filePath.replace(/\.mdx?$/, '')}`}
+                        as={`/${postsDir}/${post.slug}`}
                         href={`/${postsDir}/[slug]`}
-                        key={post.filePath}
+                        key={post.slug}
                     >
                         <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
                             <p className={'text-sm text-gray-400 font-semibold'}>

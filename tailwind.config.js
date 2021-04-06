@@ -1,10 +1,14 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     mode: 'jit',
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+            },
             colors: {
                 orange: colors.orange,
                 teal: colors.teal,
@@ -57,7 +61,7 @@ module.exports = {
                             fontWeight: 600,
                             '&:hover': {
                                 textDecoration: 'underline',
-                                color: theme('colors.blog.contrast.500'),
+                                color: theme('colors.blog.secondary.600'),
                             },
                         },
                         'a code': {
@@ -88,7 +92,7 @@ module.exports = {
                             fontWeight: 600,
                             '&:hover': {
                                 textDecoration: 'underline',
-                                color: theme('colors.blog.contrast.300'),
+                                color: theme('colors.blog.secondary.200'),
                             },
                         },
                         'a code': {

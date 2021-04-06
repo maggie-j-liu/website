@@ -1,14 +1,11 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import Link from 'next/link';
 import Head from 'next/head';
 import NavBar from '../components/NavBar';
 import PostList from '../components/PostList';
-import { POSTS_PATH, postFilePaths } from '../utils/posts';
+import getSortedPosts from '../lib/getSortedPosts';
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
     const postsRef = React.useRef();
     return (
         <div>
@@ -43,24 +40,10 @@ export default function Home({posts}) {
 }
 
 export function getStaticProps() {
-    const posts = postFilePaths.map((filePath) => {
-        const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-        const { content, data } = matter(source);
-        return {
-            content, data, filePath,
-        }
-    })
-    
-    posts.sort((a, b) => {
-        if (a.data.date && b.data.date) {
-            const datea = new Date(a.data.date);
-            const dateb = new Date(b.data.date);
-            return (datea > dateb ? -1 : 1);
-        }
-        return (a.date != undefined ? -1 : (b.date != undefined ? 1 : 0 ));
-    });
-    //console.log(posts);
+    const posts = getSortedPosts();
     return {
-        props: {posts}
+        props: {
+            posts
+        }
     }
 }
