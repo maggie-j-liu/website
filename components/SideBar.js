@@ -11,7 +11,7 @@ const SideBar = ({ prev, next }) => {
                         as={`/${postsDir}/${prev.slug}`}
                     >
                         <a className={'text-blog-primary-500 hover:text-blog-primary-600 dark:text-blog-primary-300 dark:hover:text-blog-primary-200'}>
-                            {prev.slug}
+                            {prev.data.title}
                         </a>
                     </Link>
                 </div>}
@@ -22,7 +22,7 @@ const SideBar = ({ prev, next }) => {
                         as={`/${postsDir}/${next.slug}`}
                     >
                         <a className={'text-blog-primary-500 hover:text-blog-primary-600 dark:text-blog-primary-300 dark:hover:text-blog-primary-200'}>
-                            {next.slug}
+                            {next.data.title}
                         </a>
                     </Link>
                 </div>}

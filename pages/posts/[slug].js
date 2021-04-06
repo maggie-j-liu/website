@@ -8,11 +8,12 @@ import AllComponents from '../../components/AllComponents';
 import NavBar from '../../components/NavBar';
 import TableOfContents from '../../components/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
-import { getAnchor } from '../../utils/anchor';
 import SideBar from '../../components/SideBar';
 import getSortedPosts from '../../lib/getSortedPosts';
+const Slugger = require('github-slugger');
 
 export default function PostPage({ source, frontMatter, headings, prev, next }) {
+    //console.log(source.renderedOutput);
     const content = hydrate(source, {components: AllComponents});
     return (
         <>
@@ -21,14 +22,16 @@ export default function PostPage({ source, frontMatter, headings, prev, next }) 
             </Head>
             <NavBar page='blog'/>
             <div className={'min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark'}>
-                <h1 className={'col-start-2 col-end-5 justify-self-center self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
+                <h1 className={'col-start-2 col-end-5 justify-self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
                 <div className={'hidden lg:block col-start-1 col-end-2 row-start-2 row-end-3 pl-8'}>
                     <SideBar prev={prev} next={next} />
                 </div>
                 <div className={'max-w-full px-10 md:pr-0 lg:pl-0 col-start-1 col-end-6 md:col-end-5 lg:col-start-2 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
-                    {content}
+                    <div>
+                        {content}
+                    </div>
                 </div>
                 <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-8'}>
                     <TableOfContents headings={headings}/>
@@ -48,12 +51,13 @@ export const getStaticProps = async ({ params }) => {
     const { content, data } = matter(source);
     const lines = content.split('\n');
     //console.log(lines);
+    const slugger = new Slugger();
     const headings = [];
     lines.forEach((line) => {
         const matches = line.match(/#{1,6} /);
         if (matches !== null) {
             const headtext = line.replace(matches[0], '');
-            headings.push({text: headtext, anchor: getAnchor(headtext)});
+            headings.push({text: headtext, anchor: slugger.slug(headtext)});
         }
     });
     const mdxSource = await renderToString(content, {
@@ -62,6 +66,9 @@ export const getStaticProps = async ({ params }) => {
             remarkPlugins: [
                 [
                     require('remark-math'),
+                ],
+                [
+                    require('remark-slug'),
                 ]
             ],
             rehypePlugins: [

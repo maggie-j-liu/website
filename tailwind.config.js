@@ -1,10 +1,16 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
+const { prism, dracula } = require('react-syntax-highlighter/dist/cjs/styles/prism');
+
 module.exports = {
     mode: 'jit',
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
+        code: {
+            light: prism,
+            dark: dracula,
+        },
         extend: {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans]
@@ -46,6 +52,9 @@ module.exports = {
                         blockquote: {
                             color: theme('colors.blog.gray.800')
                         },
+                        pre: {
+                            ...theme(`code.light['pre[class*="language-"]']`)
+                        },
                         code: {
                             fontWeight: 'inherit',
                         },
@@ -82,6 +91,9 @@ module.exports = {
                     css: {
                         blockquote: {
                             color: 'inherit'
+                        },
+                        pre: {
+                            ...theme(`code.dark['pre[class*="language-"]']`)
                         },
                         code: {
                             fontWeight: 'inherit',

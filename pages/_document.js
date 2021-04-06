@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-//https://www.joshwcomeau.com/react/dark-mode/
+// https://www.joshwcomeau.com/react/dark-mode/
+// https://dev.to/sreetamdas/the-perfect-dark-mode-2d7g
 function setInitialColorMode() {
     function getInitialColorMode() {
         const persistedPreference = window.localStorage.getItem("theme");

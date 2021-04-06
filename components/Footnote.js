@@ -14,7 +14,6 @@ const Footnote = ({ children }) => {
                             </>
                         )
                     }
-                    console.log(pchild);
                 }
                 //console.log(pchild);
                 return pchild;

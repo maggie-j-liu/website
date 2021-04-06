@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import { getAnchor } from '../utils/anchor';
 import useLink from '../hooks/useLink';
 
 const CustomLink = ({ anchor, size }) => {
@@ -21,14 +20,13 @@ const CustomLink = ({ anchor, size }) => {
     );
 }
 
-const Heading = ({ size, children }) => {
+const Heading = ({ size, children, id }) => {
     const Tag = `h${size}`;
-    const anchor = getAnchor(children);
     return (
         <>
-            <div id={anchor} className={'h-20 -mt-20'}/>
+            <div id={id} className={'h-20 !-mt-20'}/>
             <Tag className={'group relative'}>
-                <CustomLink anchor={anchor} size={size}/>
+                <CustomLink anchor={id} size={size}/>
                 {children}
             </Tag>
         </>

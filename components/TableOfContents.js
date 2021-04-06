@@ -15,9 +15,9 @@ const TableOfContents = ({ headings }) => {
             <>
                 <ul className={'sticky top-12 text-blog-gray-400 text-sm py-8'}>
                     <h2 className={'uppercase tracking-wider text-sm font-bold mb-2 text-blog-primary-500 dark:text-blog-primary-300'}>Table of Contents</h2>
-                    {headings.map(({ text, anchor }) => {
+                    {headings.map(({ text, anchor }, index) => {
                         return (
-                            <li key={anchor}>   
+                            <li key={index}>   
                                 <a className={`${activeAnchor === anchor ? activeStyle : normalStyle} block py-1 transform transition-colors`}>
                                     {text}
                                 </a>
@@ -31,7 +31,7 @@ const TableOfContents = ({ headings }) => {
     return (
         <>
             <ul className={'sticky top-12 text-blog-gray-400 text-sm py-8'}>
-                <h2 className={'uppercase tracking-wider text-sm font-bold mb-2 text-blog-gray-500 dark:text-blog-gray-300'}>Table of Contents</h2>
+                <h2 className={'uppercase tracking-wider text-sm font-bold mb-2 text-blog-primary-500 dark:text-blog-primary-300'}>Table of Contents</h2>
                 {headings.map(({ text, anchor }) => {
                     return (
                         <li key={anchor}>   
