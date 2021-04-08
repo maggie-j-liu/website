@@ -5,8 +5,10 @@ import '../styles/components.css';
 //import '../styles/dracula.css';
 import { ColorModeProvider } from '../hooks/useColorMode';
 //import '../styles/linenums.css'
+import { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }) {
+
+function App({ Component, pageProps }: AppProps) {
     return (
         <ColorModeProvider>
             <Component {...pageProps} />
@@ -14,4 +16,4 @@ function MyApp({ Component, pageProps }) {
     ) 
 }
 
-export default MyApp
+export default App
