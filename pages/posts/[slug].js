@@ -12,28 +12,28 @@ import SideBar from '../../components/SideBar';
 import getSortedPosts from '../../lib/getSortedPosts';
 const Slugger = require('github-slugger');
 
-export default function PostPage({ source, frontMatter, headings, prev, next }) {
+export default function PostPage({ source, frontMatter, slug, headings, prev, next }) {
     //console.log(source.renderedOutput);
     const content = hydrate(source, {components: AllComponents});
     return (
         <>
             <Head>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossOrigin="anonymous" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css" integrity="sha384-2vkq42dvFAQl88n6UuPWLKSKnFnHyyoSgy788ohlfWZ4xEmF8g0kCMZe1CkaXHDd" crossOrigin="anonymous" />
             </Head>
             <NavBar page='blog'/>
             <div className={'min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark'}>
                 <h1 className={'col-start-2 col-end-5 justify-self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <div className={'hidden lg:block col-start-1 col-end-2 row-start-2 row-end-3 pl-8'}>
-                    <SideBar prev={prev} next={next} />
+                <div className={'col-start-1 col-end-6 md:col-end-5 lg:col-end-2 row-start-3 lg:row-start-2 lg:row-end-3 px-10 md:pr-0'}>
+                    <SideBar prev={prev} curr={{slug, data: frontMatter}} next={next} />
                 </div>
                 <div className={'max-w-full px-10 md:pr-0 lg:pl-0 col-start-1 col-end-6 md:col-end-5 lg:col-start-2 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
                     <div>
                         {content}
                     </div>
                 </div>
-                <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-8'}>
+                <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-10'}>
                     <TableOfContents headings={headings}/>
                 </div>
             </div>
@@ -42,7 +42,10 @@ export default function PostPage({ source, frontMatter, headings, prev, next }) 
 }
 
 export const getStaticProps = async ({ params }) => {
-    const posts = getSortedPosts();
+    const posts = getSortedPosts().map(post => ({
+        slug: post.slug, 
+        data: post.data
+    }));
     const postIndex = posts.findIndex(post => post.slug === params.slug);
     const prev = posts[postIndex - 1] || null;
     const next = posts[postIndex + 1] || null;
@@ -83,6 +86,7 @@ export const getStaticProps = async ({ params }) => {
         props: {
             source: mdxSource,
             frontMatter: data,
+            slug: params.slug,
             headings,
             prev,
             next

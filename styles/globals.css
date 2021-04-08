@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.katex * {
-    border-color: currentColor;
-}
-
 .blog-navbar {
     @apply 
         text-blog-gray-500 dark:text-blog-gray-300;

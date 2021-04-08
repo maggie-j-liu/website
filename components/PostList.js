@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { postsDir } from '../utils/postsDir';
+import { postsDir } from '../utils/routes';
 import formatDate from '../utils/formatDate';
 
 const PostList = React.forwardRef((props, ref) => {

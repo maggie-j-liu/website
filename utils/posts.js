@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { postsDir } from './postsDir';
+import { postsDir } from './routes';
 
 export const POSTS_PATH = path.join(process.cwd(), postsDir);
 

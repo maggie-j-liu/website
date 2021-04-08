@@ -68,10 +68,6 @@
     @apply filter blur-md;
 }
 
-.prose > div > :first-child {
-    @apply mt-0;
-}
-
-.prose > div > :last-child {
-    @apply mb-0;
+.prose *[id] {
+    scroll-margin-top: 5rem;
 }

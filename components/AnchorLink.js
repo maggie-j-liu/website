@@ -24,8 +24,8 @@ const Heading = ({ size, children, id }) => {
     const Tag = `h${size}`;
     return (
         <>
-            <div id={id} className={'h-20 !-mt-20'}/>
-            <Tag className={'group relative'}>
+            {/*<div id={id} className={'h-20 !-mt-20'}/>*/}
+            <Tag id={id} className={'group relative'}>
                 <CustomLink anchor={id} size={size}/>
                 {children}
             </Tag>
