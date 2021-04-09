@@ -1,9 +1,9 @@
 import AnchorLink from './AnchorLink'
 import CodeBlock from './CodeBlock';
 
-const AllComponents = {
+const MDXComponents = {
     ...CodeBlock,
     ...AnchorLink
 };
 
-export default AllComponents;
+export default MDXComponents;

@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import useActiveAnchor from '../hooks/useActiveAnchor';
 import useLink from '../hooks/useLink';
+import { Heading } from '../lib/types';
 
-const TableOfContents = ({ headings }) => {
+const TableOfContents = ({ headings }: { headings: Heading[] }) => {
     if (!headings.length) return null;
     const anchors = React.useMemo(() => headings.map(heading => heading.anchor), [headings]);
     const activeAnchor = useActiveAnchor(anchors);

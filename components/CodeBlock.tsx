@@ -3,26 +3,40 @@ import React from 'react';
 import useColorMode from '../hooks/useColorMode';
 import tailwindconfig from '../tailwind.config';
 import colorModes from '../utils/colorModes';
-const CodeBlock = ({ children, className, linenums, start }) => {
+
+type CodeBlockProps = {
+    children: string;
+    className?: string;
+    linenums?: string;
+    start?: string;
+}
+
+const CodeBlock = ({ children, className, linenums, start }: CodeBlockProps) => {
     const styles = tailwindconfig?.theme?.code;
     const lang = className?.replace('language-', '');
-    if (linenums == undefined) {
-        if (!className || lang === 'text') linenums = false;
-        else linenums = true;
+    let linenumbers, startingnumber;
+    if (linenums === 'false') {
+        linenumbers = false;
     }
-    start = parseInt(start);
-    if (isNaN(start)) {
-        start = 1;
+    else if (linenums === 'true') {
+        linenumbers = true;
+    }
+    if (linenums == undefined) {
+        if (!className || lang === 'text') linenumbers = false;
+        else linenumbers = true;
+    }
+    startingnumber = parseInt(start);
+    if (isNaN(startingnumber)) {
+        startingnumber = 1;
     }
     const Mode = useColorMode();
     return (
         <SyntaxHighlighter 
             language={lang}
-            showLineNumbers={linenums}
-            startingLineNumber={start}
+            showLineNumbers={linenumbers}
+            startingLineNumber={startingnumber}
             useInlineStyles={Mode !== undefined} 
             codeTagProps={{style: {}}}
-            className={className || 'language-text'}
             style={Mode?.colorMode === colorModes.dark ? styles?.dark : styles?.light}
             customStyle={{fontSize:'inherit'}}
             className={Mode !== undefined && 'filter blur-0'}

@@ -2,7 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import useLink from '../hooks/useLink';
 
-const CustomLink = ({ anchor, size }) => {
+type CustomLinkProps = {
+    anchor: string;
+    size: number;
+}
+
+const CustomLink = ({ anchor, size }: CustomLinkProps) => {
     const link = useLink();
     return (
         <Link 
@@ -11,7 +16,7 @@ const CustomLink = ({ anchor, size }) => {
                 hash: anchor
             }}
         >
-            <a className={'absolute top-0 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 duration-75 p-1 !text-blog-gray-400'} style={{textDecoration: 'none'}}>
+            <a className={'absolute top-0 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 duration-75 p-1 !text-blog-gray-400 !no-underline'}>
                 <svg width={`${2.5-0.25*size}rem`} height={`${2.5-0.25*size}rem`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                 </svg>
@@ -20,15 +25,21 @@ const CustomLink = ({ anchor, size }) => {
     );
 }
 
-const Heading = ({ size, children, id }) => {
+type HeadingProps = {
+    size: number;
+    children: string;
+    id: string;
+}
+
+const Heading = ({ size, children, id }: HeadingProps) => {
     const Tag = `h${size}`;
+    const DynamicHeading = ({ children, ...props }) => React.createElement(Tag, {...props}, children);
     return (
         <>
-            {/*<div id={id} className={'h-20 !-mt-20'}/>*/}
-            <Tag id={id} className={'group relative'}>
+            <DynamicHeading id={id} className={'group relative'}>
                 <CustomLink anchor={id} size={size}/>
                 {children}
-            </Tag>
+            </DynamicHeading>
         </>
     );
 };

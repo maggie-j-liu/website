@@ -2,8 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import { postsDir } from '../utils/routes';
 import formatDate from '../utils/formatDate';
+import { Post } from '../lib/types';
 
-const PostList = React.forwardRef((props, ref) => {
+const PostList = React.forwardRef<HTMLDivElement, { posts: Post[] }>((props, ref) => {
     return (
         <div id={'posts'} ref={ref} className={'min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-home-main-light bg-gradient-to-b dark:bg-home-gray-900'}>
             <span className={'text-2xl font-semibold uppercase pt-5 -mt-3 text-home-primary-600 dark:text-home-primary-500'}>

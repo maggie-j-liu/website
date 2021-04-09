@@ -4,9 +4,10 @@ import Head from 'next/head';
 import NavBar from '../components/NavBar';
 import PostList from '../components/PostList';
 import getSortedPosts from '../lib/getSortedPosts';
+import { Post } from '../lib/types';
 
-export default function Home({ posts }) {
-    const postsRef = React.useRef();
+export default function Home({ posts }: { posts: Post[] }) {
+    const postsRef = React.useRef<HTMLDivElement>();
     return (
         <div>
             <Head>

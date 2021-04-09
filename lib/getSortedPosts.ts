@@ -2,14 +2,15 @@ import { postFilePaths, POSTS_PATH } from '../utils/posts';
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
+import { Post } from './types';
 
 const getSortedPosts = () => {
-    const posts = postFilePaths.map((filePath) => {
+    const posts: Post[] = postFilePaths.map((filePath) => {
         const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
         const { content, data } = matter(source);
         return {
-            content, 
-            data, 
+            content,
+            data,
             slug: filePath.replace(/\.mdx$/, ''),
         }
     });
@@ -20,7 +21,7 @@ const getSortedPosts = () => {
             const dateb = new Date(b.data.date);
             return (datea > dateb ? -1 : 1);
         }
-        return (a.date != undefined ? -1 : (b.date != undefined ? 1 : 0 ));
+        return (a.data.date != undefined ? -1 : (b.data.date != undefined ? 1 : 0));
     });
     return posts;
 }

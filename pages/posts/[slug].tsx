@@ -2,19 +2,32 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
+import { MdxRemote } from 'next-mdx-remote/types';
 import path from 'path';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import AllComponents from '../../components/AllComponents';
+import MDXComponents from '../../components/MDXComponents';
 import NavBar from '../../components/NavBar';
 import TableOfContents from '../../components/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import SideBar from '../../components/SideBar';
 import getSortedPosts from '../../lib/getSortedPosts';
 const Slugger = require('github-slugger');
+import { PostMeta, Heading } from '../../lib/types';
 
-export default function PostPage({ source, frontMatter, slug, headings, prev, next }) {
-    //console.log(source.renderedOutput);
-    const content = hydrate(source, {components: AllComponents});
+type PostPageProps = {
+    source: MdxRemote.Source;
+    frontMatter: {
+        [key: string]: string
+    };
+    slug: string;
+    headings: Heading[];
+    prev: PostMeta;
+    next: PostMeta;
+}
+
+export default function PostPage({ source, frontMatter, slug, headings, prev, next }: PostPageProps) {
+    const content = hydrate(source, { components: MDXComponents });
     return (
         <>
             <Head>
@@ -41,7 +54,7 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
     );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const posts = getSortedPosts().map(post => ({
         slug: post.slug, 
         data: post.data
@@ -64,7 +77,7 @@ export const getStaticProps = async ({ params }) => {
         }
     });
     const mdxSource = await renderToString(content, {
-        components: AllComponents,
+        components: MDXComponents,
         mdxOptions: {
             remarkPlugins: [
                 [
@@ -94,7 +107,7 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
     const paths = postFilePaths
         .map((path) => path.replace(/\.mdx$/, ''))
         .map((slug) => ({ params: { slug } }));

@@ -3,7 +3,7 @@ import React from 'react';
 import { postsDir, tagsDir } from '../utils/routes';
 
 const TagSection = ({ tags }) => {
-    const totalTags = tags && tags.length;
+    const totalTags = tags.length;
     return (
         <>
             <hr />
@@ -48,7 +48,6 @@ const OtherPostSection = ({ post, displayName }) => {
 }
 
 const SideBar = ({ prev, curr, next }) => {
-    
     return (
         <>
         <div className={'lg:sticky lg:top-12 py-8 flex flex-col text-blog-gray-600 dark:text-blog-gray-300'}>

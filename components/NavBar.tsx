@@ -2,7 +2,7 @@ import React from 'react';
 import DarkModeToggle from './DarkModeToggle'
 import Link from 'next/link';
 
-const NavBar = ({ page }) => {
+const NavBar = ({ page }: { page: string }) => {
     return (
         <nav className={`min-w-full fixed z-10 py-4 px-8 flex items-center space-x-4 ${page}-navbar backdrop-filter backdrop-blur-[20px] backdrop-saturate-[1.8]`}>
             <Link href="/">
