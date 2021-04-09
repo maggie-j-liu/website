@@ -9,7 +9,7 @@ const DarkModeToggle = () => {
     }
     return (
         <>
-            <button onClick={handleClick} className={'self-center focus-invisible '}>
+            <button onClick={handleClick} className={'focus-invisible'}>
                 {colorMode !== undefined && (colorMode === colorModes.dark 
                     ? 
                         <svg className={`w-6 h-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

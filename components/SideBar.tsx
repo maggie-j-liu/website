@@ -65,7 +65,7 @@ const SideBar = ({ prev, curr, next }: { prev: PostMeta, curr: PostMeta, next: P
             }
             <hr /> 
             <div className={'py-6'}>
-                <Link href='/'>
+                <Link href={`/${postsDir}`}>
                     <a className={'sidebar-link'}>
                         ← Back to the blog 
                     </a>

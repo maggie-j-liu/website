@@ -3,11 +3,12 @@ import { postsDir } from '../utils/routes';
 import formatDate from '../utils/formatDate';
 import Link from 'next/link';
 import React from 'react';
+import NavBar from './NavBar';
 
 const TagSection = ({ tags }: { tags: string[] }) => {
     const totalTags = tags.length;
     return (
-        <div className={'pb-4'}>
+        <div>
             <div className={'text-blog-primary-700 dark:text-blog-primary-400'}>
             {tags.map((tag, index) => (
                 <React.Fragment key={tag}>
@@ -22,20 +23,24 @@ const TagSection = ({ tags }: { tags: string[] }) => {
 
 const PostList = ({ posts }: { posts: PostMeta[] }) => {
     return (
-        <div className={'max-w-3xl xl:max-w-5xl mx-auto px-4 py-12 flex flex-col justify-between bg-blog-main-light dark:bg-blog-gray-900'}>
-            <h1 className={'text-2xl self-center font-semibold uppercase text-blog-primary-600 dark:text-blog-primary-500'}>
+        <div className={'w-full bg-blog-main-light dark:bg-blog-main-dark'}>
+        <NavBar page={'blog'}/>
+        <div className={'max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 py-12 flex flex-col justify-between'}>
+            <h1 className={'pt-20 text-5xl font-bold text-blog-gray-900 dark:text-blog-gray-100'}>
                 Posts
             </h1>
-            <ul className={'divide-y'}>
+            <ul className={'divide-y dark:divide-blog-gray-600'}>
                 {posts.map((post) => {
                     const dedupedTags: string[] = Array.from(new Set(post.data.tags));
                     return (
-                        <li className={'py-12 divide-blog-gray-200'}>
-                            <div className={'grid grid-cols-4'}>
-                                <p className={'text-base text-blog-gray-500 col-start-1'}>
-                                    {post.data.date ? formatDate(post.data.date) : null}
+                        <li key={post.slug} className={'py-12 divide-blog-gray-200'}>
+                            <div className={'lg:grid lg:grid-cols-4'}>
+                                {post.data.date && 
+                                <p className={'text-base text-blog-gray-500 dark:text-blog-gray-400 lg:col-start-1 pb-2'}>
+                                    {formatDate(post.data.date)}
                                 </p>
-                                <div className={'col-start-2 col-end-5 block px-4 '}>
+                                }
+                                <div className={'lg:col-start-2 lg:col-end-5'}>
                                     <Link
                                         as={`/${postsDir}/${post.slug}`}
                                         href={`/${postsDir}/[slug]`}
@@ -46,15 +51,18 @@ const PostList = ({ posts }: { posts: PostMeta[] }) => {
                                         </a>
                                     </Link>
                                     {dedupedTags.length > 0 && <TagSection tags={dedupedTags}/>}
-                                    <p className={'text-blog-gray-600 dark:text-white'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
+                                    {post.data.preview && 
+                                    <p className={'text-blog-gray-600 dark:text-blog-gray-200 pt-6'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
                                         {post.data.preview}
                                     </p>
+                                    }
                                 </div>
                             </div>
                         </li>
                     )
                 })}
             </ul>
+        </div>
         </div>
     )
 }

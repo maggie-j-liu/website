@@ -24,9 +24,11 @@ const TagSection = ({ tags }: { tags: string[] }) => {
 const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>((props, ref) => {
     return (
         <div id={'posts'} ref={ref} className={'min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-home-main-light bg-gradient-to-b dark:bg-home-gray-900'}>
-            <span className={'text-2xl font-semibold uppercase pt-5 -mt-3 text-home-primary-600 dark:text-home-primary-500'}>
+            <Link href={`/${postsDir}`}>
+            <a className={'text-2xl font-semibold uppercase pt-5 -mt-3 text-home-primary-600 dark:text-home-primary-500 hover:text-home-contrast-700 dark:hover:text-home-contrast-200 hover:underline'}>
                 Posts
-            </span>
+            </a>
+            </Link>
             <div className={'grid grid-cols-1 auto-rows-[230px] sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto py-4 gap-8'}>
                 {props.posts.map((post) => {
                     const dedupedTags: string[] = Array.from(new Set(post.data.tags));
