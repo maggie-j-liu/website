@@ -1,6 +1,6 @@
 import React from 'react';
 
-const useActiveAnchor = (itemIds) => {
+const useActiveAnchor = (itemIds: string[]) => {
     let [activeAnchor, setActiveAnchor] = React.useState(undefined);
     React.useEffect(() => {
         if (!itemIds.length) {

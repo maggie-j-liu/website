@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import { postsDir, tagsDir } from '../utils/routes';
+import { PostMeta } from '../lib/types';
 
-const TagSection = ({ tags }) => {
-    const totalTags = tags.length;
+const TagSection = ({ tags }: { tags: string[] }) => {
+    const dedupedTags = Array.from(new Set(tags));
+    const totalTags = dedupedTags.length;
     return (
         <>
             <hr />
@@ -11,7 +13,7 @@ const TagSection = ({ tags }) => {
                 <h2 className={'uppercase font-bold text-xs tracking-wider'}>Tags</h2>
                 {tags && 
                     <div className={'text-blog-primary-700 dark:text-blog-primary-200'}>
-                        {tags.map((tag, index) => (
+                        {dedupedTags.map((tag, index) => (
                             <React.Fragment key={tag}>
                                 <Link
                                     href={`/${tagsDir}/[tag]`}
@@ -31,7 +33,7 @@ const TagSection = ({ tags }) => {
     )
 }
 
-const OtherPostSection = ({ post, displayName }) => {
+const OtherPostSection = ({ post, displayName }: { post: PostMeta, displayName: string }) => {
     return (   
         <div>
             <h2 className={'uppercase font-bold text-xs tracking-wider'}>{displayName} post{' '}</h2>
@@ -47,7 +49,7 @@ const OtherPostSection = ({ post, displayName }) => {
     )
 }
 
-const SideBar = ({ prev, curr, next }) => {
+const SideBar = ({ prev, curr, next }: { prev: PostMeta, curr: PostMeta, next: PostMeta }) => {
     return (
         <>
         <div className={'lg:sticky lg:top-12 py-8 flex flex-col text-blog-gray-600 dark:text-blog-gray-300'}>
