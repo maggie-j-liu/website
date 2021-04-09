@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NavBar from '../components/NavBar';
-import PostList from '../components/PostList';
+import PostGridList from '../components/PostGridList';
 import getSortedPosts from '../lib/getSortedPosts';
-import { Post } from '../lib/types';
+import { PostMeta } from '../lib/types';
 
-export default function Home({ posts }: { posts: Post[] }) {
+export default function Home({ posts }: { posts: PostMeta[] }) {
     const postsRef = React.useRef<HTMLDivElement>();
     return (
         <div>
@@ -35,13 +36,13 @@ export default function Home({ posts }: { posts: Post[] }) {
                     </a>
                 </Link>
             </div>
-            <PostList posts={posts} ref={postsRef}/>
+            <PostGridList posts={posts} ref={postsRef}/>
         </div>
     );
 }
 
-export function getStaticProps() {
-    const posts = getSortedPosts();
+export const getStaticProps: GetStaticProps = async () => {
+    const posts = getSortedPosts().map(post => ({data: post.data, slug: post.slug}));
     return {
         props: {
             posts

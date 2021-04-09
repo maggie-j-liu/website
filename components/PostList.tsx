@@ -1,38 +1,62 @@
-import React from 'react'
-import Link from 'next/link'
+import { PostMeta } from '../lib/types';
 import { postsDir } from '../utils/routes';
 import formatDate from '../utils/formatDate';
-import { Post } from '../lib/types';
+import Link from 'next/link';
+import React from 'react';
 
-const PostList = React.forwardRef<HTMLDivElement, { posts: Post[] }>((props, ref) => {
+const TagSection = ({ tags }: { tags: string[] }) => {
+    const totalTags = tags.length;
     return (
-        <div id={'posts'} ref={ref} className={'min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-home-main-light bg-gradient-to-b dark:bg-home-gray-900'}>
-            <span className={'text-2xl font-semibold uppercase pt-5 -mt-3 text-home-primary-600 dark:text-home-primary-500'}>
-                Posts
-            </span>
-            <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto py-4 gap-8'}>
-                {props.posts.map((post) => (
-                    <Link
-                        as={`/${postsDir}/${post.slug}`}
-                        href={`/${postsDir}/[slug]`}
-                        key={post.slug}
-                    >
-                        <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
-                            <p className={'text-sm text-gray-400 font-semibold'}>
-                                {post.data.date ? formatDate(post.data.date) : <br />}
-                            </p>
-                            <p className={'font-semibold text-home-primary-600 dark:text-home-primary-400 group-hover:text-home-contrast-600 group-hover:underline dark:group-hover:text-home-contrast-300'}>
-                                {post.data.title}
-                            </p>
-                            <p className={'text-gray-600 dark:text-white'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
-                                {post.data.preview}
-                            </p>
-                        </a>
-                    </Link>
-                ))}
+        <div className={'pb-4'}>
+            <div className={'text-blog-primary-700 dark:text-blog-primary-400'}>
+            {tags.map((tag, index) => (
+                <React.Fragment key={tag}>
+                    <span className={`${index !== 0 && 'pl-2'} ${index !== totalTags - 1 && 'pr-2'} uppercase text-sm text-blog-primary-500`}>{tag}</span>
+                    {index != totalTags - 1 && '•'}
+                </React.Fragment>
+            ))}
             </div>
         </div>
     );
-});
+}
+
+const PostList = ({ posts }: { posts: PostMeta[] }) => {
+    return (
+        <div className={'max-w-3xl xl:max-w-5xl mx-auto px-4 py-12 flex flex-col justify-between bg-blog-main-light dark:bg-blog-gray-900'}>
+            <h1 className={'text-2xl self-center font-semibold uppercase text-blog-primary-600 dark:text-blog-primary-500'}>
+                Posts
+            </h1>
+            <ul className={'divide-y'}>
+                {posts.map((post) => {
+                    const dedupedTags: string[] = Array.from(new Set(post.data.tags));
+                    return (
+                        <li className={'py-12 divide-blog-gray-200'}>
+                            <div className={'grid grid-cols-4'}>
+                                <p className={'text-base text-blog-gray-500 col-start-1'}>
+                                    {post.data.date ? formatDate(post.data.date) : null}
+                                </p>
+                                <div className={'col-start-2 col-end-5 block px-4 '}>
+                                    <Link
+                                        as={`/${postsDir}/${post.slug}`}
+                                        href={`/${postsDir}/[slug]`}
+                                        key={post.slug}
+                                    >
+                                        <a className={'text-2xl tracking-tight font-semibold text-blog-primary-600 dark:text-blog-primary-400'}>
+                                            {post.data.title}
+                                        </a>
+                                    </Link>
+                                    {dedupedTags.length > 0 && <TagSection tags={dedupedTags}/>}
+                                    <p className={'text-blog-gray-600 dark:text-white'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
+                                        {post.data.preview}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
+}
 
 export default PostList;
