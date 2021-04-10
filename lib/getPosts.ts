@@ -2,9 +2,9 @@ import { postFilePaths, POSTS_PATH } from '../utils/posts';
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
-import { Post } from './types';
+import { Post, PostMeta } from './types';
 
-const getSortedPosts = () => {
+export const getAllPosts = () => {
     const posts: Post[] = postFilePaths.map((filePath) => {
         const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
         const { content, data } = matter(source);
@@ -14,7 +14,11 @@ const getSortedPosts = () => {
             slug: filePath.replace(/\.mdx$/, ''),
         }
     });
-    
+    return posts;
+}
+
+export const getSortedPosts = () => {
+    const posts = getAllPosts();
     posts.sort((a, b) => {
         if (a.data.date && b.data.date) {
             const datea = new Date(a.data.date);
@@ -26,4 +30,17 @@ const getSortedPosts = () => {
     return posts;
 }
 
-export default getSortedPosts;
+export const getSortedPostsMeta = () => {
+    const meta: PostMeta[] = getSortedPosts().map(post => ({
+        data: post.data,
+        slug: post.slug
+    }));
+    return meta;
+}
+
+export const getPostsMetaWithTag = (tag: string) => {
+    const posts = getSortedPostsMeta().filter(post => (
+        post.data.tags?.includes(tag)
+    ));
+    return posts;
+}

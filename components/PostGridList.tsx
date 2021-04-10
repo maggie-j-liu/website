@@ -7,7 +7,7 @@ import { PostMeta } from '../lib/types';
 const TagSection = ({ tags }: { tags: string[] }) => {
     const totalTags = tags.length;
     return (
-        <div className={'py-4'}>
+        <div className={'pt-4'}>
             <p className={'uppercase text-sm font-semibold text-home-gray-400'}>Tags</p>
             <div className={'text-home-primary-700 dark:text-home-primary-400'}>
             {tags.map((tag, index) => (
@@ -39,7 +39,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>((pr
                             href={`/${postsDir}/[slug]`}
                             key={post.slug}
                         >
-                            <a className={'group block px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
+                            <a className={'group block overflow-auto px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
                                 <p className={'text-sm text-home-gray-400 font-semibold'}>
                                     {post.data.date ? formatDate(post.data.date) : <br />}
                                 </p>

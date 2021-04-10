@@ -7,7 +7,7 @@ export interface Post extends PostMeta {
     content: string;
 }
 
-export type Heading = {
+export interface Heading {
     text: string;
     anchor: string;
 }

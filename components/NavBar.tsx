@@ -1,7 +1,7 @@
 import React from 'react';
 import DarkModeToggle from './DarkModeToggle'
 import Link from 'next/link';
-import { postsDir } from '../utils/routes';
+import { postsDir, tagsDir } from '../utils/routes';
 
 const NavBar = ({ page }: { page: 'home' | 'blog' }) => {
     return (
@@ -12,6 +12,9 @@ const NavBar = ({ page }: { page: 'home' | 'blog' }) => {
                 </Link>
                 <Link href={`/${postsDir}`}>
                     <a className={''}>Posts</a>
+                </Link>
+                <Link href={`/${tagsDir}`}>
+                    <a className={''}>Tags</a>
                 </Link>
             </div>
             <div className={`${page}-navbar`}>

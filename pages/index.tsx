@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NavBar from '../components/NavBar';
 import PostGridList from '../components/PostGridList';
-import getSortedPosts from '../lib/getSortedPosts';
+import { getSortedPostsMeta } from '../lib/getPosts';
 import { PostMeta } from '../lib/types';
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
@@ -42,7 +42,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const posts = getSortedPosts().map(post => ({data: post.data, slug: post.slug}));
+    const posts = getSortedPostsMeta();
     return {
         props: {
             posts

@@ -11,7 +11,7 @@ import NavBar from '../../components/NavBar';
 import TableOfContents from '../../components/TableOfContents';
 import { POSTS_PATH, postFilePaths } from '../../utils/posts'
 import SideBar from '../../components/SideBar';
-import getSortedPosts from '../../lib/getSortedPosts';
+import { getSortedPostsMeta } from '../../lib/getPosts';
 const Slugger = require('github-slugger');
 import { PostMeta, Heading } from '../../lib/types';
 
@@ -55,10 +55,7 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const posts = getSortedPosts().map(post => ({
-        slug: post.slug, 
-        data: post.data
-    }));
+    const posts = getSortedPostsMeta();
     const postIndex = posts.findIndex(post => post.slug === params.slug);
     const prev = posts[postIndex - 1] || null;
     const next = posts[postIndex + 1] || null;
