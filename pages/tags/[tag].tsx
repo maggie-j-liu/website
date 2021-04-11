@@ -8,7 +8,12 @@ import PostListLayout from '../../layouts/PostListLayout';
 const TagsPage = ({ tag, posts }: { tag: string, posts: PostMeta[] }) => {
     return (
         <PageLayout page={'blog'}>
-            <h1 className={'pt-12 text-5xl font-bold text-blog-gray-900 dark:text-blog-gray-200'}>{tag}</h1>
+            <h1 className={'pt-12 text-5xl font-bold text-blog-gray-900 dark:text-blog-gray-200'}>
+                {tag}
+            </h1>
+            <h2 className={'text-xl font-semibold text-blog-gray-700 dark:text-blog-gray-300'}>
+                All posts tagged with {tag}
+            </h2>
             <PostListLayout posts={posts}/>
         </PageLayout>
     )

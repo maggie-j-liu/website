@@ -1,9 +1,9 @@
 .sidebar-link {
-    @apply text-blog-primary-500 hover:text-blog-primary-600 dark:text-blog-primary-300 dark:hover:text-blog-primary-200;
+    @apply text-blog-primary-500 hover:text-blog-primary-600 dark:text-blog-primary-300 dark:hover:text-blog-primary-200 focus:text-blog-primary-600 dark:focus:text-blog-primary-200;
 }
 
 .postlist-tag-link {
-    @apply text-blog-primary-500 hover:text-blog-primary-600 dark:hover:text-blog-primary-300;
+    @apply text-blog-primary-500 hover:text-blog-primary-600 dark:hover:text-blog-primary-300 focus:text-blog-primary-600 dark:focus:text-blog-primary-300;
 }
 
 .blog-navbar {
@@ -13,7 +13,7 @@
 
 .blog-navbar > * {
     @apply
-        hover:text-blog-primary-500 dark:hover:text-blog-primary-300;
+        hover:text-blog-primary-500 dark:hover:text-blog-primary-300 focus:text-blog-primary-500 dark:focus:text-blog-primary-300;
 }
 
 .home-navbar {
@@ -23,7 +23,7 @@
 
 .home-navbar > * {
     @apply
-        hover:text-home-contrast-500 dark:hover:text-home-contrast-300;
+        hover:text-home-contrast-500 dark:hover:text-home-contrast-300 focus:text-home-contrast-500 dark:focus:text-home-contrast-300;
 }
 
 .postlist-grid {

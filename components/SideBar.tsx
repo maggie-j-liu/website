@@ -2,31 +2,21 @@ import Link from 'next/link';
 import React from 'react';
 import { postsDir, tagsDir } from '../utils/routes';
 import { PostMeta } from '../lib/types';
+import TagsLayout from '../layouts/TagsLayout';
 
 const TagSection = ({ tags }: { tags: string[] }) => {
     const dedupedTags = Array.from(new Set(tags));
-    const totalTags = dedupedTags.length;
     return (
         <>
             <hr />
             <div className={'py-4 lg:py-6'}>
                 <h2 className={'uppercase font-bold text-xs tracking-wider'}>Tags</h2>
-                {tags && 
-                    <div className={'text-blog-primary-700 dark:text-blog-primary-200'}>
-                        {dedupedTags.map((tag, index) => (
-                            <React.Fragment key={tag}>
-                                <Link
-                                    href={`/${tagsDir}/[tag]`}
-                                    as={`/${tagsDir}/${tag}`}
-                                >
-                                    <a className={`${index !== 0 && 'pl-2'} ${index !== totalTags - 1 && 'pr-2'} uppercase text-sm sidebar-link`}>
-                                        {`${tag}`}
-                                    </a> 
-                                </Link>
-                                {index != totalTags - 1 && '•'}
-                            </React.Fragment>
-                        ))}
-                    </div>
+                {dedupedTags && 
+                    <TagsLayout 
+                        tags={dedupedTags} 
+                        divClassName={'text-blog-primary-700 dark:text-blog-primary-200'}
+                        linkClassName={'sidebar-link'}
+                    />
                 }
             </div>
         </>

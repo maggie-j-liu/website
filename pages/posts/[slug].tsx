@@ -38,9 +38,6 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
                 <h1 className={'col-start-2 col-end-5 justify-self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400'}>
                     {frontMatter.title}
                 </h1>
-                <div className={'col-start-1 col-end-6 md:col-end-5 lg:col-end-2 row-start-3 lg:row-start-2 lg:row-end-3 px-10 md:pr-0'}>
-                    <SideBar prev={prev} curr={{slug, data: frontMatter}} next={next} />
-                </div>
                 <div className={`max-w-none px-10 ${headings.length !== 0 ? 'md:col-end-5 md:pr-0' : ''} lg:pl-0 col-start-1 col-end-6 lg:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}>
                     <div>
                         {content}
@@ -51,6 +48,9 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
                         <TableOfContents headings={headings}/>
                     </div>
                 }
+                <div className={'col-start-1 col-end-6 md:col-end-5 lg:col-end-2 row-start-3 lg:row-start-2 lg:row-end-3 px-10 md:pr-0'}>
+                    <SideBar prev={prev} curr={{slug, data: frontMatter}} next={next} />
+                </div>
             </div>
         </>
     );

@@ -3,26 +3,7 @@ import { postsDir, tagsDir } from '../utils/routes';
 import Link from 'next/link';
 import React from 'react';
 import { PostMeta } from '../lib/types';
-
-const TagSection = ({ tags }: { tags: string[] }) => {
-    const totalTags = tags.length;
-    return (
-        <div>
-            <div className={'text-blog-primary-700 dark:text-blog-primary-400'}>
-            {tags.map((tag, index) => (
-                <React.Fragment key={tag}>
-                    <Link href={`/${tagsDir}/${tag}`}>
-                        <a className={`${index !== 0 && 'pl-2'} ${index !== totalTags - 1 && 'pr-2'} uppercase text-sm postlist-tag-link`}>
-                            {tag}
-                        </a>
-                    </Link>
-                    {index != totalTags - 1 && '•'}
-                </React.Fragment>
-            ))}
-            </div>
-        </div>
-    );
-}
+import TagsLayout from './TagsLayout';
 
 const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
     return (
@@ -47,7 +28,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                                         {post.data.title}
                                     </a>
                                 </Link>
-                                {dedupedTags.length > 0 && <TagSection tags={dedupedTags}/>}
+                                {dedupedTags.length > 0 && <TagsLayout tags={dedupedTags} divClassName={'text-blog-primary-700 dark:text-blog-primary-400'} linkClassName={'postlist-tag-link'}/>}
                                 {post.data.preview && 
                                 <p className={'text-blog-gray-600 dark:text-blog-gray-200 pt-6'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
                                     {post.data.preview}

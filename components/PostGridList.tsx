@@ -25,12 +25,12 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>((pr
     return (
         <div id={'posts'} ref={ref} className={'min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-home-main-light bg-gradient-to-b dark:bg-home-gray-900'}>
             <Link href={`/${postsDir}`}>
-            <a className={'text-2xl font-semibold uppercase pt-5 -mt-3 text-home-primary-600 dark:text-home-primary-500 hover:text-home-contrast-700 dark:hover:text-home-contrast-200 hover:underline'}>
+            <a className={'text-2xl font-semibold uppercase mt-2 text-home-primary-600 dark:text-home-primary-500 hover:text-home-contrast-700 dark:hover:text-home-contrast-200 hover:underline focus:text-home-contrast-700 dark:focus:text-home-contrast-200 focus:underline'}>
                 Posts
             </a>
             </Link>
             <div className={'flex flex-1 min-w-full justify-center'}>
-                <div className={'grid auto-rows-[230px] postlist-grid overflow-x-auto py-4 gap-8'}>
+                <div className={'grid auto-rows-[230px] postlist-grid overflow-x-auto py-4 px-2 gap-8'}>
                     {props.posts.map((post) => {
                         const dedupedTags: string[] = Array.from(new Set(post.data.tags));
                         
@@ -40,11 +40,11 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>((pr
                                 href={`/${postsDir}/[slug]`}
                                 key={post.slug}
                             >
-                                <a className={'group block overflow-auto px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none'}>
+                                <a className={'group block overflow-auto px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none focus:shadow-lg'}>
                                     <p className={'text-sm text-home-gray-400 font-semibold'}>
                                         {post.data.date ? formatDate(post.data.date) : <br />}
                                     </p>
-                                    <p className={'font-semibold text-home-primary-600 dark:text-home-primary-400 group-hover:text-home-contrast-600 group-hover:underline dark:group-hover:text-home-contrast-300'}>
+                                    <p className={'font-semibold text-home-primary-600 dark:text-home-primary-400 group-hover:text-home-contrast-600 group-hover:underline dark:group-hover:text-home-contrast-300 group-focus:text-home-contrast-600 dark:group-focus:text-home-contrast-300 group-focus:underline'}>
                                         {post.data.title}
                                     </p>
                                     <p className={'text-gray-600 dark:text-white'} style={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
