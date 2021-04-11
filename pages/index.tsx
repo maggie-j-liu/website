@@ -12,7 +12,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>Maggie's Website</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <NavBar page='home'/>

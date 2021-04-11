@@ -32,6 +32,8 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
         <>
             <Head>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css" integrity="sha384-2vkq42dvFAQl88n6UuPWLKSKnFnHyyoSgy788ohlfWZ4xEmF8g0kCMZe1CkaXHDd" crossOrigin="anonymous" />
+                <title>{frontMatter.title}</title>
+                <meta name='description' content={`${frontMatter.preview || frontMatter.title}`}/>
             </Head>
             <NavBar page='blog'/>
             <div className={'min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark'}>
