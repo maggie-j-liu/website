@@ -1,5 +1,6 @@
 import React from 'react';
-import DarkModeToggle from './DarkModeToggle'
+import DarkModeToggle from './DarkModeToggle';
+import GitHubButton from './GitHubButton';
 import Link from 'next/link';
 import { postsDir, tagsDir } from '../utils/routes';
 
@@ -17,8 +18,9 @@ const NavBar = ({ page }: { page: 'home' | 'blog' }) => {
                     <a className={''}>Tags</a>
                 </Link>
             </div>
-            <div className={`${page}-navbar`}>
+            <div className={`flex items-center space-x-6 ${page}-navbar`}>
                 <DarkModeToggle />
+                <GitHubButton />
            </div>
         </nav>
     );

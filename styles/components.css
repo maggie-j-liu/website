@@ -25,3 +25,25 @@
     @apply
         hover:text-home-contrast-500 dark:hover:text-home-contrast-300;
 }
+
+.postlist-grid {
+    grid-template-columns: 230px;
+}
+
+@screen md {
+    .postlist-grid {
+        grid-template-columns: 230px 230px;
+    }
+}
+
+@screen lg {
+    .postlist-grid {
+        grid-template-columns: 230px 230px 230px;
+    }
+}
+
+@screen xl {
+    .postlist-grid {
+        grid-template-columns: 230px 230px 230px 230px;
+    }
+}

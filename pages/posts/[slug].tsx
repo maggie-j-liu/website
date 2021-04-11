@@ -41,14 +41,16 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
                 <div className={'col-start-1 col-end-6 md:col-end-5 lg:col-end-2 row-start-3 lg:row-start-2 lg:row-end-3 px-10 md:pr-0'}>
                     <SideBar prev={prev} curr={{slug, data: frontMatter}} next={next} />
                 </div>
-                <div className={'max-w-full px-10 md:pr-0 lg:pl-0 col-start-1 col-end-6 md:col-end-5 lg:col-start-2 justify-self-center prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50'}>
+                <div className={`max-w-none px-10 ${headings.length !== 0 ? 'md:col-end-5 md:pr-0' : ''} lg:pl-0 col-start-1 col-end-6 lg:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}>
                     <div>
                         {content}
                     </div>
                 </div>
-                <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-10'}>
-                    <TableOfContents headings={headings}/>
-                </div>
+                {headings.length !== 0 &&
+                    <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-10'}>
+                        <TableOfContents headings={headings}/>
+                    </div>
+                }
             </div>
         </>
     );
