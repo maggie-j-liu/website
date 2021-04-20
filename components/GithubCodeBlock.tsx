@@ -5,11 +5,12 @@ const GithubCodeBlock = ({ children, language, link }) => {
     return (
         <>
             {link && 
-                <div className={'bg-blog-contrast-50 dark:bg-blog-gray-700 rounded-t-md'}>
+                <div className={'bg-blog-contrast-50 dark:bg-blog-gray-700 rounded-t-md overflow-x-auto'}>
                     <a 
                         href={link}
                         className={'!font-medium !text-blog-contrast-700 dark:!text-blog-contrast-200 ml-4 my-2 inline-block'}
                         target='_blank'
+                        style={{whiteSpace: 'nowrap'}}
                     >
                         {cleanedLink}
                     </a>
