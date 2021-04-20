@@ -6,6 +6,8 @@ tags:
 - Silver
 - Hello
 preview: My solution to USACO 2021 January Silver Problem 3
+code: 
+    spacedOut: https://github.com/maggie-j-liu/USACO/blob/main/Contests/January2021/SpacedOut/SpacedOut.cpp
 ---
 
 ## Problem
@@ -13,46 +15,6 @@ This problem is [Spaced Out](http://usaco.org/index.php?page=viewproblem2&cpid=1
 
 ## Solution
 
-```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
-
-int main()
-{
-    int n;
-    cin >> n;
-    int beauty[1000][1000];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cin >> beauty[i][j];
-        }
-    }
-    vector<int> sum;
-    int altcols = 0, altrows = 0;
-    for (int i = 0; i < n; i++)
-    {
-        sum.assign(2, 0);
-        for (int j = 0; j < n; j++)
-        {
-            sum[j % 2] += beauty[i][j];
-        }
-        altcols += max(sum[0], sum[1]);
-    }
-    for (int i = 0; i < n; i++)
-    {
-       sum.assign(2, 0);
-       for (int j = 0; j < n; j++)
-       {
-           sum[j % 2] += beauty[j][i];
-       }
-       altrows += max(sum[0], sum[1]);
-    }
-    
-    cout << max(altcols, altrows) << endl;
-    return 0;
-}
-```
+<CodeBlock language='cpp' link={code.links.spacedOut}>
+{code.spacedOut}
+</CodeBlock>

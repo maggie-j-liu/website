@@ -1,18 +1,21 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import React from 'react';
-import useColorMode from '../hooks/useColorMode';
-import tailwindconfig from '../tailwind.config';
-import colorModes from '../utils/colorModes';
+const { prism, dracula } = require('react-syntax-highlighter/dist/cjs/styles/prism');
 
 type CodeBlockProps = {
     children: string;
     className?: string;
     linenums?: string;
     start?: string;
+    style?: object;
 }
 
-const CodeBlock = ({ children, className, linenums, start }: CodeBlockProps) => {
-    const styles = tailwindconfig?.theme?.code;
+const theme = {
+    light: prism,
+    dark: dracula
+}
+
+export const CodeBlock = ({ children, className, linenums, start, style }: CodeBlockProps) => {
     const lang = className?.replace('language-', '');
     let linenumbers, startingnumber;
     if (linenums === 'false') {
@@ -29,20 +32,31 @@ const CodeBlock = ({ children, className, linenums, start }: CodeBlockProps) => 
     if (isNaN(startingnumber)) {
         startingnumber = 1;
     }
-    const Mode = useColorMode();
     return (
-        <SyntaxHighlighter 
-            language={lang}
-            showLineNumbers={linenumbers}
-            startingLineNumber={startingnumber}
-            useInlineStyles={Mode !== undefined} 
-            codeTagProps={{style: {}}}
-            style={Mode?.colorMode === colorModes.dark ? styles?.dark : styles?.light}
-            customStyle={{fontSize:'inherit'}}
-            className={Mode !== undefined && 'filter blur-0'}
-        >
-            {children.trim()}
-        </SyntaxHighlighter>
+        <>
+            <SyntaxHighlighter 
+                language={lang}
+                showLineNumbers={linenumbers}
+                startingLineNumber={startingnumber}
+                codeTagProps={{style: {}}}
+                style={theme.dark}
+                customStyle={{fontSize:'inherit', ...style}}
+                className={'hidden dark:block'}
+            >
+                {children.trim()}
+            </SyntaxHighlighter>
+            <SyntaxHighlighter 
+                language={lang}
+                showLineNumbers={linenumbers}
+                startingLineNumber={startingnumber}
+                codeTagProps={{style: {}}}
+                style={theme.light}
+                customStyle={{fontSize:'inherit', ...style}}
+                className={'block dark:hidden'}
+            >
+                {children.trim()}
+            </SyntaxHighlighter>
+    </>
     );
 }
 

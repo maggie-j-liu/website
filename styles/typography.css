@@ -64,10 +64,6 @@
     @apply bg-blog-primary-900 text-blog-primary-100 p-1 rounded-sm whitespace-normal;
 }
 
-.prose pre:not(.blur-0) {
-    @apply filter blur-md;
-}
-
 .prose *[id] {
     scroll-margin-top: 5rem;
 }

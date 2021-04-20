@@ -14,6 +14,7 @@ import SideBar from '../../components/SideBar';
 import { getSortedPostsMeta } from '../../lib/getPosts';
 const Slugger = require('github-slugger');
 import { PostMeta, Heading } from '../../lib/types';
+import { codeBase } from '../../utils/siteInfo'; 
 
 type PostPageProps = {
     source: MdxRemote.Source;
@@ -65,9 +66,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const next = posts[postIndex + 1] || null;
     const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
     const source = fs.readFileSync(postFilePath);
-    const { content, data } = matter(source);
+    const { content, data } = matter(source, {});
+
+    //get headings
     const lines = content.split('\n');
-    //console.log(lines);
     const slugger = new Slugger();
     const headings = [];
     lines.forEach((line) => {
@@ -77,6 +79,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             headings.push({text: headtext, anchor: slugger.slug(headtext)});
         }
     });
+
+    //fetch code from github
+    if (data?.code && typeof data.code === 'object') {
+        const codelinks = {}
+        for (const [key, value] of Object.entries(data.code)) {
+            let link = value as string;
+            if (!link.startsWith('https://github.com')) {
+                link = codeBase + link;
+            }
+            codelinks[key] = link;
+            const rawlink = link.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+            const request = await fetch(rawlink);
+            const code = await request.text();
+            data.code[key] = code;
+        }
+        data.code.links = codelinks;
+    }
+
     const mdxSource = await renderToString(content, {
         components: MDXComponents,
         mdxOptions: {

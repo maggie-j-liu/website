@@ -23,12 +23,12 @@ const TableOfContents = ({ headings }: { headings: Heading[] }) => {
                                 ...link,
                                 hash: anchor,
                             }}>
-                                <a className={`${activeAnchor === anchor ? activeStyle : normalStyle} block py-1 transform transition-colors`}>
+                                <a className={`${activeAnchor === anchor ? activeStyle : normalStyle} block py-1`}>
                                     {text}
                                 </a>
                             </Link>
                         :
-                            <a className={`${activeAnchor === anchor ? activeStyle : normalStyle} block py-1 transform transition-colors`}>
+                            <a className={`${activeAnchor === anchor ? activeStyle : normalStyle} block py-1`}>
                                 {text}
                             </a>
                         }

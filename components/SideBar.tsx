@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { postsDir, tagsDir } from '../utils/routes';
+import { postsDir } from '../utils/routes';
 import { PostMeta } from '../lib/types';
 import TagsLayout from '../layouts/TagsLayout';
 
@@ -14,7 +14,7 @@ const TagSection = ({ tags }: { tags: string[] }) => {
                 {dedupedTags && 
                     <TagsLayout 
                         tags={dedupedTags} 
-                        divClassName={'text-blog-primary-700 dark:text-blog-primary-200'}
+                        divClassName={'text-blog-primary-700 dark:text-blog-primary-200 flex flex-wrap items-center'}
                         linkClassName={'sidebar-link'}
                     />
                 }

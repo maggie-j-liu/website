@@ -1,9 +1,11 @@
-import AnchorLink from './AnchorLink'
-import CodeBlock from './CodeBlock';
+import AnchorLink from './AnchorLink';
+import code from './CodeBlock';
+import CodeBlock from './GithubCodeBlock';
 
 const MDXComponents = {
-    ...CodeBlock,
-    ...AnchorLink
+    ...code,
+    ...AnchorLink,
+    CodeBlock
 };
 
 export default MDXComponents;
