@@ -84,6 +84,9 @@ module.exports = {
                         blockquote: {
                             color: 'inherit'
                         },
+                        strong: {
+                            color: 'inherit',
+                        },
                         pre: {
                             ...theme(`code.dark['pre[class*="language-"]']`)
                         },
