@@ -18,7 +18,7 @@
 
 .home-navbar {
     @apply
-        text-home-primary-500 dark:text-home-primary-500;
+        text-home-primary-500 dark:text-home-primary-300;
 }
 
 .home-navbar > * {
