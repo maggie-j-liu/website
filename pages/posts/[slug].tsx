@@ -1,8 +1,8 @@
+import React from 'react';
 import fs from 'fs';
 import matter from 'gray-matter';
-import hydrate from 'next-mdx-remote/hydrate';
-import renderToString from 'next-mdx-remote/render-to-string';
-import { MdxRemote } from 'next-mdx-remote/types';
+import { bundleMDX } from 'mdx-bundler';
+import { getMDXComponent } from 'mdx-bundler/client';
 import path from 'path';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
@@ -17,7 +17,7 @@ import { PostMeta, Heading } from '../../lib/types';
 import { codeBase } from '../../utils/siteInfo'; 
 
 type PostPageProps = {
-    source: MdxRemote.Source;
+    source: string;
     frontMatter: {
         [key: string]: string
     };
@@ -28,7 +28,7 @@ type PostPageProps = {
 }
 
 export default function PostPage({ source, frontMatter, slug, headings, prev, next }: PostPageProps) {
-    const content = hydrate(source, { components: MDXComponents });
+    const Content = React.useMemo(() => getMDXComponent(source, frontMatter), [source, frontMatter]);
     return (
         <>
             <Head>
@@ -42,9 +42,7 @@ export default function PostPage({ source, frontMatter, slug, headings, prev, ne
                     {frontMatter.title}
                 </h1>
                 <div className={`max-w-none px-10 ${headings.length !== 0 ? 'md:col-end-5 md:pr-0' : ''} lg:pl-0 col-start-1 col-end-6 lg:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}>
-                    <div>
-                        {content}
-                    </div>
+                    <Content components={MDXComponents}/>
                 </div>
                 {headings.length !== 0 &&
                     <div className={'col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-10'}>
@@ -65,7 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const prev = posts[postIndex - 1] || null;
     const next = posts[postIndex + 1] || null;
     const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-    const source = fs.readFileSync(postFilePath);
+    const source = fs.readFileSync(postFilePath, 'utf-8');
     const { content, data } = matter(source, {});
 
     //get headings
@@ -97,25 +95,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         data.code.links = codelinks;
     }
 
-    const mdxSource = await renderToString(content, {
-        components: MDXComponents,
-        mdxOptions: {
-            remarkPlugins: [
-                [
-                    require('remark-math'),
-                ],
-                [
-                    require('remark-slug'),
-                ]
-            ],
-            rehypePlugins: [
-                [
-                    require('rehype-katex'),
-                ],
-            ],
-        },
-        scope: data,
+    // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
+    process.env.ESBUILD_BINARY_PATH = path.join(
+        process.cwd(),
+        'node_modules',
+        'esbuild',
+        'bin',
+        'esbuild',
+    )
+
+    const { code: mdxSource } = await bundleMDX(content, {
+        cwd: POSTS_PATH,
+        xdmOptions(_input, options) {
+            options.remarkPlugins = [
+                ...(options.remarkPlugins ?? []),
+                require('remark-math'),
+                require('remark-slug')
+            ]
+            options.rehypePlugins = [
+                ...(options.rehypePlugins ?? []),
+                require('rehype-katex'),
+            ]
+            return options;
+        }
     });
+
     return {
         props: {
             source: mdxSource,
