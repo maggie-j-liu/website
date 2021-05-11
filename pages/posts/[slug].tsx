@@ -15,6 +15,7 @@ import { getSortedPostsMeta } from '../../lib/getPosts';
 const Slugger = require('github-slugger');
 import { PostMeta, Heading } from '../../lib/types';
 import { codeBase } from '../../utils/siteInfo'; 
+import rehypeMeta from '../../utils/rehypeMeta';
 
 type PostPageProps = {
     source: string;
@@ -115,6 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             options.rehypePlugins = [
                 ...(options.rehypePlugins ?? []),
                 require('rehype-katex'),
+                rehypeMeta
             ]
             return options;
         }

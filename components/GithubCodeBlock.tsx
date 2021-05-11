@@ -1,6 +1,6 @@
 
 import { CodeBlock } from './CodeBlock';
-const GithubCodeBlock = ({ children, language, link }) => {
+const GithubCodeBlock = ({ children, language, link, ...props }) => {
     const cleanedLink = link.replace('https://github.com/', '').replace(/\/blob\/[^\/]*/, '');
     return (
         <>
@@ -16,7 +16,7 @@ const GithubCodeBlock = ({ children, language, link }) => {
                     </a>
                 </div>
             }
-            <CodeBlock children={children} className={language} style={{marginTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0}} />
+            <CodeBlock children={children} className={language} style={{marginTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0}} {...props} />
         </>
     )
 }
