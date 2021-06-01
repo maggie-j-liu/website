@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const { code: mdxSource } = await bundleMDX(content, {
         cwd: POSTS_PATH,
-        xdmOptions(_input, options) {
+        xdmOptions(options) {
             options.remarkPlugins = [
                 ...(options.remarkPlugins ?? []),
                 require('remark-math'),
