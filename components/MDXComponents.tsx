@@ -6,6 +6,7 @@ const MDXComponents = {
   ...code,
   ...AnchorLink,
   CodeBlock,
+  a: (props) => <a {...props} target="_blank" />,
 };
 
 export default MDXComponents;
