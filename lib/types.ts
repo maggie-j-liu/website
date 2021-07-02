@@ -1,13 +1,13 @@
 export interface PostMeta {
-    slug: string;
-    data;
+  slug: string;
+  data;
 }
 
 export interface Post extends PostMeta {
-    content: string;
+  content: string;
 }
 
 export interface Heading {
-    text: string;
-    anchor: string;
+  text: string;
+  anchor: string;
 }

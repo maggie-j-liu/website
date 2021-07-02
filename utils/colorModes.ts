@@ -1,5 +1,5 @@
 const colorModes = {
-    dark: 'dark',
-    light: 'light'
-}
+  dark: "dark",
+  light: "light",
+};
 export default colorModes;

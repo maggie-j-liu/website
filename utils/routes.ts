@@ -1,3 +1,3 @@
-export const postsDir = 'posts';
+export const postsDir = "posts";
 
-export const tagsDir = 'tags';
+export const tagsDir = "tags";
