@@ -36,13 +36,13 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
         id={"posts"}
         ref={ref}
         className={
-          "min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-home-main-light bg-gradient-to-b dark:bg-home-gray-900"
+          "min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-gradient-to-b from-home-primary-50 to-home-gray-200 dark:from-home-gray-900 dark:to-home-gray-900"
         }
       >
         <Link href={`/${postsDir}`}>
           <a
             className={
-              "text-2xl font-semibold uppercase mt-2 text-home-primary-600 dark:text-home-primary-500 hover:text-home-contrast-700 dark:hover:text-home-contrast-200 hover:underline focus:text-home-contrast-700 dark:focus:text-home-contrast-200 focus:underline"
+              "text-2xl font-semibold uppercase mt-2 text-home-primary-600 dark:text-home-primary-500 hover:text-home-contrast-700 dark:hover:text-home-contrast-200 focus:text-home-contrast-700 dark:focus:text-home-contrast-200"
             }
           >
             Posts
@@ -65,7 +65,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
                 >
                   <a
                     className={
-                      "group block overflow-auto px-4 py-5 bg-home-primary-50 dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none focus:shadow-lg focus:border-0 focus:rounded-none"
+                      "group block overflow-auto px-4 py-5 bg-home-main-light dark:bg-home-gray-800 border border-home-primary-200 dark:border-home-gray-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none focus:shadow-lg focus:border-0 focus:rounded-none"
                     }
                   >
                     <p className={"text-sm text-home-gray-400 font-normal"}>
@@ -79,13 +79,9 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
                       {post.data.title}
                     </p>
                     <p
-                      className={"text-home-gray-700 dark:text-home-gray-200"}
-                      style={{
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: "vertical",
-                      }}
+                      className={
+                        "text-home-gray-600 dark:text-home-gray-200 line-clamp"
+                      }
                     >
                       {post.data.preview}
                     </p>

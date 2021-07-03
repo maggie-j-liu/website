@@ -58,7 +58,7 @@ export default function PostPage({
       <NavBar page="blog" />
       <div
         className={
-          "min-w-full pt-28 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark"
+          "min-w-full pt-28 px-16 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark"
         }
       >
         <h1
@@ -69,16 +69,16 @@ export default function PostPage({
           {frontMatter.title}
         </h1>
         <div
-          className={`max-w-none px-10 ${
+          className={`max-w-4xl w-full mx-auto px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } lg:pl-0 col-start-1 col-end-6 lg:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}
+          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}
         >
           <Content components={MDXComponents} />
         </div>
         {headings.length !== 0 && (
           <div
             className={
-              "col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block pr-10"
+              "col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block"
             }
           >
             <TableOfContents headings={headings} />
@@ -86,7 +86,7 @@ export default function PostPage({
         )}
         <div
           className={
-            "col-start-1 col-end-6 md:col-end-5 lg:col-end-2 row-start-3 lg:row-start-2 lg:row-end-3 px-10 md:pr-0"
+            "col-start-1 col-end-6 md:col-end-5 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-4xl w-full mx-auto"
           }
         >
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />

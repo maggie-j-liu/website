@@ -57,7 +57,7 @@ const SideBar = ({
     <>
       <div
         className={
-          "lg:sticky lg:top-12 py-8 flex flex-col text-blog-gray-600 dark:text-blog-gray-300"
+          "2xl:sticky 2xl:top-12 py-8 flex flex-col text-blog-gray-600 dark:text-blog-gray-300"
         }
       >
         {curr.data.tags && <TagSection tags={curr.data.tags} />}
@@ -66,7 +66,7 @@ const SideBar = ({
             <hr />
             <div
               className={
-                "justify-between py-4 lg:py-6 lg:space-y-6 flex lg:block"
+                "justify-between py-4 2xl:py-6 2xl:space-y-6 flex 2xl:block"
               }
             >
               {prev && (
