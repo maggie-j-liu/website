@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import useLink from "../hooks/useLink";
+import useLink from "@/hooks/useLink";
 
 type CustomLinkProps = {
   anchor: string;

@@ -1,9 +1,9 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { getUniqueTags } from "../../lib/getTags";
-import { getPostsMetaWithTag } from "../../lib/getPosts";
-import { PostMeta } from "../../lib/types";
-import PageLayout from "../../layouts/PageLayout";
-import PostListLayout from "../../layouts/PostListLayout";
+import { getUniqueTags } from "@/lib/getTags";
+import { getPostsMetaWithTag } from "@/lib/getPosts";
+import { PostMeta } from "@/lib/types";
+import PageLayout from "@/layouts/PageLayout";
+import PostListLayout from "@/layouts/PostListLayout";
 
 const TagsPage = ({ tag, posts }: { tag: string; posts: PostMeta[] }) => {
   return (

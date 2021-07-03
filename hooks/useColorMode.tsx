@@ -1,5 +1,5 @@
 import React from "react";
-import colorModes from "../utils/colorModes";
+import colorModes from "@/utils/colorModes";
 const ColorModeContext = React.createContext(undefined);
 export const ColorModeProvider: React.FC = ({ children }) => {
   const [colorMode, rawSetColorMode] = React.useState(undefined);

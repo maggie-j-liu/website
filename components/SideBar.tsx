@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import { postsDir } from "../utils/routes";
-import { PostMeta } from "../lib/types";
-import TagsLayout from "../layouts/TagsLayout";
+import { postsDir } from "@/utils/routes";
+import { PostMeta } from "@/lib/types";
+import TagsLayout from "@/layouts/TagsLayout";
 
 const TagSection = ({ tags }: { tags: string[] }) => {
   const dedupedTags = Array.from(new Set(tags));

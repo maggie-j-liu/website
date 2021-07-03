@@ -1,8 +1,8 @@
-import formatDate from "../utils/formatDate";
-import { postsDir, tagsDir } from "../utils/routes";
+import formatDate from "@/utils/formatDate";
+import { postsDir, tagsDir } from "@/utils/routes";
 import Link from "next/link";
 import React from "react";
-import { PostMeta } from "../lib/types";
+import { PostMeta } from "@/lib/types";
 import TagsLayout from "./TagsLayout";
 
 const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {

@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import useActiveAnchor from "../hooks/useActiveAnchor";
-import useLink from "../hooks/useLink";
-import { Heading } from "../lib/types";
+import useActiveAnchor from "@/hooks/useActiveAnchor";
+import useLink from "@/hooks/useLink";
+import { Heading } from "@/lib/types";
 
 const TableOfContents = ({ headings }: { headings: Heading[] }) => {
   if (!headings.length) return null;

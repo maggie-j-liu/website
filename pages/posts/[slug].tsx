@@ -6,16 +6,16 @@ import { getMDXComponent } from "mdx-bundler/client";
 import path from "path";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import MDXComponents from "../../components/MDXComponents";
-import NavBar from "../../components/NavBar";
-import TableOfContents from "../../components/TableOfContents";
-import { POSTS_PATH, postFilePaths } from "../../utils/posts";
-import SideBar from "../../components/SideBar";
-import { getSortedPostsMeta } from "../../lib/getPosts";
+import MDXComponents from "@/markdown/MDXComponents";
+import NavBar from "@/components/NavBar";
+import TableOfContents from "@/components/TableOfContents";
+import { POSTS_PATH, postFilePaths } from "@/utils/posts";
+import SideBar from "@/components/SideBar";
+import { getSortedPostsMeta } from "@/lib/getPosts";
 const Slugger = require("github-slugger");
-import { PostMeta, Heading } from "../../lib/types";
-import { codeBase } from "../../utils/siteInfo";
-import rehypeMeta from "../../utils/rehypeMeta";
+import { PostMeta, Heading } from "@/lib/types";
+import { codeBase } from "@/utils/siteInfo";
+import rehypeMeta from "@/utils/rehypeMeta";
 
 type PostPageProps = {
   source: string;

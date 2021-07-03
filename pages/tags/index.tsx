@@ -1,9 +1,9 @@
-import { getAllTags } from "../../lib/getTags";
+import { getAllTags } from "@/lib/getTags";
 import { GetStaticProps } from "next";
-import PageLayout from "../../layouts/PageLayout";
+import PageLayout from "@/layouts/PageLayout";
 import React from "react";
 import Link from "next/link";
-import { tagsDir } from "../../utils/routes";
+import { tagsDir } from "@/utils/routes";
 
 const TagIndex = ({ tags }: { tags: string[] }) => {
   let countedTags: { [tag: string]: number } = {};

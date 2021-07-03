@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import NavBar from "../components/NavBar";
-import PostGridList from "../components/PostGridList";
-import { getSortedPostsMeta } from "../lib/getPosts";
-import { PostMeta } from "../lib/types";
+import NavBar from "@/components/NavBar";
+import PostGridList from "@/components/PostGridList";
+import { getSortedPostsMeta } from "@/lib/getPosts";
+import { PostMeta } from "@/lib/types";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
   const postsRef = React.useRef<HTMLDivElement>();

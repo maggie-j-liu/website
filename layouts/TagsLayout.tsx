@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { tagsDir } from "../utils/routes";
+import { tagsDir } from "@/utils/routes";
 
 const TagsLayout = ({
   tags,

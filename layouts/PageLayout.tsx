@@ -1,4 +1,4 @@
-import NavBar from "../components/NavBar";
+import NavBar from "@/components/NavBar";
 import React from "react";
 const PageLayout: React.FC<{ page: "blog" | "home"; full?: boolean }> = ({
   page,

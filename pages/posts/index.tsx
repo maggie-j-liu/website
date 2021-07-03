@@ -1,7 +1,7 @@
-import PostList from "../../components/PostList";
+import PostList from "@/components/PostList";
 import { GetStaticProps } from "next";
-import { getSortedPostsMeta } from "../../lib/getPosts";
-import { PostMeta } from "../../lib/types";
+import { getSortedPostsMeta } from "@/lib/getPosts";
+import { PostMeta } from "@/lib/types";
 const PostIndex = ({ posts }: { posts: PostMeta[] }) => {
   return <PostList posts={posts} />;
 };

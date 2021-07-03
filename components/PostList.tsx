@@ -1,6 +1,6 @@
-import { PostMeta } from "../lib/types";
-import PageLayout from "../layouts/PageLayout";
-import PostListLayout from "../layouts/PostListLayout";
+import { PostMeta } from "@/lib/types";
+import PageLayout from "@/layouts/PageLayout";
+import PostListLayout from "@/layouts/PostListLayout";
 import React from "react";
 
 const PostList = ({ posts }: { posts: PostMeta[] }) => {

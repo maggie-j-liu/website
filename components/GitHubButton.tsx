@@ -1,4 +1,4 @@
-import { github } from "../utils/siteInfo";
+import { github } from "@/utils/siteInfo";
 const GitHubButton = () => {
   return (
     <a href={github} target="_blank">

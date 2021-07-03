@@ -1,4 +1,4 @@
-import { postFilePaths, POSTS_PATH } from "../utils/posts";
+import { postFilePaths, POSTS_PATH } from "@/utils/posts";
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";

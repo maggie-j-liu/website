@@ -1,6 +1,6 @@
 import React from "react";
-import useColorMode from "../hooks/useColorMode";
-import colorModes from "../utils/colorModes";
+import useColorMode from "@/hooks/useColorMode";
+import colorModes from "@/utils/colorModes";
 
 const DarkModeToggle = () => {
   const { colorMode, setColorMode } = useColorMode();

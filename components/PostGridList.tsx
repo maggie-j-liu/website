@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { postsDir } from "../utils/routes";
-import formatDate from "../utils/formatDate";
-import { PostMeta } from "../lib/types";
+import { postsDir } from "@/utils/routes";
+import formatDate from "@/utils/formatDate";
+import { PostMeta } from "@/lib/types";
 
 const TagSection = ({ tags }: { tags: string[] }) => {
   const totalTags = tags.length;
