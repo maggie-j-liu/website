@@ -11,11 +11,18 @@ tags:
   - Silver
 ---
 
-This is my solution to [Superbull](http://www.usaco.org/index.php?page=viewproblem2&cpid=531). We need to find the maximum spanning tree of the graph formed by the teams, where the weight of an edge between two teams is the points scored if the two teams play against each other.
+This is my solution to
+[Superbull](http://www.usaco.org/index.php?page=viewproblem2&cpid=531). We need
+to find the maximum spanning tree of the graph formed by the teams, where the
+weight of an edge between two teams is the points scored if the two teams play
+against each other.
 
 ## Solution 1 - Kruskal's
 
-We can use Kruskal's to find the maximum spanning tree of the graph, which requires finding all the edges and sorting them in decreasing order of edge weight. Connecting two vertices of the graph will eliminate $1$ team, and we can stop after we have eliminated $n - 1$ teams.
+We can use Kruskal's to find the maximum spanning tree of the graph, which
+requires finding all the edges and sorting them in decreasing order of edge
+weight. Connecting two vertices of the graph will eliminate $1$ team, and we can
+stop after we have eliminated $n - 1$ teams.
 
 **Time Complexity:** $\mathcal{O}(N^2 \log{N})$
 
@@ -25,7 +32,10 @@ We can use Kruskal's to find the maximum spanning tree of the graph, which requi
 
 ## Solution 2 - Prim's
 
-Since the graph is dense, it is faster to use $N^2$ Prim's. For each of the $n$ iterations, we find the farthest unselected node from the current spanning tree and add it to the graph. Then, we update the distances of all the other nodes accordingly.
+Since the graph is dense, it is faster to use $N^2$ Prim's. For each of the $n$
+iterations, we find the farthest unselected node from the current spanning tree
+and add it to the graph. Then, we update the distances of all the other nodes
+accordingly.
 
 **Time Complexity:** $\mathcal{O}(N^2)$
 
