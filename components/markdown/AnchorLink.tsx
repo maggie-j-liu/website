@@ -14,7 +14,7 @@ const LinkBase = React.forwardRef<any, any>(({ size, href, onClick }, ref) => {
       href={href}
       onClick={onClick}
       className={
-        "absolute top-0 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 focus:opacity-100 duration-75 p-1 !text-blog-gray-400 !no-underline"
+        "absolute top-0 left-0 transform -translate-x-full opacity-0 group-hover:opacity-100 focus:opacity-100 duration-75 p-1 !text-dark-400 !no-underline"
       }
     >
       <svg

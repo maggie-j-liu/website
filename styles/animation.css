@@ -1,8 +1,8 @@
 .first-color {
-  @apply text-home-secondary-600 dark:text-home-secondary-200;
+  @apply text-contrast-600 dark:text-contrast-200;
 }
 .second-color {
-  @apply text-home-primary-500 dark:text-home-primary-300;
+  @apply text-primary-500 dark:text-primary-300;
 }
 
 #m-1 {

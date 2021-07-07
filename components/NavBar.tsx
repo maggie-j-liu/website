@@ -11,7 +11,7 @@ const NavBar = ({ page }: { page: "home" | "blog" }) => {
       className={`min-w-full fixed z-10 py-4 px-10 flex items-center justify-between backdrop-filter backdrop-blur-[20px] backdrop-saturate-[1.8]`}
     >
       <div
-        className={`flex items-center space-x-8 font-semibold text-lg ${page}-navbar`}
+        className={`flex items-center space-x-8 font-semibold text-lg navbar`}
       >
         <Link href="/">
           <a>
@@ -25,7 +25,7 @@ const NavBar = ({ page }: { page: "home" | "blog" }) => {
           <a>Tags</a>
         </Link>
       </div>
-      <div className={`flex items-center space-x-6 ${page}-navbar`}>
+      <div className={`flex items-center space-x-6 navbar`}>
         <DarkModeToggle />
         <GitHubButton />
       </div>

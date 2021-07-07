@@ -7,16 +7,16 @@ import TagsLayout from "./TagsLayout";
 
 const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
   return (
-    <ul className={"divide-y dark:divide-blog-gray-600"}>
+    <ul className={"divide-y dark:divide-dark-600"}>
       {posts.map((post) => {
         const dedupedTags: string[] = Array.from(new Set(post.data.tags));
         return (
-          <li key={post.slug} className={"py-12 divide-blog-gray-200"}>
+          <li key={post.slug} className={"py-12 divide-dark-200"}>
             <div className={"lg:grid lg:grid-cols-4"}>
               {post.data.date && (
                 <p
                   className={
-                    "text-base text-blog-gray-500 dark:text-blog-gray-400 lg:col-start-1 pb-2"
+                    "text-base text-dark-500 dark:text-dark-400 lg:col-start-1 pb-2"
                   }
                 >
                   {formatDate(post.data.date)}
@@ -30,7 +30,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                 >
                   <a
                     className={
-                      "text-2xl tracking-tight font-semibold text-blog-primary-600 dark:text-blog-primary-400"
+                      "text-2xl tracking-tight font-semibold text-primary-600 dark:text-primary-400"
                     }
                   >
                     {post.data.title}
@@ -39,17 +39,13 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                 {dedupedTags.length > 0 && (
                   <TagsLayout
                     tags={dedupedTags}
-                    divClassName={
-                      "text-blog-primary-700 dark:text-blog-primary-400"
-                    }
+                    divClassName={"text-primary-700 dark:text-primary-400"}
                     linkClassName={"postlist-tag-link"}
                   />
                 )}
                 {post.data.preview && (
                   <p
-                    className={
-                      "text-blog-gray-600 dark:text-blog-gray-200 pt-6"
-                    }
+                    className={"text-dark-600 dark:text-dark-200 pt-6"}
                     style={{
                       overflow: "hidden",
                       display: "-webkit-box",

@@ -6,7 +6,7 @@ const PageLayout: React.FC<{ page: "blog" | "home"; full?: boolean }> = ({
   children,
 }) => {
   return (
-    <div className={"w-full bg-blog-main-light dark:bg-blog-main-dark"}>
+    <div className={"w-full bg-white dark:bg-dark-900"}>
       <NavBar page={page} />
       <div
         className={`max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 py-12 pt-16 flex flex-col ${

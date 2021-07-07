@@ -27,14 +27,14 @@ const TagIndex = ({ tags }: { tags: string[] }) => {
         >
           <h1
             className={
-              "text-5xl font-bold text-blog-gray-900 dark:text-blog-gray-200 pb-8 md:pb-0 md:pr-6 md:border-r-2 md:dark:border-blog-gray-400"
+              "text-5xl font-bold text-dark-900 dark:text-dark-200 pb-8 md:pb-0 md:pr-6 md:border-r-2 md:dark:border-dark-400"
             }
           >
             Tags
           </h1>
           <div
             className={
-              "text-blog-gray-700 dark:text-blog-gray-400 flex flex-wrap max-w-xl"
+              "text-dark-700 dark:text-dark-400 flex flex-wrap max-w-xl"
             }
           >
             {sortedTags.map(({ tag, count }) => (

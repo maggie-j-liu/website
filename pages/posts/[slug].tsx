@@ -58,12 +58,12 @@ export default function PostPage({
       <NavBar page="blog" />
       <div
         className={
-          "min-w-full pt-28 px-16 grid grid-cols-5 gap-10 bg-blog-main-light dark:bg-blog-main-dark"
+          "min-w-full pt-28 px-16 grid grid-cols-5 gap-10 bg-white dark:bg-dark-900"
         }
       >
         <h1
           className={
-            "col-start-2 col-end-5 justify-self-center text-5xl font-bold text-blog-header-900 dark:text-blog-header-400"
+            "col-start-2 col-end-5 justify-self-center text-5xl font-bold text-primary-900 dark:text-primary-400"
           }
         >
           {frontMatter.title}
@@ -71,7 +71,7 @@ export default function PostPage({
         <div
           className={`max-w-4xl w-full mx-auto px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch prose dark:prose-dark bg-blog-main-light dark:bg-blog-main-dark dark:text-blog-gray-50`}
+          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch prose dark:prose-dark bg-white dark:bg-dark-900 dark:text-dark-50`}
         >
           <Content components={MDXComponents} />
         </div>

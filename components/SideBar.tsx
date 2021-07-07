@@ -15,7 +15,7 @@ const TagSection = ({ tags }: { tags: string[] }) => {
           <TagsLayout
             tags={dedupedTags}
             divClassName={
-              "text-blog-primary-700 dark:text-blog-primary-200 flex flex-wrap items-center"
+              "text-primary-700 dark:text-primary-200 flex flex-wrap items-center"
             }
             linkClassName={"sidebar-link"}
           />
@@ -57,7 +57,7 @@ const SideBar = ({
     <>
       <div
         className={
-          "2xl:sticky 2xl:top-12 py-8 flex flex-col text-blog-gray-600 dark:text-blog-gray-300"
+          "2xl:sticky 2xl:top-12 py-8 flex flex-col text-dark-600 dark:text-dark-300"
         }
       >
         {curr.data.tags && <TagSection tags={curr.data.tags} />}

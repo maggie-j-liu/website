@@ -15,40 +15,17 @@ module.exports = {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        orange: colors.orange,
-        teal: colors.teal,
-        cyan: colors.cyan,
-        normalgray: colors.gray,
-        bluegray: colors.blueGray,
-        fuchsia: colors.fuchsia,
-        home: {
-          primary: colors.blue,
-          secondary: colors.indigo,
-          contrast: colors.fuchsia,
-          gray: colors.blueGray,
-          main: {
-            light: colors.white,
-            dark: colors.blueGray[900],
-          },
-        },
-        blog: {
-          primary: colors.cyan,
-          secondary: colors.teal,
-          contrast: colors.amber,
-          gray: colors.gray,
-          header: colors.cyan,
-          main: {
-            light: colors.white,
-            dark: colors.blueGray[900],
-          },
-        },
+        primary: colors.sky,
+        secondary: colors.indigo,
+        contrast: colors.pink,
+        dark: colors.coolGray,
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.blog.gray.700"),
+            color: theme("colors.dark.700"),
             blockquote: {
-              color: theme("colors.blog.gray.800"),
+              color: theme("colors.dark.800"),
             },
             code: {
               fontWeight: "inherit",
@@ -60,12 +37,12 @@ module.exports = {
               content: "none",
             },
             a: {
-              color: theme("colors.blog.secondary.500"),
+              color: theme("colors.secondary.600"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
                 textDecoration: "underline",
-                color: theme("colors.blog.secondary.600"),
+                color: theme("colors.secondary.700"),
               },
             },
             "a code": {
@@ -75,10 +52,10 @@ module.exports = {
               color: "inherit",
             },
             "ol > li::before": {
-              color: theme("colors.blog.contrast.600"),
+              color: theme("colors.contrast.600"),
             },
             "ul > li::before": {
-              backgroundColor: theme("colors.blog.contrast.600"),
+              backgroundColor: theme("colors.contrast.600"),
             },
           },
         },
@@ -90,19 +67,16 @@ module.exports = {
             strong: {
               color: "inherit",
             },
-            pre: {
-              ...theme(`code.dark['pre[class*="language-"]']`),
-            },
             code: {
               fontWeight: "inherit",
             },
             a: {
-              color: theme("colors.blog.secondary.400"),
+              color: theme("colors.secondary.400"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
                 textDecoration: "underline",
-                color: theme("colors.blog.secondary.200"),
+                color: theme("colors.secondary.200"),
               },
             },
             "a code": {
@@ -115,10 +89,10 @@ module.exports = {
               borderColor: theme("colors.gray.400"),
             },
             "ol > li::before": {
-              color: theme("colors.blog.contrast.600"),
+              color: theme("colors.contrast.600"),
             },
             "ul > li::before": {
-              backgroundColor: theme("colors.blog.constrast.600"),
+              backgroundColor: theme("colors.constrast.600"),
             },
           },
         },

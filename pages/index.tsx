@@ -18,12 +18,12 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
       <NavBar page="home" />
       <div
         className={
-          "bg-gradient-to-b from-home-primary-100 via-home-secondary-100 to-home-contrast-50 dark:from-home-secondary-900 dark:to-home-contrast-900 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
+          "bg-gradient-to-b from-primary-100 via-secondary-100 to-contrast-50 dark:from-secondary-900 dark:to-contrast-900 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
         }
       >
         <h1
           className={
-            "text-6xl sm:text-7xl md:text-8xl font-bold bg-gradient-to-br from-home-primary-700 to-home-contrast-300 dark:from-home-primary-400 dark:to-home-contrast-300 text-transparent bg-clip-text mb-8"
+            "text-6xl sm:text-7xl md:text-8xl font-bold bg-gradient-to-br from-primary-700 to-contrast-300 dark:from-primary-400 dark:to-contrast-300 text-transparent bg-clip-text mb-8"
           }
         >
           Hello, world!
@@ -35,7 +35,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               postsRef.current.scrollIntoView({ behavior: "smooth" });
             }}
             className={
-              "focus-invisible text-home-primary-400 dark:text-home-primary-200 w-12 h-12 absolute top-3/4 animate-bounce"
+              "focus-invisible text-primary-400 dark:text-primary-200 w-12 h-12 absolute top-3/4 animate-bounce"
             }
           >
             <svg

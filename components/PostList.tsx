@@ -7,9 +7,7 @@ const PostList = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <PageLayout page={"blog"}>
       <h1
-        className={
-          "pt-12 text-5xl font-bold text-blog-gray-900 dark:text-blog-gray-100"
-        }
+        className={"pt-12 text-5xl font-bold text-dark-900 dark:text-dark-100"}
       >
         Posts
       </h1>

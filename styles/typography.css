@@ -1,69 +1,85 @@
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    @apply mt-4 mb-6;
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply mt-4 mb-6;
 }
 
-.prose h3, .prose h4 {
-    @apply font-semibold;
+.prose h3,
+.prose h4 {
+  @apply font-semibold;
 }
 
-.prose h5, .prose h6 {
-    @apply font-medium;
+.prose h5,
+.prose h6 {
+  @apply font-medium;
 }
 
 .prose h1 {
-    @apply text-4xl;
+  @apply text-4xl;
 }
 
 .prose h2 {
-    @apply text-3xl;
+  @apply text-3xl;
 }
 
 .prose h3 {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 
 .prose h4 {
-    @apply text-xl;
+  @apply text-xl;
 }
 
 .prose h5 {
-    @apply text-lg;
+  @apply text-lg;
 }
 
 .prose h6 {
-    @apply text-base
+  @apply text-base;
 }
 
-.prose h1, .prose h2 {
-    @apply text-blog-header-800 font-bold;
+.prose h1,
+.prose h2 {
+  @apply text-primary-800 font-bold;
 }
 
-.prose h3, .prose h4, .prose h5, .prose h6 {
-    @apply text-blog-header-700;
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-primary-700;
 }
 
-.dark .prose h1, .dark .prose h2 {
-    @apply text-blog-header-300;
+.dark .prose h1,
+.dark .prose h2 {
+  @apply text-primary-300;
 }
 
-.dark .prose h3, .dark .prose h4 {
-    @apply text-blog-header-200;
+.dark .prose h3,
+.dark .prose h4 {
+  @apply text-primary-200;
 }
 
-.dark .prose h5, .dark .prose h6 {
-    @apply text-blog-header-100;
+.dark .prose h5,
+.dark .prose h6 {
+  @apply text-primary-100;
 }
 
 /* Inline code */
-.prose :not(pre, a) > code, :not(pre) > code {
-    @apply text-blog-primary-600 bg-blog-primary-50 p-1 rounded-sm whitespace-normal;
+.prose :not(pre, a) > code,
+:not(pre) > code {
+  @apply text-primary-600 bg-primary-50 p-1 rounded-sm whitespace-normal;
 }
 
 /* Inline code */
-.dark .prose :not(pre, a) > code, .dark :not(pre) > code {
-    @apply bg-blog-primary-900 text-blog-primary-100 p-1 rounded-sm whitespace-normal;
+.dark .prose :not(pre, a) > code,
+.dark :not(pre) > code {
+  @apply bg-primary-900 text-primary-100 p-1 rounded-sm whitespace-normal;
 }
 
 .prose *[id] {
-    scroll-margin-top: 5rem;
+  scroll-margin-top: 5rem;
 }
