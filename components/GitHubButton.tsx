@@ -1,7 +1,7 @@
 import { github } from "@/utils/siteInfo";
 const GitHubButton = () => {
   return (
-    <a href={github} target="_blank">
+    <a href={github} target="_blank" rel="noreferrer">
       <svg className={"h-6 w-6"} viewBox="0 0 16 16" fill="currentColor">
         <path
           fillRule="evenodd"

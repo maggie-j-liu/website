@@ -1,0 +1,7 @@
+{
+  "extends": "next",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "react/display-name": "off"
+  }
+}

@@ -43,3 +43,45 @@ const useActiveAnchor = (itemIds: string[]) => {
 };
 
 export default useActiveAnchor;
+
+/*
+// scrollspy works, but hard to detect when none are intersecting
+const useScrollSpy = (itemIds: string[]) => {
+  let [activeAnchor, setActiveAnchor] = React.useState(undefined);
+  const observer = React.useRef<IntersectionObserver>();
+
+  React.useEffect(() => {
+    if (!itemIds.length) {
+      return null;
+    }
+    if (observer.current) {
+      observer.current.disconnect();
+    }
+    const currentState = {};
+    observer.current = new IntersectionObserver((entries, obs) => {
+      // find the index of the section that is currently intersecting
+      entries.forEach((entry) => {
+        console.log(entry);
+        currentState[entry.target.id] = entry.isIntersecting;
+      });
+      console.log(currentState);
+      setActiveAnchor(itemIds.find((id) => currentState[id]));
+    });
+
+    const { current: currentObserver } = observer;
+
+    // observe all the elements passed as argument of the hook
+    itemIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        currentObserver.observe(el);
+      }
+    });
+
+    return () => currentObserver.disconnect();
+  }, [itemIds]);
+  return activeAnchor;
+};
+
+export default useScrollSpy;
+*/

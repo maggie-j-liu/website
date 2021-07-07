@@ -5,7 +5,6 @@ import useLink from "@/hooks/useLink";
 import { Heading } from "@/lib/types";
 
 const TableOfContents = ({ headings }: { headings: Heading[] }) => {
-  if (!headings.length) return null;
   const anchors = React.useMemo(
     () => headings.map((heading) => heading.anchor),
     [headings]
@@ -14,6 +13,7 @@ const TableOfContents = ({ headings }: { headings: Heading[] }) => {
   const activeStyle = "text-blog-gray-900 dark:text-blog-gray-100";
   const normalStyle = "hover:text-blog-gray-900 dark:hover:text-blog-gray-100";
   const link = useLink();
+  if (!headings.length) return null;
   return (
     <>
       <ul className={"sticky top-12 text-blog-gray-400 text-sm py-8"}>

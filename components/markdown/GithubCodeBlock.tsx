@@ -17,6 +17,7 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
               "!font-medium !text-blog-contrast-700 dark:!text-blog-contrast-200 ml-4 my-2 inline-block"
             }
             target="_blank"
+            rel="noreferrer"
             style={{ whiteSpace: "nowrap" }}
           >
             {cleanedLink}
@@ -24,7 +25,6 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
         </div>
       )}
       <CodeBlock
-        children={children}
         className={language}
         style={{
           marginTop: 0,
@@ -32,7 +32,9 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
           borderTopRightRadius: 0,
         }}
         {...props}
-      />
+      >
+        {children}
+      </CodeBlock>
     </>
   );
 };

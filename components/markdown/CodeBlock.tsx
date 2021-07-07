@@ -68,7 +68,8 @@ export const CodeBlock = ({
   );
 };
 
-export default {
+const codeExport = {
   pre: (props) => <div {...props} />,
   code: CodeBlock,
 };
+export default codeExport;
