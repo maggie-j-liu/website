@@ -3,6 +3,7 @@ import DarkModeToggle from "./DarkModeToggle";
 import GitHubButton from "./GitHubButton";
 import Link from "next/link";
 import { postsDir, tagsDir } from "../utils/routes";
+import Logo from "./Logo";
 
 const NavBar = ({ page }: { page: "home" | "blog" }) => {
   return (
@@ -13,7 +14,9 @@ const NavBar = ({ page }: { page: "home" | "blog" }) => {
         className={`flex items-center space-x-8 font-semibold text-lg ${page}-navbar`}
       >
         <Link href="/">
-          <a>Home</a>
+          <a>
+            <Logo />
+          </a>
         </Link>
         <Link href={`/${postsDir}`}>
           <a>Posts</a>

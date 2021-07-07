@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .focus-invisible:focus:not(:focus-visible) {
-    outline: none;
+  outline: none;
 }
