@@ -17,8 +17,11 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
       </Head>
       <NavBar page="home" />
       <div
-        className={
+        /*className={
           "bg-gradient-to-b from-primary-100 via-secondary-100 to-contrast-50 dark:from-secondary-900 dark:to-contrast-900 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
+        }*/
+        className={
+          "bg-dark-200 dark:bg-dark-800 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
         }
       >
         <h1

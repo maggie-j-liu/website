@@ -37,12 +37,12 @@ module.exports = {
               content: "none",
             },
             a: {
-              color: theme("colors.secondary.600"),
+              color: theme("colors.secondary.400"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
                 textDecoration: "underline",
-                color: theme("colors.secondary.700"),
+                color: theme("colors.secondary.500"),
               },
             },
             "a code": {
@@ -52,10 +52,10 @@ module.exports = {
               color: "inherit",
             },
             "ol > li::before": {
-              color: theme("colors.contrast.600"),
+              color: theme("colors.secondary.600"),
             },
             "ul > li::before": {
-              backgroundColor: theme("colors.contrast.600"),
+              backgroundColor: theme("colors.secondary.600"),
             },
           },
         },
@@ -71,7 +71,7 @@ module.exports = {
               fontWeight: "inherit",
             },
             a: {
-              color: theme("colors.secondary.400"),
+              color: theme("colors.secondary.300"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
@@ -89,10 +89,10 @@ module.exports = {
               borderColor: theme("colors.gray.400"),
             },
             "ol > li::before": {
-              color: theme("colors.contrast.600"),
+              color: theme("colors.secondary.500"),
             },
             "ul > li::before": {
-              backgroundColor: theme("colors.constrast.600"),
+              backgroundColor: theme("colors.secondary.500"),
             },
           },
         },

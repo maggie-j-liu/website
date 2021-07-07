@@ -1,8 +1,8 @@
 .first-color {
-  @apply text-contrast-600 dark:text-contrast-200;
+  @apply text-contrast-400 dark:text-contrast-200;
 }
 .second-color {
-  @apply text-primary-500 dark:text-primary-300;
+  @apply text-primary-500 dark:text-primary-300 group-hover:text-secondary-400 dark:group-hover:text-secondary-300;
 }
 
 #m-1,

@@ -40,7 +40,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
         <Link href={`/${postsDir}`}>
           <a
             className={
-              "text-2xl font-semibold uppercase mt-2 text-primary-600 dark:text-primary-500 hover:text-contrast-700 dark:hover:text-contrast-200 focus:text-contrast-700 dark:focus:text-contrast-200"
+              "text-2xl font-semibold uppercase mt-2 text-primary-600 dark:text-primary-500 hover:text-secondary-700 dark:hover:text-secondary-200 focus:text-secondary-700 dark:focus:text-secondary-200"
             }
           >
             Posts
@@ -71,7 +71,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
                     </p>
                     <p
                       className={
-                        "text-xl mt-2 mb-1 font-semibold text-primary-600 dark:text-primary-400 group-hover:text-contrast-600 group-hover:underline dark:group-hover:text-contrast-300 group-focus:text-contrast-600 dark:group-focus:text-contrast-300 group-focus:underline"
+                        "text-xl mt-2 mb-1 font-semibold text-primary-600 dark:text-primary-400 group-hover:text-secondary-600 group-hover:underline dark:group-hover:text-secondary-300 group-focus:text-secondary-600 dark:group-focus:text-secondary-300 group-focus:underline"
                       }
                     >
                       {post.data.title}

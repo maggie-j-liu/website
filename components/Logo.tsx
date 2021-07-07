@@ -19,7 +19,7 @@ const Icon = () => {
       id="svg4576"
       version="1.1"
       viewBox="15 20 165 65"
-      className="h-10 translate-y-2"
+      className="h-10 translate-y-2 group"
     >
       <defs id="defs881">
         <linearGradient id="dot-gradient">

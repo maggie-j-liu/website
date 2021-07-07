@@ -20,7 +20,7 @@
 }
 
 .navbar > * {
-  @apply hover:text-contrast-500 dark:hover:text-contrast-300 focus:text-contrast-500 dark:focus:text-contrast-300;
+  @apply hover:text-secondary-500 dark:hover:text-secondary-300 focus:text-secondary-500 dark:focus:text-secondary-300;
 }
 
 .line-clamp {
