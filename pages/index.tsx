@@ -16,49 +16,67 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar page="home" />
-      <div
-        /*className={
+      <div className={"bg-dark-100 dark:bg-dark-800"}>
+        <div
+          /*className={
           "bg-gradient-to-b from-primary-100 via-secondary-100 to-contrast-50 dark:from-secondary-900 dark:to-contrast-900 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
         }*/
-        className={
-          "bg-dark-200 dark:bg-dark-800 min-w-full min-h-screen p-20 flex flex-1 flex-col justify-center items-center"
-        }
-      >
-        <h1
           className={
-            "text-6xl sm:text-7xl md:text-8xl font-bold bg-gradient-to-br from-primary-700 to-contrast-300 dark:from-primary-400 dark:to-contrast-300 text-transparent bg-clip-text mb-8"
+            "w-full max-w-5xl mx-auto min-h-screen p-20 flex flex-col justify-center items-center"
           }
         >
-          Hello, world!
-        </h1>
-        <Link href={"#posts"}>
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-              postsRef.current.scrollIntoView({ behavior: "smooth" });
-            }}
-            className={
-              "focus-invisible text-primary-400 dark:text-primary-200 w-12 h-12 absolute top-3/4 animate-bounce"
-            }
-          >
-            <svg
-              className=""
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className={"w-max self-start"}>
+            <h2
+              className={
+                "translate-x-1 text-lg sm:text-xl md:text-2xl font-medium"
+              }
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-              />
-            </svg>
-          </a>
-        </Link>
+              Hello, world!
+            </h2>
+            <h1 className={"text-5xl sm:text-6xl md:text-7xl font-bold"}>
+              I'm{" "}
+              <span
+                className={
+                  "bg-gradient-to-br from-primary-600 via-secondary-500 to-contrast-300 bg-clip-text text-transparent"
+                }
+              >
+                Maggie
+              </span>
+              .
+            </h1>
+            <h3 className={"text-4xl sm:text-5xl md:text-6xl mt-3"}>
+              I like to code
+            </h3>
+          </div>
+          <Link href={"#posts"}>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                postsRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
+              className={
+                "focus-invisible text-primary-400 dark:text-primary-200 w-12 h-12 absolute top-3/4 animate-bounce"
+              }
+            >
+              <svg
+                className=""
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                />
+              </svg>
+            </a>
+          </Link>
+        </div>
+        <PostGridList posts={posts} ref={postsRef} />
       </div>
-      <PostGridList posts={posts} ref={postsRef} />
     </div>
   );
 }

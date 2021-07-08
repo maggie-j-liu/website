@@ -34,7 +34,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
         id={"posts"}
         ref={ref}
         className={
-          "min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-gradient-to-b from-primary-50 to-dark-200 dark:from-dark-900 dark:to-dark-900"
+          "min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-gradient-to-b from-dark-100 to-primary-50 dark:from-dark-900 dark:to-dark-900"
         }
       >
         <Link href={`/${postsDir}`}>
