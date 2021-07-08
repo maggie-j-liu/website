@@ -1,3 +1,4 @@
+// inspired by https://www.cassie.codes/posts/creating-my-logo-animation/
 const Letter = (props) => {
   return (
     <path

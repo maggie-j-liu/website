@@ -1,3 +1,5 @@
+/* logo animation */
+
 .first-color {
   @apply text-contrast-400 dark:text-contrast-200;
 }
@@ -106,6 +108,7 @@
   }
 }
 
+/* dot animation */
 #dot {
   animation: appear 0.7s forwards;
   animation-delay: 3.7s;
@@ -114,5 +117,16 @@
 @keyframes appear {
   to {
     fill-opacity: 1;
+  }
+}
+
+/* blinking cursor */
+.cursor-blink {
+  animation: blink 1s infinite;
+  opacity: 1;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }

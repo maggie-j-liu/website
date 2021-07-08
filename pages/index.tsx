@@ -6,6 +6,7 @@ import NavBar from "@/components/NavBar";
 import PostGridList from "@/components/PostGridList";
 import { getSortedPostsMeta } from "@/lib/getPosts";
 import { PostMeta } from "@/lib/types";
+import Typing from "@/components/Typing";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
   const postsRef = React.useRef<HTMLDivElement>();
@@ -25,27 +26,38 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             "w-full max-w-5xl mx-auto min-h-screen p-20 flex flex-col justify-center items-center"
           }
         >
-          <div className={"w-max self-start"}>
+          <div className={"w-full self-start text-dark-900 dark:text-gray-50"}>
             <h2
               className={
-                "translate-x-1 text-lg sm:text-xl md:text-2xl font-medium"
+                "translate-x-1 text-lg sm:text-xl md:text-2xl 2xl:text-3xl font-medium"
               }
             >
               Hello, world!
             </h2>
-            <h1 className={"text-5xl sm:text-6xl md:text-7xl font-bold"}>
+            <h1
+              className={
+                "text-5xl sm:text-6xl md:text-7xl 2xl:text-9xl font-bold"
+              }
+            >
               I'm{" "}
               <span
                 className={
-                  "bg-gradient-to-br from-primary-600 via-secondary-500 to-contrast-300 bg-clip-text text-transparent"
+                  "bg-gradient-to-br from-primary-600 dark:from-primary-400 via-secondary-500 dark:via-secondary-500 to-contrast-300 bg-clip-text text-transparent"
                 }
               >
                 Maggie
               </span>
               .
             </h1>
-            <h3 className={"text-4xl sm:text-5xl md:text-6xl mt-3"}>
-              I like to code
+            <h3 className={"text-4xl sm:text-5xl 2xl:text-7xl mt-3"}>
+              <Typing>
+                {[
+                  "I'm a competitive programmer.",
+                  "I do math.",
+                  "I'm an artist.",
+                  "I'm a problem solver.",
+                ]}
+              </Typing>
             </h3>
           </div>
           <Link href={"#posts"}>
