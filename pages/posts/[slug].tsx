@@ -58,7 +58,7 @@ export default function PostPage({
       <NavBar page="blog" />
       <div
         className={
-          "min-w-full pt-28 px-16 grid grid-cols-5 gap-10 bg-white dark:bg-dark-900"
+          "min-w-full pt-28 sm:px-8 md:px-16 grid grid-cols-5 gap-10 bg-white dark:bg-dark-900"
         }
       >
         <h1
@@ -69,7 +69,7 @@ export default function PostPage({
           {frontMatter.title}
         </h1>
         <div
-          className={`max-w-4xl w-full mx-auto px-10 ${
+          className={`max-w-4xl w-full mx-auto px-8 sm:px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
           } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch prose dark:prose-dark bg-white dark:bg-dark-900 dark:text-dark-50`}
         >
