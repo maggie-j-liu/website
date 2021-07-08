@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 const Typing = ({ children }: { children: string[] }) => {
   const [typed, setTyped] = React.useState("");
@@ -41,7 +40,8 @@ const Typing = ({ children }: { children: string[] }) => {
         }
       }, 2000);
     }
-  }, [typed]);
+  }, [typed]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
       {typed}
