@@ -1,10 +1,8 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import React from "react";
-const {
-  prism,
-  dracula,
-} = require("react-syntax-highlighter/dist/cjs/styles/prism");
-
+import { prism, dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import cpp from "react-syntax-highlighter/dist/cjs/languages/prism/cpp";
+SyntaxHighlighter.registerLanguage("cpp", cpp);
 type CodeBlockProps = {
   children: string;
   className?: string;

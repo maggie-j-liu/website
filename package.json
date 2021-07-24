@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^11.0.1",
     "@tailwindcss/typography": "^0.4.0",
     "gray-matter": "^4.0.2",
     "mdx-bundler": "^4.0.0",
