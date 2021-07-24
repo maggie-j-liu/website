@@ -14,7 +14,7 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
           <a
             href={link}
             className={
-              "!font-medium !text-contrast-700 dark:!text-contrast-200 ml-4 my-2 inline-block"
+              "!font-medium !text-contrast-900 dark:!text-contrast-200 ml-4 my-2 inline-block"
             }
             target="_blank"
             rel="noreferrer"

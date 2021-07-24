@@ -89,10 +89,10 @@ module.exports = {
               borderColor: theme("colors.gray.400"),
             },
             "ol > li::before": {
-              color: theme("colors.secondary.500"),
+              color: theme("colors.secondary.400"),
             },
             "ul > li::before": {
-              backgroundColor: theme("colors.secondary.500"),
+              backgroundColor: theme("colors.secondary.400"),
             },
           },
         },
