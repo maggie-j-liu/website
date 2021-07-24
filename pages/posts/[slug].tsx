@@ -99,8 +99,8 @@ export default function PostPage({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const posts = getSortedPostsMeta();
   const postIndex = posts.findIndex((post) => post.slug === params.slug);
-  const prev = posts[postIndex - 1] || null;
-  const next = posts[postIndex + 1] || null;
+  const prev = posts[postIndex + 1] || null;
+  const next = posts[postIndex - 1] || null;
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
   const source = fs.readFileSync(postFilePath, "utf-8");
   const { content, data } = matter(source, {});
