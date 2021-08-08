@@ -16,6 +16,7 @@ const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import rehypeMeta from "@/utils/rehypeMeta";
+import Reactive from '@/components/Reactive'
 
 type PostPageProps = {
   source: string;
@@ -71,9 +72,12 @@ export default function PostPage({
         <div
           className={`max-w-4xl w-full mx-auto px-8 sm:px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch prose dark:prose-dark bg-white dark:bg-dark-900 dark:text-dark-50`}
+          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch bg-white dark:bg-dark-900`}
         >
+          <div className="dark:text-dark-50 prose dark:prose-dark !max-w-none">
           <Content components={MDXComponents} />
+          </div>
+          <Reactive />
         </div>
         {headings.length !== 0 && (
           <div
