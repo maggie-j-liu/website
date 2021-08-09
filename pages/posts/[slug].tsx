@@ -16,7 +16,8 @@ const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import rehypeMeta from "@/utils/rehypeMeta";
-import Reactive from '@/components/Reactive'
+import dynamic from 'next/dynamic'
+const Reactive = dynamic(() => import('../../components/Reactive'))
 
 type PostPageProps = {
   source: string;
