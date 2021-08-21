@@ -33,8 +33,10 @@ function setInitialColorMode() {
   // add HTML attribute if dark mode
   if (colorMode === "dark") {
     document.documentElement.classList.add("dark");
+    document.documentElement.classList.add("r-dark");
   } else {
     document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove("r-dark");
   }
 }
 

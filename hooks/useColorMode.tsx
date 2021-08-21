@@ -44,8 +44,10 @@ export const ColorModeProvider: React.FC = ({ children }) => {
     storeUserSetPreference(pref);
     if (pref === colorModes.dark) {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("r-dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("r-dark");
     }
   };
 

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@maggieliu/reactive": "^1.2.1",
+    "@maggieliu/reactive": "^1.2.8",
     "@next/bundle-analyzer": "^11.0.1",
     "@tailwindcss/typography": "^0.4.0",
     "gray-matter": "^4.0.2",
