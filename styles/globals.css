@@ -5,3 +5,11 @@
 .focus-invisible:focus:not(:focus-visible) {
   outline: none;
 }
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}

@@ -1,17 +1,49 @@
 import React from "react";
 import useColorMode from "@/hooks/useColorMode";
 import colorModes from "@/utils/colorModes";
+import { motion } from "framer-motion";
+import useBoop from "@/hooks/useBoop";
 
 const DarkModeToggle = () => {
   const { colorMode, setColorMode } = useColorMode();
+  const { isBooped, trigger, variants } = useBoop({ rotation: -30, time: 50 });
   const handleClick = () => {
+    // https://paco.sh/blog/disable-theme-transitions
+    const css = document.createElement("style");
+    css.type = "text/css";
+    css.appendChild(
+      document.createTextNode(
+        `* {
+            -webkit-transition: none !important;
+            -moz-transition: none !important;
+            -o-transition: none !important;
+            -ms-transition: none !important;
+            transition: none !important;
+          }`
+      )
+    );
+    document.head.appendChild(css);
     setColorMode(
       colorMode === colorModes.dark ? colorModes.light : colorModes.dark
     );
+    const _ = window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+    trigger();
   };
   return (
     <>
-      <button onClick={handleClick} className={"focus-invisible"}>
+      <motion.button
+        onHoverStart={() => trigger()}
+        animate={isBooped ? "boop" : "noBoop"}
+        transition={{
+          type: "spring",
+          stiffness: 200,
+          damping: 8,
+        }}
+        variants={variants}
+        onClick={handleClick}
+        className={"focus-invisible"}
+      >
         <svg
           className={`w-6 h-6 hidden dark:block`}
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +72,7 @@ const DarkModeToggle = () => {
             d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
           />
         </svg>
-      </button>
+      </motion.button>
     </>
   );
 };

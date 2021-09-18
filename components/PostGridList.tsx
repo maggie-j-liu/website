@@ -3,23 +3,23 @@ import Link from "next/link";
 import { postsDir } from "@/utils/routes";
 import formatDate from "@/utils/formatDate";
 import { PostMeta } from "@/lib/types";
+import { motion } from "framer-motion";
+import useBoop from "@/hooks/useBoop";
 
 const TagSection = ({ tags }: { tags: string[] }) => {
   const totalTags = tags.length;
   return (
     <div className={"pt-4"}>
       <p className={"uppercase text-sm font-semibold text-dark-400"}>Tags</p>
-      <div className={"text-primary-700 dark:text-primary-400"}>
+      <div
+        className={
+          "text-primary-700 dark:text-primary-400 flex flex-wrap items-center"
+        }
+      >
         {tags.map((tag, index) => (
           <React.Fragment key={tag}>
-            <span
-              className={`${index !== 0 && "pl-2"} ${
-                index !== totalTags - 1 && "pr-2"
-              } uppercase text-sm text-primary-500`}
-            >
-              {tag}
-            </span>
-            {index != totalTags - 1 && "•"}
+            <span className={`uppercase text-sm text-primary-500`}>{tag}</span>
+            {index != totalTags - 1 && <span className={"px-2"}>•</span>}
           </React.Fragment>
         ))}
       </div>
@@ -46,15 +46,14 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
             Posts
           </a>
         </Link>
-        <div className={"flex flex-1 min-w-full justify-center"}>
+        <div className={"flex flex-1 justify-center max-w-4xl"}>
           <div
             className={
-              "grid auto-rows-[240px] postlist-grid overflow-x-auto py-4 px-2 gap-8"
+              "grid auto-rows-[240px] grid-cols-3 overflow-visible py-4 px-2 gap-8"
             }
           >
             {props.posts.map((post) => {
               const dedupedTags: string[] = Array.from(new Set(post.data.tags));
-
               return (
                 <Link
                   as={`/${postsDir}/${post.slug}`}
@@ -63,7 +62,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
                 >
                   <a
                     className={
-                      "group block overflow-auto px-4 py-5 bg-white dark:bg-dark-800 border border-primary-200 dark:border-dark-600 rounded-md hover:shadow-lg hover:border-0 hover:rounded-none focus:shadow-lg focus:border-0 focus:rounded-none"
+                      "group block overflow-y-hidden px-4 py-5 bg-white dark:bg-dark-800 rounded-lg hover:shadow-xl hover:rounded-none focus:shadow-lg focus:rounded-none duration-300"
                     }
                   >
                     <p className={"text-sm text-dark-400 font-normal"}>

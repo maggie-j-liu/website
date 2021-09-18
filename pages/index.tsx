@@ -67,7 +67,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 postsRef.current.scrollIntoView({ behavior: "smooth" });
               }}
               className={
-                "focus-invisible text-primary-400 dark:text-primary-200 w-12 h-12 absolute top-3/4 animate-bounce"
+                "focus-invisible text-gray-400 dark:text-gray-500 w-12 h-12 absolute top-3/4 animate-bounce"
               }
             >
               <svg
@@ -80,7 +80,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={1.5}
                   d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
                 />
               </svg>

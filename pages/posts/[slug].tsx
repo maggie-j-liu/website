@@ -16,8 +16,8 @@ const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import rehypeMeta from "@/utils/rehypeMeta";
-import dynamic from 'next/dynamic'
-const Reactive = dynamic(() => import('../../components/Reactive'))
+import dynamic from "next/dynamic";
+const Reactive = dynamic(() => import("../../components/Reactive"));
 
 type PostPageProps = {
   source: string;
@@ -71,12 +71,12 @@ export default function PostPage({
           {frontMatter.title}
         </h1>
         <div
-          className={`max-w-4xl w-full mx-auto px-8 sm:px-10 ${
+          className={`max-w-3xl w-full mx-auto px-8 sm:px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
           } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch bg-white dark:bg-dark-900`}
         >
           <div className="dark:text-dark-50 prose dark:prose-dark !max-w-none">
-          <Content components={MDXComponents} />
+            <Content components={MDXComponents} />
           </div>
           <Reactive />
         </div>
@@ -91,7 +91,7 @@ export default function PostPage({
         )}
         <div
           className={
-            "col-start-1 col-end-6 md:col-end-5 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-4xl w-full mx-auto"
+            "col-start-1 col-end-6 md:col-end-5 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl w-full mx-auto"
           }
         >
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
