@@ -91,7 +91,7 @@ export default function PostPage({
         )}
         <div
           className={
-            "col-start-1 col-end-6 md:col-end-5 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl w-full mx-auto"
+            "col-start-1 col-end-6 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl w-full mx-auto"
           }
         >
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />

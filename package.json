@@ -12,6 +12,8 @@
     "@maggieliu/reactive": "^1.2.10",
     "@next/bundle-analyzer": "^11.0.1",
     "@tailwindcss/typography": "^0.4.0",
+    "d3": "^7.1.0",
+    "d3-delaunay": "^6.0.2",
     "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.2",
     "mdx-bundler": "^4.0.0",

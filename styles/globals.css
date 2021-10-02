@@ -13,3 +13,12 @@
 .dark {
   color-scheme: dark;
 }
+
+@layer utilities {
+  .crystal-stroke {
+    stroke: theme(colors.dark.400);
+  }
+  .dark .crystal-stroke {
+    stroke: theme(colors.dark.900);
+  }
+}
