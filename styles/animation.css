@@ -130,3 +130,24 @@
     opacity: 0;
   }
 }
+
+/* boat rocking animation */
+.animate-boat-rock {
+  animation: rock 4s infinite;
+  @apply origin-bottom;
+}
+
+@keyframes rock {
+  0% {
+    transform: rotate(10deg);
+    transform-box: fill-box;
+  }
+  50% {
+    transform: rotate(-10deg);
+    transform-box: fill-box;
+  }
+  100% {
+    transform: rotate(10deg);
+    transform-box: fill-box;
+  }
+}
