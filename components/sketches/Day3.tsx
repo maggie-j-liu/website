@@ -28,26 +28,26 @@ const Vessel = () => {
             cx="100"
             cy="55"
             r="55"
-            className="fill-current text-yellow-50"
+            className="fill-current text-yellow-50 dark:text-yellow-800"
           />
           <circle
             cx="100"
             cy="55"
             r="50"
-            className="fill-current text-yellow-100"
+            className="fill-current text-yellow-100 dark:text-yellow-700"
           />
           <circle
             cx="100"
             cy="55"
             r="40"
-            className="fill-current text-yellow-200"
+            className="fill-current text-yellow-200 dark:text-yellow-600"
           />
           <rect
             x="0"
             y="50"
             width="200"
             height="150"
-            className={"fill-current text-blue-100"}
+            className={"fill-current text-blue-100 dark:text-blue-700"}
           />
         </svg>
       </div>
@@ -59,26 +59,26 @@ const Vessel = () => {
           cx="100"
           cy="55"
           r="55"
-          className="fill-current text-yellow-50"
+          className="fill-current text-yellow-50 dark:text-yellow-800"
         />
         <circle
           cx="100"
           cy="55"
           r="50"
-          className="fill-current text-yellow-100"
+          className="fill-current text-yellow-100 dark:text-yellow-700"
         />
         <circle
           cx="100"
           cy="55"
           r="40"
-          className="fill-current text-yellow-200"
+          className="fill-current text-yellow-200 dark:text-yellow-600"
         />
         <rect
           x="0"
           y="50"
           width="200"
           height="150"
-          className={"fill-current text-blue-100"}
+          className={"fill-current text-blue-100 dark:text-blue-700"}
         />
         {paths.map((path) => (
           <path
@@ -97,15 +97,15 @@ const Vessel = () => {
           >
             <path
               d="M 0, 0 l 80, 0 l -40, 25 Z"
-              className="fill-current text-purple-400"
+              className="fill-current text-purple-400 dark:text-purple-700"
             />
             <path
               d="M 0, 0 m 20, 4 l 20, -20 l 20, 20 l -20, 21 Z"
-              className="fill-current text-purple-300"
+              className="fill-current text-purple-300 dark:text-purple-500"
             />
             <path
               d="M 0, 0 l 40, 8 l 40, -8 l -10, 25 l -60, 0 Z"
-              className="fill-current text-purple-200"
+              className="fill-current text-purple-200 dark:text-purple-400"
             />
             <circle cx="31" cy="12" r="1" />
             <circle cx="49" cy="12" r="1" />
