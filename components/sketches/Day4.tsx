@@ -39,21 +39,12 @@ const Knot = () => {
   return (
     <div className={"w-4/5 mx-auto"}>
       <svg viewBox="0 0 200 200">
-        {showAltPath ? (
-          <path
-            d={altPath}
-            strokeWidth="2px"
-            fill="transparent"
-            className="stroke-current"
-          />
-        ) : (
-          <path
-            d={path}
-            strokeWidth="2px"
-            fill="transparent"
-            className="stroke-current"
-          />
-        )}
+        <path
+          d={showAltPath ? altPath : path}
+          strokeWidth="2px"
+          fill="transparent"
+          className="stroke-current"
+        />
       </svg>
     </div>
   );
