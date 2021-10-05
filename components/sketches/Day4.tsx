@@ -8,7 +8,7 @@ const Knot = () => {
     setMounted(true);
   }, []);
   React.useEffect(() => {
-    const numPoints = 50 + Math.random() * 50;
+    const numPoints = 30 + Math.random() * 40;
     for (let i = 0; i < numPoints; i++) {
       const x = Math.random() * 200;
       const _x = x - 1 + Math.random() * 2;
