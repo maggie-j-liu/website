@@ -1,4 +1,20 @@
+import React from "react";
 const Day6 = () => {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return (
+      <div className="w-4/5 mx-auto">
+        <svg
+          viewBox="0 0 200 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        ></svg>
+      </div>
+    );
+  }
   return (
     <div className="w-4/5 mx-auto">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
