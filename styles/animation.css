@@ -151,3 +151,29 @@
     transform-box: fill-box;
   }
 }
+
+.ghost {
+  animation: float infinite;
+  animation-duration: 3s;
+}
+
+#purple_ghost {
+  animation-delay: 0.5s;
+  animation-duration: 3.2s;
+}
+#blue_ghost {
+  animation-delay: 0.7s;
+  animation-duration: 2.8s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
