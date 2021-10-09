@@ -1,5 +1,5 @@
 import React from "react";
-const Day6 = () => {
+const Spirit = () => {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
     setMounted(true);
@@ -151,4 +151,4 @@ const Day6 = () => {
   );
 };
 
-export default Day6;
+export default Spirit;
