@@ -17,7 +17,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar page="home" />
-      <div className={"bg-dark-100 dark:bg-black"}>
+      <div className={"bg-dark-100 dark:bg-black px-4 sm:px-8"}>
         <div
           className={
             "w-full max-w-prose mx-auto py-16 flex flex-col justify-center"

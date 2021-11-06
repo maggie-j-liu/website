@@ -40,7 +40,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                   <TagsLayout
                     tags={dedupedTags}
                     divClassName={"text-primary-700 dark:text-primary-400"}
-                    linkClassName={"postlist-tag-link"}
+                    linkClassName={"text-sm postlist-tag-link"}
                   />
                 )}
                 {post.data.preview && (

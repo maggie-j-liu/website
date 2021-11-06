@@ -17,7 +17,7 @@ const TagSection = ({ tags }: { tags: string[] }) => {
             divClassName={
               "text-primary-700 dark:text-primary-200 flex flex-wrap items-center"
             }
-            linkClassName={"sidebar-link"}
+            linkClassName={"text-sm sidebar-link"}
           />
         )}
       </div>

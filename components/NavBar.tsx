@@ -8,7 +8,7 @@ import Logo from "./Logo";
 const NavBar = ({ page }: { page: "home" | "blog" }) => {
   return (
     <nav
-      className={`min-w-full fixed z-10 py-4 px-10 flex items-center justify-between backdrop-filter backdrop-blur-[20px] backdrop-saturate-[1.8]`}
+      className={`min-w-full fixed z-10 py-4 px-4 sm:px-10 flex items-center justify-between backdrop-filter backdrop-blur-[20px] backdrop-saturate-[1.8]`}
     >
       <div className={"w-full max-w-6xl mx-auto flex justify-between"}>
         <div
