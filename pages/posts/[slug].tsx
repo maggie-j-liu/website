@@ -90,9 +90,11 @@ export default function PostPage({
           </div>
         )}
         <div
-          className={
-            "col-start-1 col-end-6 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl w-full mx-auto"
-          }
+          className={`
+            col-start-1 col-end-6 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl mx-auto w-full justify-self-stretch ${
+              headings.length !== 0 ? "md:col-end-5" : ""
+            }
+          `}
         >
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
         </div>
