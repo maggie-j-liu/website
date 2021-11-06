@@ -47,7 +47,7 @@ const Typing = ({ children }: { children: string[] }) => {
       {typed}
       <span
         className={
-          "cursor-blink text-3xl sm:text-4xl 2xl:text-6xl font-semibold -translate-y-1 sm:-translate-y-1.5 inline-block"
+          "cursor-blink text-[0.75em] font-semibold -translate-y-0.5 inline-block"
         }
       >
         |
