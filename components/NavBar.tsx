@@ -5,7 +5,7 @@ import Link from "next/link";
 import { postsDir, tagsDir } from "../utils/routes";
 import Logo from "./Logo";
 
-const NavBar = ({ page }: { page: "home" | "blog" }) => {
+const NavBar = () => {
   return (
     <nav
       className={`min-w-full fixed z-10 py-4 px-4 sm:px-10 flex items-center justify-between backdrop-filter backdrop-blur-[20px] backdrop-saturate-[1.8]`}
@@ -18,6 +18,9 @@ const NavBar = ({ page }: { page: "home" | "blog" }) => {
             <a>
               <Logo />
             </a>
+          </Link>
+          <Link href={`/projects`}>
+            <a>Projects</a>
           </Link>
           <Link href={`/${postsDir}`}>
             <a>Posts</a>

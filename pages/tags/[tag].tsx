@@ -7,7 +7,7 @@ import PostListLayout from "@/layouts/PostListLayout";
 
 const TagsPage = ({ tag, posts }: { tag: string; posts: PostMeta[] }) => {
   return (
-    <PageLayout page={"blog"}>
+    <PageLayout>
       <h1
         className={"pt-12 text-5xl font-bold text-dark-900 dark:text-dark-200"}
       >

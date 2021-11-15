@@ -52,7 +52,11 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
-        <body className={"bg-white dark:bg-dark-900 font-sans"}>
+        <body
+          className={
+            "bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-100 font-sans"
+          }
+        >
           <script
             dangerouslySetInnerHTML={{
               __html: blockingSetInitialColorMode,

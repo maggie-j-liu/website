@@ -57,7 +57,7 @@ export default function PostPage({
           content={`${frontMatter.preview || frontMatter.title}`}
         />
       </Head>
-      <NavBar page="blog" />
+      <NavBar />
       <div
         className={
           "min-w-full pt-28 sm:px-8 md:px-16 grid grid-cols-5 gap-10 bg-white dark:bg-dark-900"

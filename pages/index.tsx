@@ -16,7 +16,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         <title>Maggie's Website</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar page="home" />
+      <NavBar />
       <div className={"bg-dark-100 dark:bg-black px-4 sm:px-8"}>
         <div
           className={

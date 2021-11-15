@@ -18,7 +18,7 @@ const TagIndex = ({ tags }: { tags: string[] }) => {
     .sort((a, b) => b[1] - a[1])
     .map(([tag, count]) => ({ tag, count }));
   return (
-    <PageLayout page={"blog"} full={true}>
+    <PageLayout full={true}>
       <div className={"flex flex-col justify-center"}>
         <div
           className={
