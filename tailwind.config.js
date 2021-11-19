@@ -19,6 +19,10 @@ module.exports = {
         secondary: colors.indigo,
         contrast: colors.pink,
         dark: colors.coolGray,
+        teal: colors.teal,
+        cyan: colors.cyan,
+        sky: colors.sky,
+        fuchsia: colors.fuchsia,
       },
       typography: (theme) => ({
         DEFAULT: {

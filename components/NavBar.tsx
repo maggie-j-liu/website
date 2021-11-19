@@ -12,7 +12,7 @@ const NavBar = () => {
     >
       <div className={"w-full max-w-6xl mx-auto flex justify-between"}>
         <div
-          className={`flex items-center space-x-4 sm:space-x-8 font-semibold text-lg navbar`}
+          className={`flex items-center space-x-4 sm:space-x-8 font-medium text-lg navbar`}
         >
           <Link href="/">
             <a>
