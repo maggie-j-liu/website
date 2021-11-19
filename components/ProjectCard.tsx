@@ -14,8 +14,10 @@ const Title = ({ children }: { children: React.ReactNode }) => {
   const info = React.useContext(ProjectInfoContext);
   return (
     <div className="flex items-center gap-4">
-      <h2 className="text-2xl font-medium text-dark-800">{children}</h2>
-      <div className="flex gap-2 text-dark-500">
+      <h2 className="text-2xl font-medium text-dark-800 dark:text-dark-100">
+        {children}
+      </h2>
+      <div className="flex gap-2 text-dark-500 dark:text-dark-200">
         {info.url && (
           <a
             className="opacity-50 hover:opacity-90"
@@ -72,7 +74,7 @@ const ProjectCard = ({
 } & ProjectInfo) => {
   return (
     <ProjectInfoContext.Provider value={props as ProjectInfo}>
-      <div className={`text-dark-900 px-4 py-4 rounded-xl ${className}`}>
+      <div className={`dark:text-dark-200 px-4 py-4 rounded-xl ${className}`}>
         {children}
       </div>
     </ProjectInfoContext.Provider>

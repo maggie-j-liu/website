@@ -17,7 +17,9 @@ const Projects = () => {
             url="vidnotes.vercel.app"
             github="vidnotes"
             devpost="vidnotes"
-            className={"bg-gradient-to-tr from-pink-50 to-purple-50"}
+            className={
+              "bg-gradient-to-tr from-pink-50 dark:from-pink-800 to-purple-50 dark:to-purple-800"
+            }
           >
             <Project.Image src={vidnotes} />
             <Project.Title>VidNotes</Project.Title>
@@ -30,7 +32,9 @@ const Projects = () => {
             url="cloudlinq.co"
             github="cloudlinq"
             devpost="cloudlinq"
-            className={"bg-gradient-to-tr from-blue-100 to-sky-50"}
+            className={
+              "bg-gradient-to-tr from-blue-100 dark:from-blue-800 to-sky-50 dark:to-sky-800"
+            }
           >
             <Project.Image src={cloudlinq} />
             <Project.Title>Cloudlinq</Project.Title>
@@ -43,7 +47,9 @@ const Projects = () => {
             url="reactive-comments.vercel.app"
             github="reactive"
             devpost="reactive-u4c9zf"
-            className={"bg-gradient-to-tr from-yellow-50 to-sky-50"}
+            className={
+              "bg-gradient-to-tr from-yellow-50 dark:from-yellow-800 to-sky-50 dark:to-sky-800"
+            }
           >
             <Project.Image src={reactive} />
             <Project.Title>Reactive</Project.Title>
@@ -56,7 +62,9 @@ const Projects = () => {
             url="stickynotewall.vercel.app"
             github="sticky-notes"
             devpost="sticky-note-wall"
-            className={"bg-gradient-to-tr from-indigo-50 to-fuchsia-50"}
+            className={
+              "bg-gradient-to-tr from-indigo-50 dark:from-indigo-800 to-fuchsia-50 dark:to-fuchsia-800"
+            }
           >
             <Project.Image src={stickyNoteWall} />
             <Project.Title>Sticky Note Wall</Project.Title>
@@ -69,7 +77,9 @@ const Projects = () => {
             url="academia-central.vercel.app"
             github="academia-central"
             devpost="academia-central"
-            className={"bg-gradient-to-tr from-blue-50 to-cyan-50"}
+            className={
+              "bg-gradient-to-tr from-blue-50 dark:from-blue-800 to-cyan-50 dark:to-cyan-800"
+            }
           >
             <Project.Image src={academiaCentral} />
             <Project.Title>Academia Central</Project.Title>
@@ -84,7 +94,9 @@ const Projects = () => {
             url="clear-closet.vercel.app"
             github="closet-app"
             devpost="clear-closet"
-            className={"bg-gradient-to-tr from-indigo-50 to-blue-50"}
+            className={
+              "bg-gradient-to-tr from-indigo-50 dark:from-indigo-800 to-blue-50 dark:to-blue-800"
+            }
           >
             <Project.Image src={clearCloset} />
             <Project.Title>Clear Closet</Project.Title>
