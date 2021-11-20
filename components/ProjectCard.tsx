@@ -4,11 +4,92 @@ import { FiLink } from "react-icons/fi";
 import { SiGithub, SiDevpost } from "react-icons/si";
 
 interface ProjectInfo {
-  url?: string;
-  github?: string;
-  devpost?: string;
+  url?: string | string[];
+  github?: string | string[];
+  devpost?: string | string[];
 }
 const ProjectInfoContext = React.createContext<ProjectInfo>({});
+
+const Link = ({ url }: { url: string }) => {
+  return (
+    <a
+      className="opacity-50 hover:opacity-90"
+      href={url.startsWith("http") ? url : `https://${url}`}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <FiLink className={"w-5 h-5"} />
+    </a>
+  );
+};
+const GitHub = ({ url }: { url: string }) => {
+  return (
+    <a
+      className="opacity-50 hover:opacity-90"
+      href={
+        url.includes("/")
+          ? `https://github.com/${url}`
+          : `https://github.com/maggie-j-liu/${url}`
+      }
+      target="_blank"
+      rel="noreferrer"
+    >
+      <SiGithub className={"w-5 h-5"} />
+    </a>
+  );
+};
+
+const Devpost = ({ url }: { url: string }) => {
+  return (
+    <a
+      className="opacity-50 hover:opacity-90"
+      href={`https://devpost.com/software/${url}`}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <SiDevpost className={"w-5 h-5"} />
+    </a>
+  );
+};
+
+const Links = ({ urls }: { urls: string | string[] }) => {
+  if (typeof urls === "string") {
+    return <Link url={urls} />;
+  }
+  return (
+    <>
+      {urls.map((u) => (
+        <Link key={u} url={u} />
+      ))}
+    </>
+  );
+};
+
+const GitHubs = ({ urls }: { urls: string | string[] }) => {
+  if (typeof urls === "string") {
+    return <GitHub url={urls} />;
+  }
+  return (
+    <>
+      {urls.map((u) => (
+        <GitHub key={u} url={u} />
+      ))}
+    </>
+  );
+};
+
+const Devposts = ({ urls }: { urls: string | string[] }) => {
+  if (typeof urls === "string") {
+    return <Devpost url={urls} />;
+  }
+  return (
+    <>
+      {urls.map((u) => (
+        <Devpost key={u} url={u} />
+      ))}
+    </>
+  );
+};
 
 const Title = ({ children }: { children: React.ReactNode }) => {
   const info = React.useContext(ProjectInfoContext);
@@ -18,42 +99,9 @@ const Title = ({ children }: { children: React.ReactNode }) => {
         {children}
       </h2>
       <div className="flex gap-2 text-dark-500 dark:text-dark-200">
-        {info.url && (
-          <a
-            className="opacity-50 hover:opacity-90"
-            href={
-              info.url.startsWith("http") ? info.url : `https://${info.url}`
-            }
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FiLink className={"w-5 h-5"} />
-          </a>
-        )}
-        {info.github && (
-          <a
-            className="opacity-50 hover:opacity-90"
-            href={
-              info.github.includes("/")
-                ? `https://github.com/${info.github}`
-                : `https://github.com/maggie-j-liu/${info.github}`
-            }
-            target="_blank"
-            rel="noreferrer"
-          >
-            <SiGithub className={"w-5 h-5"} />
-          </a>
-        )}
-        {info.devpost && (
-          <a
-            className="opacity-50 hover:opacity-90"
-            href={`https://devpost.com/software/${info.devpost}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <SiDevpost className={"w-5 h-5"} />
-          </a>
-        )}
+        {info.url && <Links urls={info.url} />}
+        {info.github && <GitHubs urls={info.github} />}
+        {info.devpost && <Devposts urls={info.devpost} />}
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import PageLayout from "@/layouts/PageLayout";
 import vidnotes from "@/projects/vidnotes.png";
 import cloudlinq from "@/projects/cloudlinq.png";
 import reactive from "@/projects/reactive.png";
+import reactiveDark from "@/projects/reactive-dark.png";
+import reactiveComments from "@/projects/reactive-comments.png";
 import stickyNoteWall from "@/projects/sticky-note-wall.png";
 import academiaCentral from "@/projects/academia-central.png";
 import clearCloset from "@/projects/clear-closet.png";
@@ -44,14 +46,27 @@ const Projects = () => {
             </Project.Description>
           </Project>
           <Project
-            url="reactive-comments.vercel.app"
-            github="reactive"
+            url={[
+              "reactive-comments.vercel.app",
+              "reactive-comments-docs.vercel.app",
+            ]}
+            github={["reactive", "reactive-docs"]}
             devpost="reactive-u4c9zf"
             className={
               "bg-gradient-to-tr from-yellow-50 dark:from-yellow-800 to-sky-50 dark:to-sky-800"
             }
           >
-            <Project.Image src={reactive} />
+            <div className="grid grid-rows-2 grid-cols-5 place-items-center">
+              <div className="col-span-3 row-span-2 ">
+                <Project.Image src={reactive} />
+              </div>
+              <div className="col-span-2 row-span-1">
+                <Project.Image src={reactiveDark} />
+              </div>
+              <div className="col-span-2 row-span-1">
+                <Project.Image src={reactiveComments} />
+              </div>
+            </div>
             <Project.Title>Reactive</Project.Title>
             <Project.Description>
               A javascript widget that makes it easy to add a comments and
