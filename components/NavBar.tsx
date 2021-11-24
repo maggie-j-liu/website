@@ -12,7 +12,7 @@ const NavBar = () => {
     >
       <div className={"w-full max-w-6xl mx-auto flex justify-between"}>
         <div
-          className={`flex items-center space-x-4 sm:space-x-8 font-medium text-lg navbar`}
+          className={`flex items-center space-x-3 sm:space-x-8 text-xs sm:text-lg navbar`}
         >
           <Link href="/">
             <a>
@@ -20,16 +20,16 @@ const NavBar = () => {
             </a>
           </Link>
           <Link href={`/projects`}>
-            <a>Projects</a>
+            <a>~/projects</a>
           </Link>
           <Link href={`/${postsDir}`}>
-            <a>Posts</a>
+            <a>~/{postsDir}</a>
           </Link>
           <Link href={`/${tagsDir}`}>
-            <a>Tags</a>
+            <a>~/{tagsDir}</a>
           </Link>
         </div>
-        <div className={`flex items-center space-x-4 sm:space-x-6 navbar`}>
+        <div className={`flex items-center space-x-2 sm:space-x-6 navbar`}>
           <DarkModeToggle />
           <GitHubButton />
         </div>

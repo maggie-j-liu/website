@@ -9,7 +9,6 @@ import Typing from "@/components/Typing";
 import HomepagePostLayout from "@/layouts/HomepagePostLayout";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
-  const postsRef = React.useRef<HTMLDivElement>();
   return (
     <div>
       <Head>
@@ -141,7 +140,13 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               .
             </p>
             <p>
-              Check out my GitHub (
+              Check out{" "}
+              <Link href="/projects">
+                <a className="text-contrast-700 dark:text-contrast-500 hover:text-contrast-500 dark:hover:text-contrast-400 font-medium">
+                  ~/projects
+                </a>
+              </Link>{" "}
+              or my GitHub (
               <a
                 href="https://github.com/maggie-j-liu"
                 target="_blank"
