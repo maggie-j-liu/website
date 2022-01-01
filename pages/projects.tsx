@@ -1,4 +1,5 @@
 import Project from "@/components/ProjectCard";
+import GitHub from "@/components/GitHub";
 import PageLayout from "@/layouts/PageLayout";
 import vidnotes from "@/projects/vidnotes.png";
 import cloudlinq from "@/projects/cloudlinq.png";
@@ -11,7 +12,8 @@ import clearCloset from "@/projects/clear-closet.png";
 import practiceParrot from "@/projects/practice-parrot.png";
 import browserPets from "@/projects/browser-pets.png";
 import cardCreator from "@/projects/card-creator.png";
-import GitHub from "@/components/GitHub";
+import uwudaily from "@/projects/uwudaily.png";
+import happyholidays from "@/projects/happyholidays.png";
 
 const Projects = () => {
   return (
@@ -20,7 +22,7 @@ const Projects = () => {
         <h1 className={"pt-12 text-4xl font-semibold"}>Projects</h1>
         <div className="mt-4 space-y-12">
           <Project
-            github="browser-pets"
+            github={["browser-pets", "browser-pets-server"]}
             devpost="browser-pets"
             className={
               "bg-gradient-to-tr from-gray-100 to-blue-100 dark:from-gray-700 dark:to-blue-900"
@@ -35,6 +37,18 @@ const Projects = () => {
               your avatar/pet by creating a custom pixel art, you can customize
               your username that's shown to all online users and you can chat
               with the other users.
+            </Project.Description>
+          </Project>
+          <Project
+            url="happyholidays.maggieliu.dev"
+            github="happy-holidays"
+            className="bg-gradient-to-tr from-red-100 to-blue-100 dark:from-red-800 dark:to-blue-900"
+          >
+            <Project.Image src={happyholidays} />
+            <Project.Title>Happy Holidays</Project.Title>
+            <Project.Description>
+              Happy Holidays is a website that lets you create a beautiful, 3D
+              holiday card. Simply add your message and send the url to anyone!
             </Project.Description>
           </Project>
           <Project
@@ -56,6 +70,7 @@ const Projects = () => {
             </Project.Description>
           </Project>
           <Project
+            url="cardcreator.vercel.app"
             github="card-creator"
             className={
               "bg-gradient-to-tr from-red-100 to-green-100 dark:from-red-900 dark:to-green-900"
@@ -91,6 +106,29 @@ const Projects = () => {
             <Project.Description>
               VidNotes is a website that provides a notetaking overlay for a
               video, allowing you to take notes more efficiently.
+            </Project.Description>
+          </Project>
+          <Project
+            url="uwudaily.vercel.app"
+            github="uwudaily"
+            className={
+              "bg-gradient-to-tr from-blue-100 to-green-100 dark:from-blue-900 dark:to-green-900"
+            }
+          >
+            <Project.Image src={uwudaily} />
+            <Project.Title>uwudaily</Project.Title>
+            <Project.Description>
+              <p>
+                uwudaily is a platform for anyone to log their daily ✨ vibes
+                ✨. Built with Next.js, Tailwind CSS, and Supabase, users can
+                create new posts to log their mood with an emoji along with a
+                short description (with Markdown support)! Users can view the
+                main uwudaily feed through the homepage and see a complete
+                history of their own past posts in <code>/log/[username]</code>.
+              </p>
+              <p>
+                Built with <GitHub>eilla1</GitHub> and <GitHub>sampoder</GitHub>
+              </p>
             </Project.Description>
           </Project>
           <Project
@@ -162,10 +200,15 @@ const Projects = () => {
             <Project.Image src={academiaCentral} />
             <Project.Title>Academia Central</Project.Title>
             <Project.Description>
-              Academia Central is a website that facilitates academic programs’
-              outreach. It allows organizers to add their event to the website,
-              and allows students to easily search for events that interest
-              them.
+              <p>
+                Academia Central is a website that facilitates academic
+                programs' outreach. It allows organizers to add their event to
+                the website, and allows students to easily search for events
+                that interest them.
+              </p>
+              <p>
+                Built with <GitHub>liujonathan24</GitHub>.
+              </p>
             </Project.Description>
           </Project>
           <Project
@@ -179,9 +222,15 @@ const Projects = () => {
             <Project.Image src={clearCloset} />
             <Project.Title>Clear Closet</Project.Title>
             <Project.Description>
-              Clear Closet is a useful tool to upload, save, and search your
-              clothes. Upload images of your clothes, get accurate tags from AI
-              and search your closet for specific tags.
+              <p>
+                Clear Closet is a useful tool to upload, save, and search your
+                clothes. Upload images of your clothes, get accurate tags from
+                AI and search your closet for specific tags.
+              </p>
+              <p>
+                Built with <GitHub>dongliu0426</GitHub> and{" "}
+                <GitHub>ternarysrche</GitHub>
+              </p>
             </Project.Description>
           </Project>
         </div>
