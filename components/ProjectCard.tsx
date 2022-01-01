@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import Image from "next/image";
 import { FiLink } from "react-icons/fi";
 import { SiGithub, SiDevpost } from "react-icons/si";
@@ -107,10 +107,13 @@ const Title = ({ children }: { children: React.ReactNode }) => {
   );
 };
 const Description = ({ children }: { children: React.ReactNode }) => {
-  return <p>{children}</p>;
+  if (Children.count(children) === 1) {
+    return <p>{children}</p>;
+  }
+  return <div className="space-y-2">{children}</div>;
 };
 const ProjectImage = ({ src }: { src: StaticImageData }) => {
-  return <Image src={src} placeholder="blur" />;
+  return <Image src={src} placeholder="blur" layout="responsive" />;
 };
 const ProjectCard = ({
   children,

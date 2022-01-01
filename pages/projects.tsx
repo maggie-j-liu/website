@@ -8,6 +8,10 @@ import reactiveComments from "@/projects/reactive-comments.png";
 import stickyNoteWall from "@/projects/sticky-note-wall.png";
 import academiaCentral from "@/projects/academia-central.png";
 import clearCloset from "@/projects/clear-closet.png";
+import practiceParrot from "@/projects/practice-parrot.png";
+import browserPets from "@/projects/browser-pets.png";
+import cardCreator from "@/projects/card-creator.png";
+import GitHub from "@/components/GitHub";
 
 const Projects = () => {
   return (
@@ -15,6 +19,65 @@ const Projects = () => {
       <div className={"max-w-prose mx-auto w-full"}>
         <h1 className={"pt-12 text-4xl font-semibold"}>Projects</h1>
         <div className="mt-4 space-y-12">
+          <Project
+            github="browser-pets"
+            devpost="browser-pets"
+            className={
+              "bg-gradient-to-tr from-gray-100 to-blue-100 dark:from-gray-700 dark:to-blue-900"
+            }
+          >
+            <Project.Image src={browserPets} />
+            <Project.Title>Browser Pets</Project.Title>
+            <Project.Description>
+              Browser Pets is a Chrome extension that adds customizable pixel
+              art pets and a realtime chat to your browser, in order to create
+              an entertaining browsing experience. You are able to customize
+              your avatar/pet by creating a custom pixel art, you can customize
+              your username that's shown to all online users and you can chat
+              with the other users.
+            </Project.Description>
+          </Project>
+          <Project
+            url="practice-parrot.vercel.app"
+            github="practice-parrot"
+            devpost="practice-parrot"
+            className={
+              "bg-gradient-to-tr from-cyan-100 to-fuchsia-200 dark:from-cyan-600 dark:to-fuchsia-500"
+            }
+          >
+            <Project.Image src={practiceParrot} />
+            <Project.Title>Practice Parrot</Project.Title>
+            <Project.Description>
+              Practice Parrot is a website that makes practicing more fun for
+              classical musicians. Users are able to start practice sessions to
+              practice with a color changing practice parrot, have their
+              practice times tracked, and compete with other users to see who
+              practiced the most.
+            </Project.Description>
+          </Project>
+          <Project
+            github="card-creator"
+            className={
+              "bg-gradient-to-tr from-red-100 to-green-100 dark:from-red-900 dark:to-green-900"
+            }
+          >
+            <Project.Image src={cardCreator} />
+            <Project.Title>Card Creator</Project.Title>
+            <Project.Description>
+              <p>
+                Card Creator is a platform where people can create and share
+                digital holiday cards with anyone anywhere in the world! Every
+                holiday season, the postal service becomes inundated with mail
+                that there are holiday shipping delays across the continent. To
+                send holiday greetings to friends and family more reliably,
+                people can use Card Creator!
+              </p>
+              <p>
+                Built with <GitHub>arashnrim</GitHub>, <GitHub>eilla1</GitHub>{" "}
+                and <GitHub>pranavnt</GitHub>
+              </p>
+            </Project.Description>
+          </Project>
           <Project
             url="vidnotes.vercel.app"
             github="vidnotes"
