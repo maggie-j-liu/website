@@ -113,7 +113,7 @@ const Description = ({ children }: { children: React.ReactNode }) => {
   return <div className="space-y-2">{children}</div>;
 };
 const ProjectImage = ({ src }: { src: StaticImageData }) => {
-  return <Image src={src} />;
+  return <Image placeholder="blur" src={src} />;
 };
 const ProjectCard = ({
   children,

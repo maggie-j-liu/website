@@ -2,8 +2,7 @@ const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  mode: "jit",
-  purge: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./layouts/**/*.{js,ts,jsx,tsx}",
@@ -18,7 +17,7 @@ module.exports = {
         primary: colors.sky,
         secondary: colors.indigo,
         contrast: colors.pink,
-        dark: colors.coolGray,
+        dark: colors.gray,
         teal: colors.teal,
         cyan: colors.cyan,
         sky: colors.sky,
@@ -45,8 +44,8 @@ module.exports = {
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
-                textDecoration: "underline",
-                color: theme("colors.secondary.500"),
+                textDecoration: "underline !important",
+                color: theme("colors.secondary.500") + "!important",
               },
             },
             "a code": {
@@ -79,8 +78,8 @@ module.exports = {
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
-                textDecoration: "underline",
-                color: theme("colors.secondary.200"),
+                textDecoration: "underline !important",
+                color: theme("colors.secondary.200") + "!important",
               },
             },
             "a code": {

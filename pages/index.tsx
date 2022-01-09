@@ -12,7 +12,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
   return (
     <div>
       <Head>
-        <title>Maggie's Website</title>
+        <title>Maggie&apos;s Website</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
@@ -83,7 +83,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 fun
               </a>{" "}
               <a
-                href="https://www.raycast.com/maggie/xkcd"
+                href="https://www.raycast.com/maggie/todo-list"
                 target="_blank"
                 rel="noreferrer"
                 className={
