@@ -152,7 +152,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "esbuild"
   );
 
-  const { code: mdxSource } = await bundleMDX(content, {
+  const { code: mdxSource } = await bundleMDX({
+    source: content,
     cwd: POSTS_PATH,
     xdmOptions(options) {
       options.remarkPlugins = [
