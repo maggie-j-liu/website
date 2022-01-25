@@ -18,7 +18,7 @@ import happyholidays from "@/projects/happyholidays.png";
 const Projects = () => {
   return (
     <PageLayout>
-      <div className={"max-w-prose mx-auto w-full"}>
+      <div className={"mx-auto w-full max-w-prose"}>
         <h1 className={"pt-12 text-4xl font-semibold"}>Projects</h1>
         <div className="mt-4 space-y-12">
           <Project
@@ -98,7 +98,7 @@ const Projects = () => {
             github="vidnotes"
             devpost="vidnotes"
             className={
-              "bg-gradient-to-tr from-pink-50 dark:from-pink-800 to-purple-50 dark:to-purple-800"
+              "bg-gradient-to-tr from-pink-50 to-purple-50 dark:from-pink-800 dark:to-purple-800"
             }
           >
             <Project.Image src={vidnotes} />
@@ -136,7 +136,7 @@ const Projects = () => {
             github="cloudlinq"
             devpost="cloudlinq"
             className={
-              "bg-gradient-to-tr from-blue-100 dark:from-blue-800 to-sky-50 dark:to-sky-800"
+              "bg-gradient-to-tr from-blue-100 to-sky-50 dark:from-blue-800 dark:to-sky-800"
             }
           >
             <Project.Image src={cloudlinq} />
@@ -154,10 +154,10 @@ const Projects = () => {
             github={["reactive", "reactive-docs"]}
             devpost="reactive-u4c9zf"
             className={
-              "bg-gradient-to-tr from-yellow-50 dark:from-yellow-800 to-sky-50 dark:to-sky-800"
+              "bg-gradient-to-tr from-yellow-50 to-sky-50 dark:from-yellow-800 dark:to-sky-800"
             }
           >
-            <div className="grid grid-rows-2 grid-cols-5 place-items-center">
+            <div className="grid grid-cols-5 grid-rows-2 place-items-center">
               <div className="col-span-3 row-span-2 ">
                 <Project.Image src={reactive} />
               </div>
@@ -179,7 +179,7 @@ const Projects = () => {
             github="sticky-notes"
             devpost="sticky-note-wall"
             className={
-              "bg-gradient-to-tr from-indigo-50 dark:from-indigo-800 to-fuchsia-50 dark:to-fuchsia-800"
+              "bg-gradient-to-tr from-indigo-50 to-fuchsia-50 dark:from-indigo-800 dark:to-fuchsia-800"
             }
           >
             <Project.Image src={stickyNoteWall} />
@@ -194,7 +194,7 @@ const Projects = () => {
             github="academia-central"
             devpost="academia-central"
             className={
-              "bg-gradient-to-tr from-blue-50 dark:from-blue-800 to-cyan-50 dark:to-cyan-800"
+              "bg-gradient-to-tr from-blue-50 to-cyan-50 dark:from-blue-800 dark:to-cyan-800"
             }
           >
             <Project.Image src={academiaCentral} />
@@ -216,7 +216,7 @@ const Projects = () => {
             github="closet-app"
             devpost="clear-closet"
             className={
-              "bg-gradient-to-tr from-indigo-50 dark:from-indigo-800 to-blue-50 dark:to-blue-800"
+              "bg-gradient-to-tr from-indigo-50 to-blue-50 dark:from-indigo-800 dark:to-blue-800"
             }
           >
             <Project.Image src={clearCloset} />

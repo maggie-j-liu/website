@@ -20,7 +20,7 @@ const Icon = () => {
       id="svg4576"
       version="1.1"
       viewBox="15 20 165 65"
-      className="h-6 sm:h-10 translate-y-1.5 sm:translate-y-2 group"
+      className="group h-6 translate-y-1.5 sm:h-10 sm:translate-y-2"
     >
       <clipPath id="clipPath887">
         <path

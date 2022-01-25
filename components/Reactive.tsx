@@ -1,5 +1,5 @@
-import reactive from '@maggieliu/reactive';
-import * as React from 'react'
+import reactive from "@maggieliu/reactive";
+import * as React from "react";
 
 const Reactive = () => {
   React.useEffect(() => {
@@ -11,12 +11,12 @@ const Reactive = () => {
         projectId: "maggieliu-dev",
         storageBucket: "maggieliu-dev.appspot.com",
         messagingSenderId: "1058065480407",
-        appId: "1:1058065480407:web:4225c4bcf453da81b30e92"
-      }
-    })
-  }, [])
+        appId: "1:1058065480407:web:4225c4bcf453da81b30e92",
+      },
+    });
+  }, []);
 
-  return <div id="reactive_widget" />
-}
+  return <div id="reactive_widget" />;
+};
 
 export default Reactive;

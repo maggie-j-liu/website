@@ -22,7 +22,7 @@ const Vessel = () => {
   }, []);
   if (!mounted)
     return (
-      <div className={"w-4/5 mx-auto"}>
+      <div className={"mx-auto w-4/5"}>
         <svg viewBox="0 0 200 200">
           <circle
             cx="100"
@@ -53,7 +53,7 @@ const Vessel = () => {
       </div>
     );
   return (
-    <div className={"w-4/5 mx-auto"}>
+    <div className={"mx-auto w-4/5"}>
       <svg viewBox="0 0 200 200">
         <circle
           cx="100"

@@ -10,7 +10,7 @@ const TagSection = ({ tags }: { tags: string[] }) => {
     <>
       <hr />
       <div className={"py-4 lg:py-6"}>
-        <h2 className={"uppercase font-bold text-xs tracking-wider"}>Tags</h2>
+        <h2 className={"text-xs font-bold uppercase tracking-wider"}>Tags</h2>
         {dedupedTags && (
           <TagsLayout
             tags={dedupedTags}
@@ -34,7 +34,7 @@ const OtherPostSection = ({
 }) => {
   return (
     <div>
-      <h2 className={"uppercase font-bold text-xs tracking-wider"}>
+      <h2 className={"text-xs font-bold uppercase tracking-wider"}>
         {displayName} post{" "}
       </h2>
       <Link href={`/${postsDir}/[slug]`} as={`/${postsDir}/${post.slug}`}>
@@ -57,7 +57,7 @@ const SideBar = ({
     <>
       <div
         className={
-          "2xl:sticky 2xl:top-12 py-8 flex flex-col text-dark-600 dark:text-dark-300"
+          "flex flex-col py-8 text-dark-600 dark:text-dark-300 2xl:sticky 2xl:top-12"
         }
       >
         {curr.data.tags && <TagSection tags={curr.data.tags} />}
@@ -66,7 +66,7 @@ const SideBar = ({
             <hr />
             <div
               className={
-                "justify-between py-4 2xl:py-6 2xl:space-y-6 flex 2xl:block"
+                "flex justify-between py-4 2xl:block 2xl:space-y-6 2xl:py-6"
               }
             >
               {prev && (

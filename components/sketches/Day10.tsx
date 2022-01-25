@@ -6,13 +6,13 @@ const Pick = () => {
   }, []);
   if (!mounted)
     return (
-      <div className="w-4/5 mx-auto">
+      <div className="mx-auto w-4/5">
         <svg viewBox="0 0 200 200"></svg>
       </div>
     );
   const picked = Math.floor(Math.random() * 16);
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="mx-auto w-4/5">
       <svg viewBox="0 0 200 200">
         {[...Array(16)].map((_, idx) => {
           let j = idx % 4;

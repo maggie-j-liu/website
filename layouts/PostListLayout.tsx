@@ -11,12 +11,12 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
       {posts.map((post) => {
         const dedupedTags: string[] = Array.from(new Set(post.data.tags));
         return (
-          <li key={post.slug} className={"py-12 divide-dark-200"}>
+          <li key={post.slug} className={"divide-dark-200 py-12"}>
             <div className={"lg:grid lg:grid-cols-4"}>
               {post.data.date && (
                 <p
                   className={
-                    "text-base text-dark-500 dark:text-dark-400 lg:col-start-1 pb-2"
+                    "pb-2 text-base text-dark-500 dark:text-dark-400 lg:col-start-1"
                   }
                 >
                   {formatDate(post.data.date)}
@@ -30,7 +30,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                 >
                   <a
                     className={
-                      "text-2xl tracking-tight font-semibold text-primary-600 dark:text-primary-400"
+                      "text-2xl font-semibold tracking-tight text-primary-600 dark:text-primary-400"
                     }
                   >
                     {post.data.title}
@@ -45,7 +45,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                 )}
                 {post.data.preview && (
                   <p
-                    className={"text-dark-600 dark:text-dark-200 pt-6"}
+                    className={"pt-6 text-dark-600 dark:text-dark-200"}
                     style={{
                       overflow: "hidden",
                       display: "-webkit-box",

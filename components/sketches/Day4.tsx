@@ -31,13 +31,13 @@ const Knot = () => {
   }, [showAltPath]);
   if (!mounted) {
     return (
-      <div className={"w-4/5 mx-auto"}>
+      <div className={"mx-auto w-4/5"}>
         <svg viewBox="0 0 200 200"></svg>
       </div>
     );
   }
   return (
-    <div className={"w-4/5 mx-auto"}>
+    <div className={"mx-auto w-4/5"}>
       <svg viewBox="0 0 200 200">
         <path
           d={showAltPath ? altPath : path}

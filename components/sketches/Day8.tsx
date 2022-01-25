@@ -25,7 +25,7 @@ const Watch = () => {
     });
   }, [bounds]);
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="mx-auto w-4/5">
       <svg
         ref={eyesRef}
         viewBox="0 0 200 200"
@@ -49,7 +49,7 @@ const Watch = () => {
           cx={60}
           cy={80}
           r={20}
-          className={"stroke-current fill-current stroke-2 origin-bottom"}
+          className={"origin-bottom fill-current stroke-current stroke-2"}
           style={{
             transformBox: "fill-box",
             transform: `rotate(calc(90deg + ${-rotate}rad))`,
@@ -59,7 +59,7 @@ const Watch = () => {
           cx={140}
           cy={80}
           r={20}
-          className={"stroke-current fill-current stroke-2 origin-bottom"}
+          className={"origin-bottom fill-current stroke-current stroke-2"}
           style={{
             transformBox: "fill-box",
             transform: `rotate(calc(90deg + ${-rotate}rad))`,

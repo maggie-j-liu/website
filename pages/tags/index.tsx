@@ -22,25 +22,25 @@ const TagIndex = ({ tags }: { tags: string[] }) => {
       <div className={"flex flex-col justify-center"}>
         <div
           className={
-            "flex flex-col md:flex-row justify-center items-center md:space-x-8"
+            "flex flex-col items-center justify-center md:flex-row md:space-x-8"
           }
         >
           <h1
             className={
-              "text-5xl font-bold text-dark-900 dark:text-dark-200 pb-8 md:pb-0 md:pr-6 md:border-r-2 md:dark:border-dark-400"
+              "pb-8 text-5xl font-bold text-dark-900 dark:text-dark-200 md:border-r-2 md:pb-0 md:pr-6 md:dark:border-dark-400"
             }
           >
             Tags
           </h1>
           <div
             className={
-              "text-dark-700 dark:text-dark-400 flex flex-wrap max-w-xl"
+              "flex max-w-xl flex-wrap text-dark-700 dark:text-dark-400"
             }
           >
             {sortedTags.map(({ tag, count }) => (
               <div key={tag} className={"py-1 pr-4 text-base uppercase"}>
                 <Link href={`/${tagsDir}/${tag}`}>
-                  <a className={"mr-1 postlist-tag-link"}>{tag}</a>
+                  <a className={"postlist-tag-link mr-1"}>{tag}</a>
                 </Link>
                 <span className={"font-semibold"}>
                   {" ("}

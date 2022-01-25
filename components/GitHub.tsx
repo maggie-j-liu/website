@@ -1,7 +1,7 @@
 const GitHub = ({ children: username }: { children: string }) => {
   return (
     <a
-      className="text-blue-600 dark:text-blue-300 hover:underline"
+      className="text-blue-600 hover:underline dark:text-blue-300"
       href={`https://github.com/${username}`}
       target="_blank"
       rel="noreferrer"

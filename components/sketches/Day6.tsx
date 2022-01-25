@@ -6,7 +6,7 @@ const Spirit = () => {
   }, []);
   if (!mounted) {
     return (
-      <div className="w-4/5 mx-auto">
+      <div className="mx-auto w-4/5">
         <svg
           viewBox="0 0 200 200"
           fill="none"
@@ -16,7 +16,7 @@ const Spirit = () => {
     );
   }
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="mx-auto w-4/5">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g
           transform={`translate(${-20 + Math.random() * 20}, ${

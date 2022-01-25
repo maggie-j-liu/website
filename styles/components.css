@@ -1,9 +1,9 @@
 .sidebar-link {
-  @apply text-primary-500 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-200 focus:text-primary-600 dark:focus:text-primary-200;
+  @apply text-primary-500 hover:text-primary-600 focus:text-primary-600 dark:text-primary-300 dark:hover:text-primary-200 dark:focus:text-primary-200;
 }
 
 .postlist-tag-link {
-  @apply text-primary-500 hover:text-primary-600 dark:hover:text-primary-300 focus:text-primary-600 dark:focus:text-primary-300;
+  @apply text-primary-500 hover:text-primary-600 focus:text-primary-600 dark:hover:text-primary-300 dark:focus:text-primary-300;
 }
 
 /*
@@ -20,7 +20,7 @@
 }
 
 .navbar > * {
-  @apply hover:text-secondary-500 dark:hover:text-secondary-300 focus:text-secondary-500 dark:focus:text-secondary-300;
+  @apply hover:text-secondary-500 focus:text-secondary-500 dark:hover:text-secondary-300 dark:focus:text-secondary-300;
 }
 
 .line-clamp {

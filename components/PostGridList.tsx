@@ -10,15 +10,15 @@ const TagSection = ({ tags }: { tags: string[] }) => {
   const totalTags = tags.length;
   return (
     <div className={"pt-4"}>
-      <p className={"uppercase text-sm font-semibold text-dark-400"}>Tags</p>
+      <p className={"text-sm font-semibold uppercase text-dark-400"}>Tags</p>
       <div
         className={
-          "text-primary-700 dark:text-primary-400 flex flex-wrap items-center"
+          "flex flex-wrap items-center text-primary-700 dark:text-primary-400"
         }
       >
         {tags.map((tag, index) => (
           <React.Fragment key={tag}>
-            <span className={`uppercase text-sm text-primary-500`}>{tag}</span>
+            <span className={`text-sm uppercase text-primary-500`}>{tag}</span>
             {index != totalTags - 1 && <span className={"px-2"}>•</span>}
           </React.Fragment>
         ))}
@@ -34,22 +34,22 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
         id={"posts"}
         ref={ref}
         className={
-          "min-w-full px-32 py-12 flex flex-1 flex-col justify-center items-center bg-gradient-to-b from-dark-100 to-primary-50 dark:from-dark-900 dark:to-dark-900"
+          "flex min-w-full flex-1 flex-col items-center justify-center bg-gradient-to-b from-dark-100 to-primary-50 px-32 py-12 dark:from-dark-900 dark:to-dark-900"
         }
       >
         <Link href={`/${postsDir}`}>
           <a
             className={
-              "text-2xl font-semibold uppercase mt-2 text-primary-600 dark:text-primary-500 hover:text-secondary-700 dark:hover:text-secondary-200 focus:text-secondary-700 dark:focus:text-secondary-200"
+              "mt-2 text-2xl font-semibold uppercase text-primary-600 hover:text-secondary-700 focus:text-secondary-700 dark:text-primary-500 dark:hover:text-secondary-200 dark:focus:text-secondary-200"
             }
           >
             Posts
           </a>
         </Link>
-        <div className={"flex flex-1 justify-center max-w-4xl"}>
+        <div className={"flex max-w-4xl flex-1 justify-center"}>
           <div
             className={
-              "grid auto-rows-[240px] grid-cols-3 overflow-visible py-4 px-2 gap-8"
+              "grid auto-rows-[240px] grid-cols-3 gap-8 overflow-visible py-4 px-2"
             }
           >
             {props.posts.map((post) => {
@@ -62,21 +62,21 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
                 >
                   <a
                     className={
-                      "group block overflow-y-hidden px-4 py-5 bg-white dark:bg-dark-800 rounded-lg hover:shadow-xl hover:rounded-none focus:shadow-lg focus:rounded-none duration-300"
+                      "group block overflow-y-hidden rounded-lg bg-white px-4 py-5 duration-300 hover:rounded-none hover:shadow-xl focus:rounded-none focus:shadow-lg dark:bg-dark-800"
                     }
                   >
-                    <p className={"text-sm text-dark-400 font-normal"}>
+                    <p className={"text-sm font-normal text-dark-400"}>
                       {post.data.date ? formatDate(post.data.date) : <br />}
                     </p>
                     <p
                       className={
-                        "text-xl mt-2 mb-1 font-semibold text-primary-600 dark:text-primary-400 group-hover:text-secondary-600 group-hover:underline dark:group-hover:text-secondary-300 group-focus:text-secondary-600 dark:group-focus:text-secondary-300 group-focus:underline"
+                        "mt-2 mb-1 text-xl font-semibold text-primary-600 group-hover:text-secondary-600 group-hover:underline group-focus:text-secondary-600 group-focus:underline dark:text-primary-400 dark:group-hover:text-secondary-300 dark:group-focus:text-secondary-300"
                       }
                     >
                       {post.data.title}
                     </p>
                     <p
-                      className={"text-dark-600 dark:text-dark-200 line-clamp"}
+                      className={"line-clamp text-dark-600 dark:text-dark-200"}
                     >
                       {post.data.preview}
                     </p>

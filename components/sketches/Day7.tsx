@@ -1,12 +1,12 @@
 import React from "react";
 const Fan = () => {
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="mx-auto w-4/5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 200 200"
-        className="motion-safe:animate-spin origin-center"
+        className="origin-center motion-safe:animate-spin"
         style={{ transformBox: "fill-box" }}
       >
         <path

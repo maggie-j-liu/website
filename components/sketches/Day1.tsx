@@ -57,7 +57,7 @@ const Crystal = () => {
 
   if (!mounted) return null;
   return (
-    <div className={"w-4/5 mx-auto"}>
+    <div className={"mx-auto w-4/5"}>
       <svg viewBox={"0 0 200 200"} ref={svgRef}>
         {allPaths.map((p) => {
           return (

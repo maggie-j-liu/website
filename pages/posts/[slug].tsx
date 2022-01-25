@@ -60,7 +60,7 @@ export default function PostPage({
       <NavBar />
       <div
         className={
-          "min-w-full pt-28 sm:px-8 md:px-16 grid grid-cols-5 gap-10 bg-white dark:bg-dark-900"
+          "grid min-w-full grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16"
         }
       >
         <h1
@@ -71,11 +71,11 @@ export default function PostPage({
           {frontMatter.title}
         </h1>
         <div
-          className={`max-w-3xl w-full mx-auto px-8 sm:px-10 ${
+          className={`mx-auto w-full max-w-3xl px-8 sm:px-10 ${
             headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } 2xl:pl-0 col-start-1 col-end-6 2xl:col-start-2 justify-self-stretch bg-white dark:bg-dark-900`}
+          } col-start-1 col-end-6 justify-self-stretch bg-white dark:bg-dark-900 2xl:col-start-2 2xl:pl-0`}
         >
-          <div className="dark:text-dark-50 prose dark:prose-dark !max-w-none">
+          <div className="prose !max-w-none dark:prose-dark dark:text-dark-50">
             <Content components={MDXComponents} />
           </div>
           <Reactive />
@@ -91,7 +91,7 @@ export default function PostPage({
         )}
         <div
           className={`
-            col-start-1 col-end-6 2xl:col-end-2 row-start-3 2xl:row-start-2 2xl:row-end-3 px-10 md:pr-0 max-w-3xl mx-auto w-full justify-self-stretch ${
+            col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 md:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3 ${
               headings.length !== 0 ? "md:col-end-5" : ""
             }
           `}

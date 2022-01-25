@@ -18,7 +18,7 @@ const Link = ({ url }: { url: string }) => {
       target="_blank"
       rel="noreferrer"
     >
-      <FiLink className={"w-5 h-5"} />
+      <FiLink className={"h-5 w-5"} />
     </a>
   );
 };
@@ -34,7 +34,7 @@ const GitHub = ({ url }: { url: string }) => {
       target="_blank"
       rel="noreferrer"
     >
-      <SiGithub className={"w-5 h-5"} />
+      <SiGithub className={"h-5 w-5"} />
     </a>
   );
 };
@@ -47,7 +47,7 @@ const Devpost = ({ url }: { url: string }) => {
       target="_blank"
       rel="noreferrer"
     >
-      <SiDevpost className={"w-5 h-5"} />
+      <SiDevpost className={"h-5 w-5"} />
     </a>
   );
 };
@@ -125,7 +125,7 @@ const ProjectCard = ({
 } & ProjectInfo) => {
   return (
     <ProjectInfoContext.Provider value={props as ProjectInfo}>
-      <div className={`dark:text-dark-200 px-4 py-4 rounded-xl ${className}`}>
+      <div className={`rounded-xl px-4 py-4 dark:text-dark-200 ${className}`}>
         {children}
       </div>
     </ProjectInfoContext.Provider>

@@ -43,7 +43,7 @@
 
 .prose h1,
 .prose h2 {
-  @apply text-primary-800 font-bold;
+  @apply font-bold text-primary-800;
 }
 
 .prose h3,
@@ -71,13 +71,13 @@
 /* Inline code */
 .prose :not(pre, a) > code,
 :not(pre) > code {
-  @apply text-primary-600 bg-primary-50 p-1 rounded-sm whitespace-normal;
+  @apply whitespace-normal rounded-sm bg-primary-50 p-1 text-primary-600;
 }
 
 /* Inline code */
 .dark .prose :not(pre, a) > code,
 .dark :not(pre) > code {
-  @apply bg-primary-900 text-primary-100 p-1 rounded-sm whitespace-normal;
+  @apply whitespace-normal rounded-sm bg-primary-900 p-1 text-primary-100;
 }
 
 .prose *[id] {

@@ -16,10 +16,10 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <div className={"bg-dark-100 dark:bg-black px-4 sm:px-8"}>
+      <div className={"bg-dark-100 px-4 dark:bg-black sm:px-8"}>
         <div
           className={
-            "w-full max-w-prose mx-auto py-16 flex flex-col justify-center"
+            "mx-auto flex w-full max-w-prose flex-col justify-center py-16"
           }
         >
           <section
@@ -45,7 +45,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <Link href="/tags/USACO">
                 <a
                   className={
-                    "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                    "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                   }
                 >
                   competitively
@@ -57,7 +57,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                 }
               >
                 useless
@@ -67,7 +67,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                 }
               >
                 but
@@ -77,7 +77,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                 }
               >
                 fun
@@ -87,7 +87,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                 }
               >
                 things
@@ -96,7 +96,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <Link href="/posts/crystal">
                 <a
                   className={
-                    "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 contrast-50 font-medium"
+                    "font-medium text-primary-700 contrast-50 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                   }
                 >
                   (generative)
@@ -105,7 +105,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <Link href="/posts/spirit">
                 <a
                   className={
-                    "text-primary-700 dark:text-primary-600 hover:text-primary-600 dark:hover:text-primary-500 font-medium"
+                    "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
                   }
                 >
                   art
@@ -120,7 +120,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-secondary-700 dark:text-secondary-500 hover:text-secondary-500 dark:hover:text-secondary-400 font-medium"
+                  "font-medium text-secondary-700 hover:text-secondary-500 dark:text-secondary-500 dark:hover:text-secondary-400"
                 }
               >
                 Competitive Programming Initiative
@@ -132,7 +132,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-secondary-700 dark:text-secondary-500 hover:text-secondary-500 dark:hover:text-secondary-400 font-medium"
+                  "font-medium text-secondary-700 hover:text-secondary-500 dark:text-secondary-500 dark:hover:text-secondary-400"
                 }
               >
                 USACO Guide
@@ -142,7 +142,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             <p>
               Check out{" "}
               <Link href="/projects">
-                <a className="text-contrast-700 dark:text-contrast-500 hover:text-contrast-500 dark:hover:text-contrast-400 font-medium">
+                <a className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
                   ~/projects
                 </a>
               </Link>{" "}
@@ -152,7 +152,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 target="_blank"
                 rel="noreferrer"
                 className={
-                  "text-contrast-600 hover:text-contrast-500 dark:text-contrast-200 dark:hover:text-contrast-100 font-medium bg-contrast-100 dark:bg-contrast-900 dark:hover:bg-contrast-800 rounded px-0.5 py-0.5"
+                  "rounded bg-contrast-100 px-0.5 py-0.5 font-medium text-contrast-600 hover:text-contrast-500 dark:bg-contrast-900 dark:text-contrast-200 dark:hover:bg-contrast-800 dark:hover:text-contrast-100"
                 }
               >
                 @maggie-j-liu

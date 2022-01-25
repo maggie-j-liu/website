@@ -74,7 +74,7 @@ const Dragon = ({ iterations }) => {
       viewBox={`${bounds.minX - 2} ${bounds.minY - 2} ${
         bounds.maxX - bounds.minX + 4
       } ${bounds.maxY - bounds.minY + 4}`}
-      className={"dark:text-white stroke-current"}
+      className={"stroke-current dark:text-white"}
       fill={"transparent"}
       strokeWidth={1.5}
     >

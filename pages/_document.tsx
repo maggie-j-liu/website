@@ -54,7 +54,7 @@ export default class MyDocument extends Document {
         </Head>
         <body
           className={
-            "bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-100 font-sans"
+            "bg-white font-sans text-dark-900 dark:bg-dark-900 dark:text-dark-100"
           }
         >
           <script

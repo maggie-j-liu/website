@@ -14,18 +14,18 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
           <Link href={`/${postsDir}/${post.slug}`} key={post.slug}>
             <a
               className={
-                "block group outline-none -mx-3 px-3 py-1.5 rounded-2xl hover:bg-white duration-200 dark:hover:bg-dark-900 dark:focus-within:bg-dark-900 focus-within:bg-white"
+                "group -mx-3 block rounded-2xl px-3 py-1.5 outline-none duration-200 focus-within:bg-white hover:bg-white dark:focus-within:bg-dark-900 dark:hover:bg-dark-900"
               }
             >
               <li>
                 <div
                   className={
-                    "text-lg sm:text-xl opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    "text-lg opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100 sm:text-xl"
                   }
                 >
                   {post.data.title}
                 </div>
-                <div className={"text-xs sm:text-sm flex items-center"}>
+                <div className={"flex items-center text-xs sm:text-sm"}>
                   <div
                     className={
                       "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
@@ -54,7 +54,7 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
                 </div>
                 <div
                   className={
-                    "text-sm mt-2 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    "mt-2 text-sm opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
                   }
                 >
                   {post.data.preview}

@@ -10,7 +10,7 @@ const Suit = () => {
     }, 2000);
   }, [posRotate]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <div className={"w-4/5 mx-auto"}>
+    <div className={"mx-auto w-4/5"}>
       <svg viewBox="0 0 200 200">
         <defs>
           <pattern

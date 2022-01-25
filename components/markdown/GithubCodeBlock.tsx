@@ -8,13 +8,13 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
       {link && (
         <div
           className={
-            "bg-contrast-50 dark:bg-dark-700 rounded-t-md overflow-x-auto"
+            "overflow-x-auto rounded-t-md bg-contrast-50 dark:bg-dark-700"
           }
         >
           <a
             href={link}
             className={
-              "!font-medium !text-contrast-900 dark:!text-contrast-200 ml-4 my-2 inline-block"
+              "my-2 ml-4 inline-block !font-medium !text-contrast-900 dark:!text-contrast-200"
             }
             target="_blank"
             rel="noreferrer"

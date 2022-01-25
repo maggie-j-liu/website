@@ -8,7 +8,7 @@ const PageLayout: React.FC<{ full?: boolean }> = ({
     <div className={"w-full bg-white dark:bg-dark-900"}>
       <NavBar />
       <div
-        className={`max-w-3xl lg:max-w-4xl mx-auto px-4 py-12 pt-16 flex flex-col ${
+        className={`mx-auto flex max-w-3xl flex-col px-4 py-12 pt-16 lg:max-w-4xl ${
           full ? "min-h-screen justify-center" : "justify-between"
         }`}
       >

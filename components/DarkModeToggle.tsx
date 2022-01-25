@@ -45,7 +45,7 @@ const DarkModeToggle = () => {
         className={"focus-invisible"}
       >
         <svg
-          className={`w-5 h-5 sm:w-6 sm:h-6 hidden dark:block`}
+          className={`hidden h-5 w-5 dark:block sm:h-6 sm:w-6`}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -59,7 +59,7 @@ const DarkModeToggle = () => {
           />
         </svg>
         <svg
-          className={`w-6 h-6 block dark:hidden`}
+          className={`block h-6 w-6 dark:hidden`}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
