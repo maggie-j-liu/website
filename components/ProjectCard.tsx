@@ -1,91 +1,76 @@
-import React, { Children } from "react";
+import React, { Children, ComponentType, ReactNode } from "react";
 import Image from "next/image";
 import { FiLink } from "react-icons/fi";
-import { SiGithub, SiDevpost } from "react-icons/si";
+import { SiGithub, SiDevpost, SiProducthunt } from "react-icons/si";
+import { IconType } from "react-icons";
 
 interface ProjectInfo {
   url?: string | string[];
   github?: string | string[];
   devpost?: string | string[];
+  producthunt?: string | string[];
 }
 const ProjectInfoContext = React.createContext<ProjectInfo>({});
 
-const Link = ({ url }: { url: string }) => {
+interface LinkProps {
+  url: string;
+}
+
+const LinkBase = ({ url, icon: Icon }: { url: string; icon: IconType }) => {
   return (
     <a
       className="opacity-50 hover:opacity-90"
-      href={url.startsWith("http") ? url : `https://${url}`}
+      href={url}
       target="_blank"
       rel="noreferrer"
     >
-      <FiLink className={"h-5 w-5"} />
-    </a>
-  );
-};
-const GitHub = ({ url }: { url: string }) => {
-  return (
-    <a
-      className="opacity-50 hover:opacity-90"
-      href={
-        url.includes("/")
-          ? `https://github.com/${url}`
-          : `https://github.com/maggie-j-liu/${url}`
-      }
-      target="_blank"
-      rel="noreferrer"
-    >
-      <SiGithub className={"h-5 w-5"} />
+      <Icon className={"h-5 w-5"} />
     </a>
   );
 };
 
-const Devpost = ({ url }: { url: string }) => {
-  return (
-    <a
-      className="opacity-50 hover:opacity-90"
-      href={`https://devpost.com/software/${url}`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <SiDevpost className={"h-5 w-5"} />
-    </a>
-  );
-};
+const Link = ({ url }: LinkProps) => (
+  <LinkBase
+    url={url.startsWith("http") ? url : `https://${url}`}
+    icon={FiLink}
+  />
+);
+const GitHub = ({ url }: LinkProps) => (
+  <LinkBase
+    url={
+      url.includes("/")
+        ? `https://github.com/${url}`
+        : `https://github.com/maggie-j-liu/${url}`
+    }
+    icon={SiGithub}
+  />
+);
 
-const Links = ({ urls }: { urls: string | string[] }) => {
+const Devpost = ({ url }: LinkProps) => (
+  <LinkBase url={`https://devpost.com/software/${url}`} icon={SiDevpost} />
+);
+
+const ProductHunt = ({ url }: LinkProps) => (
+  <LinkBase
+    url={`https://www.producthunt.com/posts/${url}`}
+    icon={SiProducthunt}
+  />
+);
+
+const LinksBase = ({
+  urls,
+  as: Tag,
+}: {
+  urls: string | string[];
+  as: ComponentType<LinkProps>;
+}) => {
   if (typeof urls === "string") {
-    return <Link url={urls} />;
+    return <Tag url={urls} />;
   }
   return (
     <>
       {urls.map((u) => (
-        <Link key={u} url={u} />
-      ))}
-    </>
-  );
-};
-
-const GitHubs = ({ urls }: { urls: string | string[] }) => {
-  if (typeof urls === "string") {
-    return <GitHub url={urls} />;
-  }
-  return (
-    <>
-      {urls.map((u) => (
-        <GitHub key={u} url={u} />
-      ))}
-    </>
-  );
-};
-
-const Devposts = ({ urls }: { urls: string | string[] }) => {
-  if (typeof urls === "string") {
-    return <Devpost url={urls} />;
-  }
-  return (
-    <>
-      {urls.map((u) => (
-        <Devpost key={u} url={u} />
+        <Tag key={u} url={u} />
       ))}
     </>
   );
@@ -99,9 +84,12 @@ const Title = ({ children }: { children: React.ReactNode }) => {
         {children}
       </h2>
       <div className="flex gap-2 text-dark-500 dark:text-dark-200">
-        {info.url && <Links urls={info.url} />}
-        {info.github && <GitHubs urls={info.github} />}
-        {info.devpost && <Devposts urls={info.devpost} />}
+        {info.url && <LinksBase as={Link} urls={info.url} />}
+        {info.github && <LinksBase as={GitHub} urls={info.github} />}
+        {info.devpost && <LinksBase as={Devpost} urls={info.devpost} />}
+        {info.producthunt && (
+          <LinksBase as={ProductHunt} urls={info.producthunt} />
+        )}
       </div>
     </div>
   );

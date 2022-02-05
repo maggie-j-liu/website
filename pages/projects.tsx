@@ -14,13 +14,48 @@ import browserPets from "@/projects/browser-pets.png";
 import cardCreator from "@/projects/card-creator.png";
 import uwudaily from "@/projects/uwudaily.png";
 import happyholidays from "@/projects/happyholidays.png";
+import octolink from "@/projects/octolink.png";
+import useColorMode from "@/hooks/useColorMode";
+import colorModes from "@/utils/colorModes";
 
 const Projects = () => {
+  const { colorMode } = useColorMode();
+  const darkMode = colorMode === colorModes.dark;
   return (
     <PageLayout>
       <div className={"mx-auto w-full max-w-prose"}>
         <h1 className={"pt-12 text-4xl font-semibold"}>Projects</h1>
         <div className="mt-4 space-y-12">
+          <Project
+            url="https://octolink.me"
+            github="octolink"
+            className="bg-gradient-to-tr from-cyan-100 to-teal-50 dark:from-cyan-800 dark:to-teal-800"
+          >
+            <Project.Image src={octolink} />
+            <Project.Title>Octolink</Project.Title>
+            <Project.Description>
+              Octolink is a webapp that enables link sharing for GitHub
+              repositories. You can generate a link to invite collaborators to a
+              repository, without needing to know their GitHub username.
+            </Project.Description>
+            <br />
+            <a
+              className="block w-max"
+              href="https://www.producthunt.com/posts/octolink?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-octolink"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=325061&theme=${
+                  darkMode ? "dark" : "light"
+                }`}
+                alt="Octolink - Link sharing for GitHub repositories | Product Hunt"
+                style={{ width: "250px", height: "54px" }}
+                width="250"
+                height="54"
+              />
+            </a>
+          </Project>
           <Project
             github={["browser-pets", "browser-pets-server"]}
             devpost="browser-pets"
