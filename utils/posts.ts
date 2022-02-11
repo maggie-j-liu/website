@@ -3,6 +3,12 @@ import path from "path";
 import { postsDir } from "./routes";
 
 export const POSTS_PATH = path.join(process.cwd(), postsDir);
+export const IMAGES_PATH = path.join(
+  process.cwd(),
+  "public",
+  "images",
+  "posts"
+);
 
 export const postFilePaths = fs
   .readdirSync(POSTS_PATH)

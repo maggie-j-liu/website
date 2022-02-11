@@ -18,6 +18,8 @@ import { codeBase } from "@/utils/siteInfo";
 import rehypeMeta from "@/utils/rehypeMeta";
 import dynamic from "next/dynamic";
 const Reactive = dynamic(() => import("../../components/Reactive"));
+import { remarkMdxImages } from "remark-mdx-images";
+import rehypeImgSize from "@/utils/rehypeImgSize";
 
 type PostPageProps = {
   source: string;
@@ -160,12 +162,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...(options.remarkPlugins ?? []),
         require("remark-math"),
         require("remark-slug"),
+        remarkMdxImages,
       ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         require("rehype-katex"),
         rehypeMeta,
+        [rehypeImgSize, { dir: path.join(process.cwd(), "posts") }],
       ];
+      return options;
+    },
+    esbuildOptions(options) {
+      options.outdir = path.join(process.cwd(), "public", "images", "posts");
+      options.loader = {
+        ...options.loader,
+        ".png": "file",
+      };
+      options.publicPath = `/images/posts/`;
+      options.write = true;
       return options;
     },
   });

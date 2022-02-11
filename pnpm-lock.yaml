@@ -14,6 +14,7 @@ specifiers:
   eslint-config-next: ^11.0.1
   framer-motion: ^4.1.17
   gray-matter: ^4.0.2
+  image-size: ^1.0.1
   mdx-bundler: ^8.0.1
   next: ^12.0.0
   postcss: ^8.4.5
@@ -25,6 +26,7 @@ specifiers:
   react-syntax-highlighter: ^15.4.3
   rehype-katex: ^5.0.0
   remark-math: ^4.0.0
+  remark-mdx-images: ^1.0.3
   remark-slug: ^6.0.0
   tailwindcss: ^3.0.12
   typescript: ^4.2.4
@@ -46,6 +48,7 @@ dependencies:
   react-syntax-highlighter: 15.4.5_react@17.0.2
   rehype-katex: 5.0.0
   remark-math: 4.0.0
+  remark-mdx-images: 1.0.3
   remark-slug: 6.1.0
   unist-util-visit: 2.0.3
 
@@ -56,6 +59,7 @@ devDependencies:
   autoprefixer: 10.4.2_postcss@8.4.5
   eslint: 7.32.0
   eslint-config-next: 11.1.3_efbc45941d35eae336fdc4025b4f3d86
+  image-size: 1.0.1
   postcss: 8.4.5
   prettier: 2.5.1
   prettier-plugin-tailwindcss: 0.1.3_prettier@2.5.1
@@ -2335,6 +2339,14 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /image-size/1.0.1:
+    resolution: {integrity: sha512-VAwkvNSNGClRw9mDHhc5Efax8PLlsOGcUTh0T/LIriC8vPA3U5PdqXWqkz406MoYHMKW8Uf9gWr05T/rYB44kQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      queue: 6.0.2
+    dev: true
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -3674,6 +3686,12 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /queue/6.0.2:
+    resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
+    dependencies:
+      inherits: 2.0.4
+    dev: true
+
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
@@ -3815,6 +3833,13 @@ packages:
       estree-util-value-to-estree: 1.3.0
       js-yaml: 4.1.0
       toml: 3.0.0
+    dev: false
+
+  /remark-mdx-images/1.0.3:
+    resolution: {integrity: sha512-+0/EV3SvO9PUaUGlPphM3n5cMsnQE57n2tMwZMiT6YlTKjVr/FuhOynt6WQGEes7enpL3WpbJuycfWGLrH6S5w==}
+    engines: {node: '>=12.2.0'}
+    dependencies:
+      unist-util-visit: 2.0.3
     dev: false
 
   /remark-parse/10.0.1:
