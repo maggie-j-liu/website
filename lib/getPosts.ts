@@ -1,17 +1,18 @@
-import { postFilePaths, POSTS_PATH } from "@/utils/posts";
+import { postFiles, POSTS_PATH } from "@/utils/posts";
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
 import { Post, PostMeta } from "./types";
 
 export const getAllPosts = () => {
-  const posts: Post[] = postFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+  const posts: (Post & { path: string })[] = postFiles.map((file) => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, file.path));
     const { content, data } = matter(source);
     return {
       content,
       data,
-      slug: filePath.replace(/\.mdx$/, ""),
+      slug: file.slug,
+      path: file.path,
     };
   });
   return posts;

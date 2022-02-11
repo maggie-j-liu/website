@@ -26,31 +26,35 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
                   {post.data.title}
                 </div>
                 <div className={"flex items-center text-xs sm:text-sm"}>
-                  <div
-                    className={
-                      "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                    }
-                  >
-                    {formatDate(post.data.date)}
-                  </div>
-                  <div
-                    className={
-                      "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                    }
-                  >
-                    |
-                  </div>
-                  <div>
-                    {dedupedTags.length > 0 && (
-                      <TagsLayout
-                        tags={dedupedTags}
-                        divClassName={
-                          "flex flex-wrap text-primary-700 dark:text-primary-400 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                  {post.data.date && (
+                    <div
+                      className={
+                        "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                      }
+                    >
+                      {formatDate(post.data.date)}
+                    </div>
+                  )}
+                  {dedupedTags.length > 0 && (
+                    <>
+                      <div
+                        className={
+                          "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
                         }
-                        linkClassName={"text-xs sm:text-sm postlist-tag-link"}
-                      />
-                    )}
-                  </div>
+                      >
+                        |
+                      </div>
+                      <div>
+                        <TagsLayout
+                          tags={dedupedTags}
+                          divClassName={
+                            "flex flex-wrap text-primary-700 dark:text-primary-400 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                          }
+                          linkClassName={"text-xs sm:text-sm postlist-tag-link"}
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div
                   className={

@@ -9,9 +9,9 @@ import Head from "next/head";
 import MDXComponents from "@/markdown/MDXComponents";
 import NavBar from "@/components/NavBar";
 import TableOfContents from "@/components/TableOfContents";
-import { POSTS_PATH, postFilePaths } from "@/utils/posts";
+import { POSTS_PATH, postFiles } from "@/utils/posts";
 import SideBar from "@/components/SideBar";
-import { getSortedPostsMeta } from "@/lib/getPosts";
+import { getSortedPosts, getSortedPostsMeta } from "@/lib/getPosts";
 const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
@@ -62,13 +62,13 @@ export default function PostPage({
       <NavBar />
       <div
         className={
-          "grid min-w-full grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16"
+          "mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0"
         }
       >
         <h1
-          className={
-            "col-start-2 col-end-5 justify-self-center text-5xl font-bold text-primary-900 dark:text-primary-400"
-          }
+          className={`mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 ${
+            headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
+          } col-start-1 col-end-6 2xl:col-start-2 2xl:pl-0`}
         >
           {frontMatter.title}
         </h1>
@@ -106,11 +106,12 @@ export default function PostPage({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const posts = getSortedPostsMeta();
+  const posts = getSortedPosts();
   const postIndex = posts.findIndex((post) => post.slug === params.slug);
+  const post = posts[postIndex];
   const prev = posts[postIndex + 1] || null;
   const next = posts[postIndex - 1] || null;
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const postFilePath = path.join(POSTS_PATH, post.path);
   const source = fs.readFileSync(postFilePath, "utf-8");
   const { content, data } = matter(source, {});
 
@@ -154,9 +155,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "esbuild"
   );
 
+  const cwd = path.join(POSTS_PATH, post.path, "..");
   const { code: mdxSource } = await bundleMDX({
     source: content,
-    cwd: POSTS_PATH,
+    cwd,
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
@@ -168,17 +170,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...(options.rehypePlugins ?? []),
         require("rehype-katex"),
         rehypeMeta,
-        [rehypeImgSize, { dir: path.join(process.cwd(), "posts") }],
+        [rehypeImgSize, { dir: cwd }],
       ];
       return options;
     },
     esbuildOptions(options) {
-      options.outdir = path.join(process.cwd(), "public", "images", "posts");
+      options.outdir = path.join(
+        process.cwd(),
+        "public",
+        "images",
+        "posts",
+        post.slug
+      );
       options.loader = {
         ...options.loader,
         ".png": "file",
       };
-      options.publicPath = `/images/posts/`;
+      options.publicPath = `/images/posts/${post.slug}`;
       options.write = true;
       return options;
     },
@@ -197,9 +205,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = postFilePaths
-    .map((path) => path.replace(/\.mdx$/, ""))
-    .map((slug) => ({ params: { slug } }));
+  const paths = postFiles.map((file) => ({ params: { slug: file.slug } }));
   return {
     paths,
     fallback: false,
