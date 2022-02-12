@@ -21,4 +21,7 @@
   .dark .crystal-stroke {
     stroke: theme(colors.dark.900);
   }
+  .image-pixelated {
+    image-rendering: pixelated;
+  }
 }

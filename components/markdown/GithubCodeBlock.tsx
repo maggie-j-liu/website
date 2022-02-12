@@ -1,4 +1,4 @@
-import { CodeBlock } from "./CodeBlock";
+import { CodeBlock, CodeBlockHeader } from "./CodeBlock";
 const GithubCodeBlock = ({ children, language, link, ...props }) => {
   const cleanedLink = link
     .replace("https://github.com/", "")
@@ -6,15 +6,11 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
   return (
     <>
       {link && (
-        <div
-          className={
-            "overflow-x-auto rounded-t-md bg-contrast-50 dark:bg-dark-700"
-          }
-        >
+        <CodeBlockHeader>
           <a
             href={link}
             className={
-              "my-2 ml-4 inline-block !font-medium !text-contrast-900 dark:!text-contrast-200"
+              "inline-block !font-medium !text-contrast-900 dark:!text-contrast-200"
             }
             target="_blank"
             rel="noreferrer"
@@ -22,9 +18,10 @@ const GithubCodeBlock = ({ children, language, link, ...props }) => {
           >
             {cleanedLink}
           </a>
-        </div>
+        </CodeBlockHeader>
       )}
       <CodeBlock
+        header={false}
         className={language}
         style={{
           marginTop: 0,

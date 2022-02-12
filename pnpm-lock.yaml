@@ -17,6 +17,7 @@ specifiers:
   image-size: ^1.0.1
   mdx-bundler: ^8.0.1
   next: ^12.0.0
+  next-remote-refresh: ^0.9.2
   postcss: ^8.4.5
   prettier: ^2.5.1
   prettier-plugin-tailwindcss: ^0.1.3
@@ -60,6 +61,7 @@ devDependencies:
   eslint: 7.32.0
   eslint-config-next: 11.1.3_efbc45941d35eae336fdc4025b4f3d86
   image-size: 1.0.1
+  next-remote-refresh: 0.9.2_next@12.0.8+react@17.0.2
   postcss: 8.4.5
   prettier: 2.5.1
   prettier-plugin-tailwindcss: 0.1.3_prettier@2.5.1
@@ -3279,6 +3281,21 @@ packages:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: true
 
+  /next-remote-refresh/0.9.2_next@12.0.8+react@17.0.2:
+    resolution: {integrity: sha512-yoYI7pa5Dbtt3n5xcu2nIX0Jma+fMM+GR9Qj3+IhXSILb9NgOB+7jy86jFx8QXukcDmehJi/bepaen7UfwQKuw==}
+    peerDependencies:
+      next: '>9.0.0'
+      react: '>16.0.0'
+    dependencies:
+      chokidar: 3.5.3
+      next: 12.0.8_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: true
+
   /next/12.0.8_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-g5c1Kuh1F8tSXJn2rVvzYBzqe9EXaR6+rY3/KrQ7y0D9FueRLfHI35wM0DRadDcPSc3+vncspfhYH3jnYE/KjA==}
     engines: {node: '>=12.22.0'}
@@ -4616,6 +4633,19 @@ packages:
       utf-8-validate:
         optional: true
     dev: false
+
+  /ws/8.5.0:
+    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
 
   /xdm/3.3.3:
     resolution: {integrity: sha512-XcW1uDvVmTkM7EXQnBo3XSfsT7zMboab4px2QXbORpWkiyajS7PRCumZcyvI3qr4R6ojAo8jAbAKMb85uHcpQA==}
