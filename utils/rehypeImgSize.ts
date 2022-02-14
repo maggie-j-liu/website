@@ -1,48 +1,81 @@
 // https://github.com/ksoichiro/rehype-img-size/blob/master/index.js
 import visit from "unist-util-visit";
 import imageSize from "image-size";
+import videoSize from "get-video-dimensions";
 import path from "path";
-let dir;
+
+// https://github.com/syntax-tree/unist-util-visit-parents/issues/8#issuecomment-619381050
+const visitAsync = async (tree, matcher, asyncVisitor) => {
+  const matches = [];
+  visit(tree, matcher, (...args) => {
+    matches.push(args);
+    return tree;
+  });
+
+  const promises = matches.map((match) => asyncVisitor(...match));
+  await Promise.all(promises);
+
+  return tree;
+};
+
+let dir: string;
 const getImageSize = (src) => {
   src = path.join(dir, src);
   return imageSize(src);
 };
+
+const getVideoSize = async (src) => {
+  src = path.join(dir, src);
+  return await videoSize(src);
+};
+
 const setImageSize = (options) => {
   dir = options?.dir;
   return transform;
 };
 const imports = [];
-const transform = (tree) => {
+const transform = async (tree) => {
   visit(tree, "mdxjsEsm", onimport);
-  visit(tree, "mdxJsxTextElement", onelement); // type from https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
+  await visitAsync(tree, "mdxJsxTextElement", onelement); // type from https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
 };
+
 const onimport = (node) => {
-  let name = node?.data?.estree?.body?.[0]?.specifiers?.[0]?.local?.name;
-  let source = node.data.estree.body[0].source?.value;
-  if (name && source) {
-    imports.push({
-      name,
-      source,
-    });
+  if (node.data?.estree?.body) {
+    for (const item of node.data.estree.body) {
+      let name = item.specifiers?.[0]?.local?.name;
+      let source = item.source?.value;
+      if (name && source) {
+        imports.push({
+          name,
+          source,
+        });
+      }
+    }
   }
 };
-const onelement = (node) => {
+const onelement = async (node) => {
   if (node.name === "img") {
     const srcAttribute = node.attributes.find((attr) => attr.name === "src");
     if (srcAttribute) {
       const name = srcAttribute.value.value;
       const imgImport = imports.find((i) => i.name === name);
       if (imgImport) {
-        const imageSize = getImageSize(imgImport.source);
+        let dims;
+        if (imgImport.source.endsWith(".mp4")) {
+          node.name = "video";
+          dims = await getVideoSize(imgImport.source);
+        } else {
+          dims = getImageSize(imgImport.source);
+        }
         node.attributes.push({
           type: "mdxJsxAttribute",
           name: "width",
-          value: imageSize.width,
+          value: dims.width,
         });
         node.attributes.push({
           type: "mdxJsxAttribute",
           name: "height",
-          value: imageSize.height,
+          value: dims.height,
         });
       }
     }

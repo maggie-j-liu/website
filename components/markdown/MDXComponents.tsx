@@ -2,12 +2,14 @@ import AnchorLink from "./AnchorLink";
 import pre from "./CodeBlock";
 import CodeBlock from "./GithubCodeBlock";
 import Image from "./Image";
+import Video from "./Video";
 
 const MDXComponents = {
   pre,
   ...AnchorLink,
   a: (props) => <a {...props} target="_blank" />,
   img: Image,
+  video: Video,
   p: (props) => {
     if (
       typeof props.children !== "string" &&

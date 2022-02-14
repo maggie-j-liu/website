@@ -1,7 +1,7 @@
 import reactive from "@maggieliu/reactive";
 import * as React from "react";
 
-const Reactive = () => {
+const Reactive = ({ reactionText }) => {
   React.useEffect(() => {
     reactive.install({
       firebaseConfig: {
@@ -13,6 +13,7 @@ const Reactive = () => {
         messagingSenderId: "1058065480407",
         appId: "1:1058065480407:web:4225c4bcf453da81b30e92",
       },
+      reactionText,
     });
   }, []);
 

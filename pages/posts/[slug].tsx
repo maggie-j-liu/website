@@ -80,7 +80,7 @@ export default function PostPage({
           <div className="prose !max-w-none dark:prose-dark dark:text-dark-50">
             <Content components={MDXComponents} />
           </div>
-          <Reactive />
+          <Reactive reactionText={frontMatter.reactiveText} />
         </div>
         {headings.length !== 0 && (
           <div
@@ -185,6 +185,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       options.loader = {
         ...options.loader,
         ".png": "file",
+        ".mp4": "file",
       };
       options.publicPath = `/images/posts/${post.slug}`;
       options.write = true;
