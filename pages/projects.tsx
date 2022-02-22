@@ -1,6 +1,9 @@
 import Project from "@/components/ProjectCard";
 import GitHub from "@/components/GitHub";
 import PageLayout from "@/layouts/PageLayout";
+import useColorMode from "@/hooks/useColorMode";
+import colorModes from "@/utils/colorModes";
+import Image from "next/image";
 import vidnotes from "@/projects/vidnotes.png";
 import cloudlinq from "@/projects/cloudlinq.png";
 import reactive from "@/projects/reactive.png";
@@ -15,8 +18,7 @@ import cardCreator from "@/projects/card-creator.png";
 import uwudaily from "@/projects/uwudaily.png";
 import happyholidays from "@/projects/happyholidays.png";
 import octolink from "@/projects/octolink.png";
-import useColorMode from "@/hooks/useColorMode";
-import colorModes from "@/utils/colorModes";
+import flush from "@/projects/flush.png";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -45,16 +47,33 @@ const Projects = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img
+              <Image
                 src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=325061&theme=${
                   darkMode ? "dark" : "light"
                 }`}
                 alt="Octolink - Link sharing for GitHub repositories | Product Hunt"
-                style={{ width: "250px", height: "54px" }}
                 width="250"
                 height="54"
               />
             </a>
+          </Project>
+          <Project
+            url="https://github.com/maggie-j-liu/flush"
+            github="flush"
+            className="bg-gradient-to-tr from-pink-100 to-yellow-50 dark:from-pink-800 dark:to-yellow-800"
+          >
+            <Project.Image src={flush} />
+            <Project.Title>Flush</Project.Title>
+            <Project.Description>
+              Flush is a chrome extension that will promote productivity and
+              focus! By blocking distraction-causing websites and regularly
+              prompting you with flashcards, Flush ensures that your studying is
+              not compromised. Via an options page, you may mark which websites
+              you would like to block and customize the time between prompts
+              (flashcards). When you get one question (flashcard) correct, you
+              are allowed to visit the site for a time that you set (e.g., 5
+              minutes) before you have to answer another flashcard.
+            </Project.Description>
           </Project>
           <Project
             github={["browser-pets", "browser-pets-server"]}

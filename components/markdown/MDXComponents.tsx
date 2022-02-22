@@ -7,7 +7,12 @@ import Video from "./Video";
 const MDXComponents = {
   pre,
   ...AnchorLink,
-  a: (props) => <a {...props} target="_blank" />,
+  a: (props) => {
+    if (props["data-footnote-ref"] || props["data-footnote-backref"]) {
+      return <a {...props} />;
+    }
+    return <a {...props} target="_blank" rel="noreferrer" />;
+  },
   img: Image,
   video: Video,
   p: (props) => {

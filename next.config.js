@@ -5,4 +5,10 @@ const withRemoteRefresh = require("next-remote-refresh")({
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
-module.exports = withRemoteRefresh(withBundleAnalyzer({}));
+module.exports = withRemoteRefresh(
+  withBundleAnalyzer({
+    images: {
+      domains: ["api.producthunt.com"],
+    },
+  })
+);

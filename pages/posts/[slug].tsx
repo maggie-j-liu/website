@@ -11,7 +11,7 @@ import NavBar from "@/components/NavBar";
 import TableOfContents from "@/components/TableOfContents";
 import { POSTS_PATH, postFiles } from "@/utils/posts";
 import SideBar from "@/components/SideBar";
-import { getSortedPosts, getSortedPostsMeta } from "@/lib/getPosts";
+import { getSortedPosts } from "@/lib/getPosts";
 const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
@@ -20,6 +20,7 @@ import dynamic from "next/dynamic";
 const Reactive = dynamic(() => import("../../components/Reactive"));
 import { remarkMdxImages } from "remark-mdx-images";
 import rehypeImgSize from "@/utils/rehypeImgSize";
+import remarkGfm from "remark-gfm";
 
 type PostPageProps = {
   source: string;
@@ -165,6 +166,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         require("remark-math"),
         require("remark-slug"),
         remarkMdxImages,
+        remarkGfm,
       ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
