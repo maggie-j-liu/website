@@ -27,26 +27,16 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.dark.700"),
-            blockquote: {
-              color: theme("colors.dark.800"),
-            },
             code: {
               fontWeight: "inherit",
-            },
-            "code::before": {
-              content: "none",
-            },
-            "code::after": {
-              content: "none",
             },
             a: {
               color: theme("colors.secondary.400"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
-                textDecoration: "underline !important",
-                color: theme("colors.secondary.500") + "!important",
+                textDecoration: "underline",
+                color: theme("colors.secondary.500"),
               },
             },
             "a code": {
@@ -65,22 +55,13 @@ module.exports = {
         },
         dark: {
           css: {
-            blockquote: {
-              color: "inherit",
-            },
-            strong: {
-              color: "inherit",
-            },
-            code: {
-              fontWeight: "inherit",
-            },
             a: {
               color: theme("colors.secondary.300"),
               textDecoration: "none",
               fontWeight: 600,
               "&:hover": {
-                textDecoration: "underline !important",
-                color: theme("colors.secondary.200") + "!important",
+                textDecoration: "underline",
+                color: theme("colors.secondary.200"),
               },
             },
             "a code": {

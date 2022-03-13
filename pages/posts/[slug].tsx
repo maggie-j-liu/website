@@ -66,7 +66,7 @@ export default function PostPage({
           {frontMatter.title}
         </h1>
         <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-8 dark:bg-dark-900 sm:px-10 md:col-end-5 md:pr-0 2xl:col-start-2 2xl:pl-0">
-          <div className="prose !max-w-none dark:prose-dark dark:text-dark-50">
+          <div className="prose !max-w-none prose-code:before:content-none prose-code:after:content-none dark:prose-invert dark:prose-dark">
             <Content components={MDXComponents} />
           </div>
           <Reactive reactionText={frontMatter.reactiveText} />
