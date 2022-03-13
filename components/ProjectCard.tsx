@@ -112,7 +112,7 @@ const ProjectCard = ({
   className?: string;
 } & ProjectInfo) => {
   return (
-    <ProjectInfoContext.Provider value={props as ProjectInfo}>
+    <ProjectInfoContext.Provider value={props}>
       <div className={`rounded-xl px-4 py-4 dark:text-dark-200 ${className}`}>
         {children}
       </div>

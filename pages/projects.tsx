@@ -19,6 +19,7 @@ import uwudaily from "@/projects/uwudaily.png";
 import happyholidays from "@/projects/happyholidays.png";
 import octolink from "@/projects/octolink.png";
 import flush from "@/projects/flush.png";
+import geochattr from "@/projects/geochattr.png";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -56,6 +57,30 @@ const Projects = () => {
                 height="54"
               />
             </a>
+          </Project>
+          <Project
+            url="https://geochattr.netlify.app"
+            github={["GeoChattr/website", "GeoChattr/api"]}
+            devpost="geochattr"
+            className={
+              "dark:to-purple-100-900 bg-gradient-to-tr from-blue-100 to-purple-100 dark:from-blue-800 dark:to-purple-800"
+            }
+          >
+            <Project.Image src={geochattr} />
+            <Project.Title>GeoChattr</Project.Title>
+            <Project.Description>
+              <p>
+                GeoChattr is a webapp that allows you to chat with people in
+                your city through doodles and drawings. It features an array of
+                drawing utensils, colors, and brush sizes. When you chat with
+                others in your area in real time, you're able to see their
+                drawings and respond with your own.
+              </p>
+              <p>
+                Built with <GitHub>ShubhamPatilsd</GitHub> and{" "}
+                <GitHub>eternalmoon1234</GitHub>
+              </p>
+            </Project.Description>
           </Project>
           <Project
             url="https://github.com/maggie-j-liu/flush"
