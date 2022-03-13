@@ -1,5 +1,11 @@
 import reactive from "@maggieliu/reactive";
 import * as React from "react";
+import tailwindConfig from "../tailwind.config";
+
+const generateArray = (obj) => {
+  const keys = Object.keys(obj).sort((a, b) => Number(a) - Number(b));
+  return keys.map((key) => obj[key]);
+};
 
 const Reactive = ({ reactionText }) => {
   React.useEffect(() => {
@@ -14,8 +20,12 @@ const Reactive = ({ reactionText }) => {
         appId: "1:1058065480407:web:4225c4bcf453da81b30e92",
       },
       reactionText,
+      primaryColors: generateArray(tailwindConfig.theme.extend.colors.primary),
+      secondaryColors: generateArray(
+        tailwindConfig.theme.extend.colors.secondary
+      ),
     });
-  }, []);
+  }, [reactionText]);
 
   return <div id="reactive_widget" />;
 };
