@@ -61,23 +61,11 @@ export default function PostPage({
         />
       </Head>
       <NavBar />
-      <div
-        className={
-          "mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0"
-        }
-      >
-        <h1
-          className={`mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 ${
-            headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } col-start-1 col-end-6 2xl:col-start-2 2xl:pl-0`}
-        >
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0">
+        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 md:col-end-5 md:pr-0 2xl:col-start-2 2xl:pl-0">
           {frontMatter.title}
         </h1>
-        <div
-          className={`mx-auto w-full max-w-3xl px-8 sm:px-10 ${
-            headings.length !== 0 ? "md:col-end-5 md:pr-0" : ""
-          } col-start-1 col-end-6 justify-self-stretch bg-white dark:bg-dark-900 2xl:col-start-2 2xl:pl-0`}
-        >
+        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-8 dark:bg-dark-900 sm:px-10 md:col-end-5 md:pr-0 2xl:col-start-2 2xl:pl-0">
           <div className="prose !max-w-none dark:prose-dark dark:text-dark-50">
             <Content components={MDXComponents} />
           </div>
@@ -92,13 +80,7 @@ export default function PostPage({
             <TableOfContents headings={headings} />
           </div>
         )}
-        <div
-          className={`
-            col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 md:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3 ${
-              headings.length !== 0 ? "md:col-end-5" : ""
-            }
-          `}
-        >
+        <div className="col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 md:col-end-5 md:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3">
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
         </div>
       </div>
@@ -187,6 +169,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       options.loader = {
         ...options.loader,
         ".png": "file",
+        ".jpg": "file",
+        ".jpeg": "file",
         ".mp4": "file",
       };
       options.publicPath = `/images/posts/${post.slug}`;

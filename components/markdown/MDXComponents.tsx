@@ -3,6 +3,7 @@ import pre from "./CodeBlock";
 import CodeBlock from "./GithubCodeBlock";
 import Image from "./Image";
 import Video from "./Video";
+import GitHub from "../GitHub";
 
 const MDXComponents = {
   pre,
@@ -26,6 +27,7 @@ const MDXComponents = {
   },
   CodeBlock,
   Image,
+  GitHub,
 };
 
 export default MDXComponents;
