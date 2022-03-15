@@ -15,11 +15,10 @@ import { getSortedPosts } from "@/lib/getPosts";
 const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
-import rehypeMeta from "@/utils/rehypeMeta";
+import { rehypeImgSize, rehypeMeta } from "@/utils/rehype";
 import dynamic from "next/dynamic";
 const Reactive = dynamic(() => import("../../components/Reactive"));
 import { remarkMdxImages } from "remark-mdx-images";
-import rehypeImgSize from "@/utils/rehypeImgSize";
 import remarkGfm from "remark-gfm";
 
 type PostPageProps = {
@@ -62,10 +61,10 @@ export default function PostPage({
       </Head>
       <NavBar />
       <div className="mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0">
-        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 md:col-end-5 md:pr-0 2xl:col-start-2 2xl:pl-0">
+        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
           {frontMatter.title}
         </h1>
-        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-8 dark:bg-dark-900 sm:px-10 md:col-end-5 md:pr-0 2xl:col-start-2 2xl:pl-0">
+        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-8 dark:bg-dark-900 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
           <div className="prose !max-w-none prose-code:before:content-none prose-code:after:content-none dark:prose-invert dark:prose-dark">
             <Content components={MDXComponents} />
           </div>
@@ -74,13 +73,13 @@ export default function PostPage({
         {headings.length !== 0 && (
           <div
             className={
-              "col-start-5 col-end-6 row-start-2 row-end-3 hidden md:block"
+              "col-start-5 col-end-6 row-start-2 row-end-3 hidden lg:block"
             }
           >
             <TableOfContents headings={headings} />
           </div>
         )}
-        <div className="col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 md:col-end-5 md:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3">
+        <div className="col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 lg:col-end-5 lg:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3">
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
         </div>
       </div>
