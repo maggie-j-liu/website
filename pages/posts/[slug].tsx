@@ -25,6 +25,7 @@ import remarkDirective from "remark-directive";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
+import { HoverRefContext } from "@/hooks/useHoverRef";
 
 type PostPageProps = {
   source: string;
@@ -36,9 +37,6 @@ type PostPageProps = {
   prev: PostMeta;
   next: PostMeta;
 };
-
-export const HoverRefContext =
-  createContext<MutableRefObject<HTMLDivElement>>(null);
 
 export default function PostPage({
   source,
@@ -64,10 +62,10 @@ export default function PostPage({
       </Head>
       <NavBar />
       <div className="mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0">
-        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-8 text-center text-5xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
+        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-6 text-center text-4xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 sm:text-5xl lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
           {frontMatter.title}
         </h1>
-        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-8 dark:bg-dark-900 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
+        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-6 dark:bg-dark-900 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
           <div className="prose !max-w-none prose-code:before:content-none prose-code:after:content-none dark:prose-invert dark:prose-dark">
             <Content components={MDXComponents} />
           </div>
@@ -101,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const source = fs.readFileSync(postFilePath, "utf-8");
   const { content, data } = matter(source, {});
 
-  //get headings
+  // get headings
   const lines = content.split("\n");
   const slugger = new Slugger();
   const headings = [];
@@ -113,7 +111,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   });
 
-  //fetch code from github
+  // fetch code from github
   if (data?.code && typeof data.code === "object") {
     const codelinks = {};
     for (const [key, value] of Object.entries(data.code)) {

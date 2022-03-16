@@ -1,17 +1,11 @@
-import { getDisplayName } from "next/dist/shared/lib/utils";
-import { HoverRefContext } from "pages/posts/[slug]";
-import {
-  Children,
-  cloneElement,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import useHoverRef from "@/hooks/useHoverRef";
+import { Children, cloneElement, useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 
+const footnoteHoverDisplayName = "FootnoteHoverComponent";
+
 const Portal = ({ HoverComponent }) => {
-  const hoverRef = useContext(HoverRefContext);
+  const hoverRef = useHoverRef();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -19,13 +13,14 @@ const Portal = ({ HoverComponent }) => {
   if (!mounted) return null;
   return ReactDOM.createPortal(HoverComponent, hoverRef.current);
 };
+
 export const FootNote = (props) => {
   const [hovered, setHovered] = useState(false);
   const children = Children.toArray(props.children);
   let HoverChild = null;
   const newChildren = children.filter((child) => {
     // @ts-ignore
-    if (child?.type?.displayName === "FDSfds") {
+    if (child?.type?.displayName === footnoteHoverDisplayName) {
       HoverChild = child;
       return false;
     }
@@ -33,6 +28,9 @@ export const FootNote = (props) => {
   });
 
   const HoverComponent = useMemo(() => {
+    if (HoverChild === null) {
+      return null;
+    }
     return cloneElement(HoverChild, {
       hovered,
     });
@@ -44,7 +42,7 @@ export const FootNote = (props) => {
       <span
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="group bg-primary-200 hover:cursor-help hover:bg-primary-300 dark:bg-primary-700 dark:text-white dark:hover:bg-primary-500"
+        className="group -mx-0.5 bg-primary-100 py-0.5 px-0.5 hover:cursor-help hover:bg-primary-200 dark:bg-primary-700 dark:text-white dark:hover:bg-primary-500"
       >
         {newChildren}
       </span>
@@ -52,24 +50,25 @@ export const FootNote = (props) => {
   );
 };
 
-export const FootnoteHover = ({ children, hovered }) => {
+export const FootnoteHover = ({ children, hovered, identifier }) => {
   return (
     <div
-      onMouseOutCapture={() => console.log("mouse out")}
-      onMouseOverCapture={() => console.log("mouse over")}
-      className={`not-prose fixed right-16 bottom-8 z-10 ${
+      className={`not-prose pointer-events-none fixed right-16 bottom-8 z-10 ${
         hovered ? "visible" : "invisible"
       }`}
     >
       <div
-        className={`w-72 border-2 border-primary-400 bg-white px-5 py-3 shadow-lg duration-300 dark:bg-dark-700 dark:text-white ${
+        className={`w-72 space-y-1 border-2 border-primary-500 bg-white px-5 py-4 shadow-lg duration-200 hover:duration-150 dark:bg-dark-700 dark:text-white ${
           hovered ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}
       >
-        {children}
+        <div className="text-xs font-bold leading-none text-primary-500">
+          {identifier}
+        </div>
+        <div className="text-sm">{children}</div>
       </div>
     </div>
   );
 };
 
-FootnoteHover.displayName = "FDSfds";
+FootnoteHover.displayName = footnoteHoverDisplayName;
