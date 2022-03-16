@@ -16,10 +16,15 @@ const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import { rehypeImgSize, rehypeMeta } from "@/utils/rehype";
+import { remarkParseDirectives } from "@/utils/remark";
 import dynamic from "next/dynamic";
 const Reactive = dynamic(() => import("../../components/Reactive"));
 import { remarkMdxImages } from "remark-mdx-images";
 import remarkGfm from "remark-gfm";
+import remarkDirective from "remark-directive";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
 
 type PostPageProps = {
   source: string;
@@ -47,12 +52,6 @@ export default function PostPage({
   return (
     <>
       <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css"
-          integrity="sha384-2vkq42dvFAQl88n6UuPWLKSKnFnHyyoSgy788ohlfWZ4xEmF8g0kCMZe1CkaXHDd"
-          crossOrigin="anonymous"
-        />
         <title>{frontMatter.title}</title>
         <meta
           name="description"
@@ -144,16 +143,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
-        require("remark-math"),
-        require("remark-slug"),
+        remarkMath,
         remarkMdxImages,
         remarkGfm,
+        remarkDirective,
+        remarkParseDirectives,
       ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        require("rehype-katex"),
+        rehypeKatex,
         rehypeMeta,
         [rehypeImgSize, { dir: cwd }],
+        rehypeSlug,
       ];
       return options;
     },

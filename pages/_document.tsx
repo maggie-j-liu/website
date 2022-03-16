@@ -51,6 +51,12 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css"
+            integrity="sha384-2vkq42dvFAQl88n6UuPWLKSKnFnHyyoSgy788ohlfWZ4xEmF8g0kCMZe1CkaXHDd"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body
           className={

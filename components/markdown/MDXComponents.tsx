@@ -28,6 +28,9 @@ const MDXComponents = {
   CodeBlock,
   Image,
   GitHub,
+  fn: (props) => {
+    return <span>{props.children}</span>;
+  },
 };
 
 export default MDXComponents;
