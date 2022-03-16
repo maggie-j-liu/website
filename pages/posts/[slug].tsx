@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, MutableRefObject, useRef } from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
@@ -16,7 +16,7 @@ const Slugger = require("github-slugger");
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import { rehypeImgSize, rehypeMeta } from "@/utils/rehype";
-import { remarkParseDirectives } from "@/utils/remark";
+import { remarkFootnotes } from "@/utils/remark";
 import dynamic from "next/dynamic";
 const Reactive = dynamic(() => import("../../components/Reactive"));
 import { remarkMdxImages } from "remark-mdx-images";
@@ -37,6 +37,9 @@ type PostPageProps = {
   next: PostMeta;
 };
 
+export const HoverRefContext =
+  createContext<MutableRefObject<HTMLDivElement>>(null);
+
 export default function PostPage({
   source,
   frontMatter,
@@ -49,8 +52,9 @@ export default function PostPage({
     () => getMDXComponent(source, frontMatter),
     [source, frontMatter]
   );
+  const hoverRef = useRef<HTMLDivElement>(null);
   return (
-    <>
+    <HoverRefContext.Provider value={hoverRef}>
       <Head>
         <title>{frontMatter.title}</title>
         <meta
@@ -81,8 +85,9 @@ export default function PostPage({
         <div className="col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 lg:col-end-5 lg:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3">
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
         </div>
+        <div id="hover-portal" ref={hoverRef}></div>
       </div>
-    </>
+    </HoverRefContext.Provider>
   );
 }
 
@@ -147,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         remarkMdxImages,
         remarkGfm,
         remarkDirective,
-        remarkParseDirectives,
+        remarkFootnotes,
       ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),

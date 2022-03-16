@@ -1,1 +1,1 @@
-export { default as remarkParseDirectives } from "./directives";
+export { default as remarkFootnotes } from "./footnotes";

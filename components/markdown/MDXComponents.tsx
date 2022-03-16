@@ -4,6 +4,7 @@ import CodeBlock from "./GithubCodeBlock";
 import Image from "./Image";
 import Video from "./Video";
 import GitHub from "../GitHub";
+import { FootnoteHover, FootNote } from "./Footnotes";
 
 const MDXComponents = {
   pre,
@@ -28,9 +29,8 @@ const MDXComponents = {
   CodeBlock,
   Image,
   GitHub,
-  fn: (props) => {
-    return <span>{props.children}</span>;
-  },
+  fn: FootNote,
+  fnHover: FootnoteHover,
 };
 
 export default MDXComponents;
