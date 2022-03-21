@@ -24,7 +24,7 @@ const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
       <description>${
         post.data.preview ? cdata(post.data.preview) : ""
       }</description>
-      <pubDate>${new Date(post.data.date).toISOString().split("T")[0]}</pubDate>
+      <pubDate>${new Date(post.data.date).toUTCString()}</pubDate>
       <link>${BASE_URL}/${post.slug}</link>
       <guid>${BASE_URL}/${post.slug}</guid>
       ${(post.data.tags ?? [])
