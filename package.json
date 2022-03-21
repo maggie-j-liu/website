@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 5001",
-    "build": "next build",
+    "build": "next build && pnpm rss",
     "start": "next start -p 5001",
     "lint": "next lint",
-    "convert": "./scripts/convert.sh"
+    "convert": "./scripts/convert.sh",
+    "rss": "esno scripts/rss.ts"
   },
   "dependencies": {
     "@maggieliu/reactive": "^1.2.13",
@@ -36,6 +37,7 @@
     "autoprefixer": "^10.4.2",
     "eslint": "^8.11.0",
     "eslint-config-next": "^12.1.0",
+    "esno": "^0.14.1",
     "ffprobe": "^1.1.2",
     "ffprobe-static": "^3.0.0",
     "image-size": "^1.0.1",
