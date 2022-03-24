@@ -48,11 +48,13 @@ const Projects = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=325061&theme=${
                   darkMode ? "dark" : "light"
                 }`}
                 alt="Octolink - Link sharing for GitHub repositories | Product Hunt"
+                style={{ width: "250px", height: "54px" }}
                 width="250"
                 height="54"
               />
