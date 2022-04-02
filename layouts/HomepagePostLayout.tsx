@@ -11,61 +11,62 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
       {posts.map((post) => {
         const dedupedTags: string[] = Array.from(new Set(post.data.tags));
         return (
-          <Link href={`/${postsDir}/${post.slug}`} key={post.slug}>
-            <a
+          <li
+            key={post.slug}
+            className={
+              "group relative z-10 -mx-3 block rounded-2xl px-3 py-1.5 outline-none duration-200 focus-within:bg-white hover:bg-white dark:focus-within:bg-dark-900 dark:hover:bg-dark-900"
+            }
+          >
+            <div
               className={
-                "group -mx-3 block rounded-2xl px-3 py-1.5 outline-none duration-200 focus-within:bg-white hover:bg-white dark:focus-within:bg-dark-900 dark:hover:bg-dark-900"
+                "text-lg opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100 sm:text-xl"
               }
             >
-              <li>
-                <div
-                  className={
-                    "text-lg opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100 sm:text-xl"
-                  }
-                >
+              <Link href={`/${postsDir}/${post.slug}`}>
+                <a className="static before:absolute before:inset-0 before:z-0 before:rounded-2xl">
                   {post.data.title}
-                </div>
-                <div className={"flex items-center text-xs sm:text-sm"}>
-                  {post.data.date && (
-                    <div
-                      className={
-                        "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                      }
-                    >
-                      {formatDate(post.data.date)}
-                    </div>
-                  )}
-                  {dedupedTags.length > 0 && (
-                    <>
-                      <div
-                        className={
-                          "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                        }
-                      >
-                        |
-                      </div>
-                      <div>
-                        <TagsLayout
-                          tags={dedupedTags}
-                          divClassName={
-                            "flex flex-wrap text-primary-700 dark:text-primary-400 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                          }
-                          linkClassName={"text-xs sm:text-sm postlist-tag-link"}
-                        />
-                      </div>
-                    </>
-                  )}
-                </div>
+                </a>
+              </Link>
+            </div>
+            <div className={"flex items-center text-xs sm:text-sm"}>
+              {post.data.date && (
                 <div
                   className={
-                    "mt-2 text-sm opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
                   }
                 >
-                  {post.data.preview}
+                  {formatDate(post.data.date)}
                 </div>
-              </li>
-            </a>
-          </Link>
+              )}
+              {dedupedTags.length > 0 && (
+                <>
+                  <div
+                    className={
+                      "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                    }
+                  >
+                    |
+                  </div>
+                  <div>
+                    <TagsLayout
+                      tags={dedupedTags}
+                      divClassName={
+                        "flex flex-wrap text-primary-700 dark:text-primary-400 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                      }
+                      linkClassName={"text-xs sm:text-sm postlist-tag-link"}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            <div
+              className={
+                "mt-2 text-sm opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+              }
+            >
+              {post.data.preview}
+            </div>
+          </li>
         );
       })}
     </ul>

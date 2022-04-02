@@ -1,4 +1,4 @@
-import React, { createContext, MutableRefObject, useRef } from "react";
+import React, { useRef } from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
@@ -143,7 +143,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { code: mdxSource } = await bundleMDX({
     source: content,
     cwd,
-    xdmOptions(options) {
+    mdxOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
         remarkMath,
