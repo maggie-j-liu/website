@@ -14,7 +14,7 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
           <li
             key={post.slug}
             className={
-              "group relative z-10 -mx-3 block rounded-2xl px-3 py-1.5 outline-none duration-200 focus-within:bg-white hover:bg-white dark:focus-within:bg-dark-900 dark:hover:bg-dark-900"
+              "group relative -mx-3 block rounded-2xl px-3 py-1.5 outline-none duration-200 focus-within:bg-white hover:bg-white dark:focus-within:bg-dark-900 dark:hover:bg-dark-900"
             }
           >
             <div
@@ -23,7 +23,7 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
               }
             >
               <Link href={`/${postsDir}/${post.slug}`}>
-                <a className="static before:absolute before:inset-0 before:z-0 before:rounded-2xl">
+                <a className="static before:absolute before:inset-0 before:rounded-2xl">
                   {post.data.title}
                 </a>
               </Link>
