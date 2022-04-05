@@ -57,6 +57,12 @@ export default class MyDocument extends Document {
             integrity="sha384-2vkq42dvFAQl88n6UuPWLKSKnFnHyyoSgy788ohlfWZ4xEmF8g0kCMZe1CkaXHDd"
             crossOrigin="anonymous"
           />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS Feed for maggieliu.dev"
+            href="https://maggieliu.dev/rss.xml"
+          />
         </Head>
         <body
           className={
