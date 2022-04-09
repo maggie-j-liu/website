@@ -8,7 +8,7 @@ const posts = getSortedPosts();
 const cdata = (s: string) => `<![CDATA[${s}]]>`;
 
 const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1">
   <channel>
     <title>Maggie's Website</title>
     <link>${BASE_URL}</link>
@@ -24,6 +24,7 @@ const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
       <description>${
         post.data.preview ? cdata(post.data.preview) : ""
       }</description>
+      <dc:creator>${cdata("Maggie Liu")}</dc:creator>
       <pubDate>${new Date(post.data.date).toUTCString()}</pubDate>
       <link>${BASE_URL}/${post.slug}</link>
       <guid>${BASE_URL}/${post.slug}</guid>
