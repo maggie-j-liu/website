@@ -1,5 +1,5 @@
-import React, { Children, ComponentType, ReactNode } from "react";
-import Image from "next/image";
+import React, { Children, ComponentType } from "react";
+import Image, { StaticImageData } from "next/image";
 import { FiLink } from "react-icons/fi";
 import { SiGithub, SiDevpost, SiProducthunt } from "react-icons/si";
 import { IconType } from "react-icons";
@@ -101,7 +101,7 @@ const Description = ({ children }: { children: React.ReactNode }) => {
   return <div className="space-y-2">{children}</div>;
 };
 const ProjectImage = ({ src }: { src: StaticImageData }) => {
-  return <Image placeholder="blur" src={src} />;
+  return <Image placeholder="blur" src={src} alt="project image" />;
 };
 const ProjectCard = ({
   children,
