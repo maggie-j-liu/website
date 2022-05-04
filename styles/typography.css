@@ -1,70 +1,70 @@
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
+.prose :where(h1):not(:where([class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"] *)),
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)),
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
   @apply mt-4 mb-6;
 }
 
-.prose h3,
-.prose h4 {
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)) {
   @apply font-semibold;
 }
 
-.prose h5,
-.prose h6 {
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
   @apply font-medium;
 }
 
-.prose h1 {
+.prose :where(h1):not(:where([class~="not-prose"] *)) {
   @apply text-4xl;
 }
 
-.prose h2 {
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
   @apply text-3xl;
 }
 
-.prose h3 {
+.prose :where(h3):not(:where([class~="not-prose"] *)) {
   @apply text-2xl;
 }
 
-.prose h4 {
+.prose :where(h4):not(:where([class~="not-prose"] *)) {
   @apply text-xl;
 }
 
-.prose h5 {
+.prose :where(h5):not(:where([class~="not-prose"] *)) {
   @apply text-lg;
 }
 
-.prose h6 {
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
   @apply text-base;
 }
 
-.prose h1,
-.prose h2 {
+.prose :where(h1):not(:where([class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
   @apply font-bold text-primary-800;
 }
 
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)),
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
   @apply text-primary-700;
 }
 
-.dark .prose h1,
-.dark .prose h2 {
+.dark .prose :where(h1):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
   @apply text-primary-300;
 }
 
-.dark .prose h3,
-.dark .prose h4 {
+.dark .prose :where(h3):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h4):not(:where([class~="not-prose"] *)) {
   @apply text-primary-200;
 }
 
-.dark .prose h5,
-.dark .prose h6 {
+.dark .prose :where(h5):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h6):not(:where([class~="not-prose"] *)) {
   @apply text-primary-100;
 }
 

@@ -15,11 +15,19 @@ import player from "./player.png";
 
 I decided to try out [Hack Club's Game Lab](https://gamelab.hackclub.com); it's
 a super easy way to make a game. To test it out, I implemented a simple
-[dino game](https://gamelab.hackclub.com/?id=123ab20e2391237bb5178b6776026772).
+[dino game](https://gamelab.hackclub.com/?id=a9257c9fb5c19a077842fd7e0048e419).
 
 ![A video of gameplay](./game.mp4)
 
 ## Tutorial
+
+<div className="py-4 not-prose bg-yellow-100 dark:bg-yellow-700 px-6 rounded-2xl">
+<h3 className="mt-0 font-medium text-lg text-yellow-700 dark:text-yellow-50 mb-1">Warning!</h3>
+
+This tutorial was made with gamelab version `0.2.3`. If the code doesn't work,
+try switching to that version.
+
+</div>
 
 Go to [gamelab.hackclub.com](https://gamelab.hackclub.com). On the left, you'll
 see the editor, which has some starter code in it. the top right has the console
@@ -130,7 +138,7 @@ e.add({
     // jump when space key is pressed
     if (e.pressedKey(" ")) {
       if (them.hasTag("floor")) {
-        me.vy = -18;
+        me.vy = -680;
       }
     }
   },
@@ -154,13 +162,13 @@ e.add({
     // jump when space key is pressed
     if (e.pressedKey(" ")) {
       if (them.hasTag("floor")) {
-        me.vy = -18;
+        me.vy = -680;
       }
     }
   },
   update(me) {
     // gravity
-    me.vy += 1.5;
+    me.vy += 48;
   },
 });
 ```
@@ -174,7 +182,7 @@ Draw a sprite with name `obstacle`, then we can add it to the game.
 e.add({
   tags: ["obstacle"],
   sprite: obstacle,
-  origin: "right bottom",
+  origin: [1, 1],
   x: 300,
   y: 290,
   scale: 2,
@@ -192,7 +200,7 @@ screen, we can remove it from the game.
 e.add({
   tags: ["obstacle"],
   sprite: obstacle,
-  origin: "right bottom",
+  origin: [1, 1],
   x: 300,
   y: 290,
   scale: 2,
@@ -214,7 +222,7 @@ const addObstacle = (x) => {
   e.add({
     tags: ["obstacle"],
     sprite: obstacle,
-    origin: "right bottom",
+    origin: [1, 1],
     x,
     y: 290,
     scale: 2,
@@ -240,7 +248,7 @@ const addObstacle = (x) => {
   e.add({
     tags: ["obstacle"],
     sprite: obstacle,
-    origin: "right bottom",
+    origin: [1, 1],
     x,
     y: 290,
     scale: 2,
@@ -304,7 +312,7 @@ const addObstacle = (x) => {
   const obs = e.add({
     tags: ["obstacle"],
     sprite: obstacle,
-    origin: "right bottom",
+    origin: [1, 1],
     x,
     y: 290,
     scale: 2,
@@ -338,7 +346,7 @@ fun!
 ## Final code
 
 Here's the code for the entire game. You can try it out here:
-[https://gamelab.hackclub.com/?id=123ab20e2391237bb5178b6776026772](https://gamelab.hackclub.com/?id=123ab20e2391237bb5178b6776026772).
+[https://gamelab.hackclub.com/?id=a9257c9fb5c19a077842fd7e0048e419](https://gamelab.hackclub.com/?id=a9257c9fb5c19a077842fd7e0048e419).
 Let me know in the comments below if you make your own version of this game!
 
 ```js
@@ -355,7 +363,7 @@ e.add({
     // jump when space key is pressed
     if (e.pressedKey(" ")) {
       if (them.hasTag("floor")) {
-        me.vy = -18;
+        me.vy = -680;
       }
     }
     // end the game if the player hits an obstacle
@@ -368,7 +376,7 @@ e.add({
   },
   update(me) {
     // gravity
-    me.vy += 1.5;
+    me.vy += 48;
   },
 });
 
@@ -391,7 +399,7 @@ const addObstacle = (x) => {
   const obs = e.add({
     tags: ["obstacle"],
     sprite: obstacle,
-    origin: "right bottom",
+    origin: [1, 1],
     x,
     y: 290,
     scale: 2,
