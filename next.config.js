@@ -8,7 +8,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withRemoteRefresh(
   withBundleAnalyzer({
     images: {
-      domains: ["api.producthunt.com"],
+      domains: ["api.producthunt.com", "lh3.googleusercontent.com"],
     },
   })
 );
