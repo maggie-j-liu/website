@@ -8,7 +8,7 @@ const Photos = ({ photos }) => {
     <div>
       <NavBar />
       <div className="mx-auto max-w-7xl px-8 pt-14 sm:pt-20">
-        <h1 className="mx-auto mt-4 text-center text-4xl font-bold sm:text-5xl">
+        <h1 className="mx-auto mt-4 text-center text-4xl font-bold text-primary-900 dark:text-primary-200 sm:text-5xl">
           Photos
         </h1>
         <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">

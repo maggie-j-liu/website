@@ -25,6 +25,9 @@ const NavBar = () => {
           <Link href={`/${postsDir}`}>
             <a>~/{postsDir}</a>
           </Link>
+          <Link href={`/photos`}>
+            <a>~/photos</a>
+          </Link>
           <Link href={`/${tagsDir}`}>
             <a>~/{tagsDir}</a>
           </Link>
