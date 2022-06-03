@@ -2,6 +2,8 @@ import NavBar from "@/components/NavBar";
 import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
+import { GetStaticProps } from "next";
+import getPhotos from "@/lib/getPhotos";
 
 const fetcher = async (input: RequestInfo, init?: RequestInit) => {
   const res = await fetch(input, init);
@@ -15,7 +17,7 @@ const fetcher = async (input: RequestInfo, init?: RequestInit) => {
   return res.json();
 };
 
-const Photos = () => {
+const Photos = ({ fallback }) => {
   const observer = useRef<IntersectionObserver>(null);
   const { data, error, setSize, isValidating } = useSWRInfinite(
     (pageIndex, previousPageData) => {
@@ -44,7 +46,13 @@ const Photos = () => {
         },
       ];
     },
-    fetcher
+    fetcher,
+    {
+      fallbackData: [fallback],
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+    }
   );
   const intersectionObserverRef = useCallback(
     (element) => {
@@ -72,7 +80,7 @@ const Photos = () => {
   return (
     <div>
       <NavBar />
-      <div className="mx-auto max-w-7xl px-8 pt-14 pb-14 sm:pt-20">
+      <div className="relative mx-auto max-w-7xl px-8 pt-14 pb-14 sm:pt-20">
         <h1 className="mx-auto mt-4 text-center text-4xl font-bold text-primary-900 dark:text-primary-200 sm:text-5xl">
           Photos
         </h1>
@@ -96,7 +104,7 @@ const Photos = () => {
           ))}
         </div>
         {isValidating ? (
-          <div className="mt-8 flex animate-pulse items-center justify-center gap-1.5 text-center">
+          <div className="absolute bottom-6 left-0 right-0 flex animate-pulse items-center justify-center gap-1.5 text-center">
             {[...Array(3)].map((_, idx) => (
               <div key={idx} className="h-3 w-3 rounded-full bg-current" />
             ))}
@@ -109,5 +117,15 @@ const Photos = () => {
 
 export default Photos;
 
-// export const getStaticProps: GetStaticProps = async () => {
-// };
+export const getStaticProps: GetStaticProps = async () => {
+  const result = await getPhotos();
+  if (result.error) {
+    throw new Error(result.error);
+  }
+  return {
+    props: {
+      fallback: { ...result },
+    },
+    revalidate: 1,
+  };
+};
