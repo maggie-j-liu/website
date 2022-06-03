@@ -44,9 +44,9 @@ export const getStaticProps: GetStaticProps = async () => {
     // get a new access token
     // use https://developers.google.com/oauthplayground to get a refresh token
     const params = new URLSearchParams({
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      refresh_token: process.env.REFRESH_TOKEN,
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
       grant_type: "refresh_token",
     });
     const res = await fetch("https://oauth2.googleapis.com/token", {
@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const expiresAt = Math.floor(Date.now() / 1000) + res.expires_in;
 
     if (res.error) {
-      await fetch(process.env.WEBHOOK_URL, {
+      await fetch(process.env.DISCORD_WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
