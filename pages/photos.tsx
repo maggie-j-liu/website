@@ -107,7 +107,7 @@ ${JSON.stringify(res, null, 2)}
   return {
     props: {
       photos,
-      revalidate: 60 * 10,
     },
+    revalidate: 60 * 10,
   };
 };
