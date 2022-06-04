@@ -201,3 +201,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+export const config = {
+  unstable_excludeFiles: [
+    "node_modules/.pnpm/ffprobe-static@3.0.0/**/*",
+    "projects/**/*",
+  ],
+};
