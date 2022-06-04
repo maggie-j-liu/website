@@ -117,7 +117,11 @@ const Photos = ({ fallback }) => {
 
 export default Photos;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  res.setHeader(
+    "Cache-Control",
+    `public, s-maxage=60, stale-while-revalidate=${60 * 30}`
+  );
   const result = await getPhotos();
   if (result.error) {
     throw new Error(result.error);
