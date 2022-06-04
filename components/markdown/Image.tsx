@@ -8,5 +8,6 @@ const Image = (props) => {
     </div>
   );
 };
+Image.displayName = "MarkdownImage";
 
 export default Image;
