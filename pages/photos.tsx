@@ -1,8 +1,8 @@
 import NavBar from "@/components/NavBar";
 import Image from "next/image";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import getPhotos from "@/lib/getPhotos";
 
 const fetcher = async (input: RequestInfo, init?: RequestInit) => {
@@ -117,7 +117,7 @@ const Photos = ({ fallback }) => {
 
 export default Photos;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const result = await getPhotos();
   if (result.error) {
     throw new Error(result.error);
@@ -126,6 +126,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       fallback: { ...result },
     },
-    revalidate: 1,
   };
 };
