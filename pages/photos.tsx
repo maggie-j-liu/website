@@ -76,6 +76,7 @@ const Photos = ({ fallback }) => {
     },
     [setSize]
   );
+  const lastToken = data[data.length - 1]?.nextPageToken;
   const allPhotos = (data ?? []).flatMap((page) => page.photos);
   return (
     <div>
@@ -103,7 +104,7 @@ const Photos = ({ fallback }) => {
             </div>
           ))}
         </div>
-        {isValidating ? (
+        {isValidating && lastToken ? (
           <div className="absolute bottom-6 left-0 right-0 flex animate-pulse items-center justify-center gap-1.5 text-center">
             {[...Array(3)].map((_, idx) => (
               <div key={idx} className="h-3 w-3 rounded-full bg-current" />
