@@ -1,17 +1,23 @@
 import { Redis } from "@upstash/redis";
+const parseEnv = (envVar: string) => {
+  if (envVar.startsWith('"') && envVar.endsWith('"')) {
+    return envVar.slice(1, -1)
+  }
+  return envVar
+}
 const getPhotos = async (pageToken?: string) => {
   const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    url: parseEnv(process.env.UPSTASH_REDIS_REST_URL),
+    token: parseEnv(process.env.UPSTASH_REDIS_REST_TOKEN),
   });
   let accessToken = await redis.get("access_token");
   if (accessToken === null) {
     // get a new access token
     // use https://developers.google.com/oauthplayground to get a refresh token
     const params = new URLSearchParams({
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      client_secret: process.env.GOOGLE_CLIENT_SECRET,
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      client_id: parseEnv(process.env.GOOGLE_CLIENT_ID),
+      client_secret: parseEnv(process.env.GOOGLE_CLIENT_SECRET),
+      refresh_token: parseEnv(process.env.GOOGLE_REFRESH_TOKEN),
       grant_type: "refresh_token",
     });
     const res = await fetch("https://oauth2.googleapis.com/token", {
@@ -24,7 +30,7 @@ const getPhotos = async (pageToken?: string) => {
     const expiresAt = Math.floor(Date.now() / 1000) + res.expires_in;
 
     if (res.error) {
-      await fetch(process.env.DISCORD_WEBHOOK_URL, {
+      await fetch(parseEnv(process.env.DISCORD_WEBHOOK_URL), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
