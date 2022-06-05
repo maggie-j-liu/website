@@ -1,10 +1,10 @@
 import { Redis } from "@upstash/redis";
 const parseEnv = (envVar: string) => {
   if (envVar.startsWith('"') && envVar.endsWith('"')) {
-    return envVar.slice(1, -1)
+    return envVar.slice(1, -1);
   }
-  return envVar
-}
+  return envVar;
+};
 const getPhotos = async (pageToken?: string) => {
   const redis = new Redis({
     url: parseEnv(process.env.UPSTASH_REDIS_REST_URL),
@@ -68,11 +68,26 @@ ${JSON.stringify(res, null, 2)}
     }
   ).then((res) => res.json());
 
-  const photos = [];
+  const dataUrlPromises = [];
   for (const item of photosRes.mediaItems) {
     if (!item.mimeType.startsWith("image")) continue;
+    dataUrlPromises.push(
+      fetch(`${item.baseUrl}=w10`).then((res) => res.arrayBuffer())
+    );
+  }
+  const arrayBuffers = await Promise.all(dataUrlPromises);
+
+  const photos = [];
+  for (let i = 0; i < photosRes.mediaItems.length; i++) {
+    const item = photosRes.mediaItems[i];
+    if (!item.mimeType.startsWith("image")) continue;
+    const arrayBuffer = arrayBuffers[i];
+    const base64 = Buffer.from(arrayBuffer).toString("base64");
+    const mime = photosRes.mediaItems[i].mimeType;
+    const dataUrl = `data:${mime};base64,${base64}`;
     photos.push({
       src: `${item.baseUrl}=w600`,
+      blurDataUrl: dataUrl,
     });
   }
   return {

@@ -98,8 +98,11 @@ const Photos = ({ fallback }) => {
                 src={photo.src}
                 layout="fill"
                 objectFit="cover"
+                objectPosition="center"
                 className="duration-300 hover:scale-110 hover:duration-150"
                 alt=""
+                placeholder="blur"
+                blurDataURL={photo.blurDataUrl}
               />
             </div>
           ))}
