@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 import useLink from "@/hooks/useLink";
 
 type CustomLinkProps = {
@@ -59,8 +59,15 @@ type HeadingProps = {
 
 const Heading = ({ size, children, id }: HeadingProps) => {
   const Tag = `h${size}`;
-  const DynamicHeading = ({ children, ...props }) =>
-    React.createElement(Tag, { ...props }, children);
+  const DynamicHeading = ({
+    children,
+    id,
+    className,
+  }: {
+    children: ReactNode;
+    id: string;
+    className: string;
+  }) => React.createElement(Tag, { id, className }, children);
   return (
     <>
       <DynamicHeading id={id} className={"group relative"}>
@@ -72,12 +79,12 @@ const Heading = ({ size, children, id }: HeadingProps) => {
 };
 
 const AnchorLink = {
-  h1: (props) => <Heading {...props} size={1} />,
-  h2: (props) => <Heading {...props} size={2} />,
-  h3: (props) => <Heading {...props} size={3} />,
-  h4: (props) => <Heading {...props} size={4} />,
-  h5: (props) => <Heading {...props} size={5} />,
-  h6: (props) => <Heading {...props} size={6} />,
+  h1: (props: any) => <Heading {...props} size={1} />,
+  h2: (props: any) => <Heading {...props} size={2} />,
+  h3: (props: any) => <Heading {...props} size={3} />,
+  h4: (props: any) => <Heading {...props} size={4} />,
+  h5: (props: any) => <Heading {...props} size={5} />,
+  h6: (props: any) => <Heading {...props} size={6} />,
 };
 
 export default AnchorLink;

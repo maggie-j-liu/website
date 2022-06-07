@@ -1,5 +1,5 @@
 // inspired by https://www.cassie.codes/posts/creating-my-logo-animation/
-const Letter = (props) => {
+const Letter = (props: any) => {
   return (
     <path
       strokeDasharray="none"

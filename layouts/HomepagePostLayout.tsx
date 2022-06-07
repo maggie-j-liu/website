@@ -1,5 +1,5 @@
 import formatDate from "@/utils/formatDate";
-import { postsDir, tagsDir } from "@/utils/routes";
+import { postsDir } from "@/utils/routes";
 import Link from "next/link";
 import React from "react";
 import { PostMeta } from "@/lib/types";

@@ -1,13 +1,14 @@
+// @ts-ignore
 import reactive from "@maggieliu/reactive";
 import * as React from "react";
 import tailwindConfig from "../tailwind.config";
 
-const generateArray = (obj) => {
+const generateArray = (obj: { [key: string]: string }) => {
   const keys = Object.keys(obj).sort((a, b) => Number(a) - Number(b));
   return keys.map((key) => obj[key]);
 };
 
-const Reactive = ({ reactionText }) => {
+const Reactive = ({ reactionText }: { reactionText: string }) => {
   React.useEffect(() => {
     reactive.install({
       firebaseConfig: {

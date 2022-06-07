@@ -6,8 +6,8 @@ import path from "path";
 import os from "os";
 
 // https://github.com/syntax-tree/unist-util-visit-parents/issues/8#issuecomment-619381050
-const visitAsync = async (tree, matcher, asyncVisitor) => {
-  const matches = [];
+const visitAsync = async (tree: any, matcher: any, asyncVisitor: Function) => {
+  const matches: any[] = [];
   visit(tree, matcher, (...args) => {
     matches.push(args);
     return tree;
@@ -20,12 +20,12 @@ const visitAsync = async (tree, matcher, asyncVisitor) => {
 };
 
 let dir: string;
-const getImageSize = (src) => {
+const getImageSize = (src: string) => {
   src = path.join(dir, src);
   return imageSize(src);
 };
 
-const getVideoSize = async (src) => {
+const getVideoSize = async (src: string) => {
   src = path.join(dir, src);
   const info = await ffprobe(src, {
     path:
@@ -38,17 +38,17 @@ const getVideoSize = async (src) => {
     height: info.streams[0].height,
   };
 };
-const setImageSize = (options) => {
-  dir = options?.dir;
+const setImageSize = (options: { dir: string }) => {
+  dir = options.dir;
   return transform;
 };
-const imports = [];
-const transform = async (tree) => {
+const imports: { name: any; source: any }[] = [];
+const transform = async (tree: any) => {
   visit(tree, "mdxjsEsm", onimport);
   await visitAsync(tree, "mdxJsxTextElement", onelement); // type from https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
 };
 
-const onimport = (node) => {
+const onimport = (node: any) => {
   if (node.data?.estree?.body) {
     for (const item of node.data.estree.body) {
       let name = item.specifiers?.[0]?.local?.name;
@@ -62,9 +62,11 @@ const onimport = (node) => {
     }
   }
 };
-const onelement = async (node) => {
+const onelement = async (node: any) => {
   if (node.name === "img") {
-    const srcAttribute = node.attributes.find((attr) => attr.name === "src");
+    const srcAttribute = node.attributes.find(
+      (attr: any) => attr.name === "src"
+    );
     if (srcAttribute) {
       const name = srcAttribute.value.value;
       const imgImport = imports.find((i) => i.name === name);

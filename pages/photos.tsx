@@ -2,7 +2,7 @@ import NavBar from "@/components/NavBar";
 import Image from "next/image";
 import { useCallback, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import getPhotos from "@/lib/getPhotos";
 
 const fetcher = async (input: RequestInfo, init?: RequestInit) => {
@@ -17,8 +17,10 @@ const fetcher = async (input: RequestInfo, init?: RequestInit) => {
   return res.json();
 };
 
-const Photos = ({ fallback }) => {
-  const observer = useRef<IntersectionObserver>(null);
+const Photos = ({
+  fallback,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const observer = useRef<IntersectionObserver | null>(null);
   const { data, error, setSize, isValidating } = useSWRInfinite(
     (pageIndex, previousPageData) => {
       if (pageIndex === 0) {
@@ -63,7 +65,9 @@ const Photos = ({ fallback }) => {
         ([entry]) => {
           if (entry.isIntersecting) {
             setSize((s) => s + 1);
-            observer.current.unobserve(entry.target);
+            if (observer.current) {
+              observer.current.unobserve(entry.target);
+            }
           }
         },
         {
@@ -76,7 +80,7 @@ const Photos = ({ fallback }) => {
     },
     [setSize]
   );
-  const lastToken = data[data.length - 1]?.nextPageToken;
+  const lastToken = data?.[data.length - 1]?.nextPageToken;
   const allPhotos = (data ?? []).flatMap((page) => page.photos);
   return (
     <div>
@@ -86,26 +90,38 @@ const Photos = ({ fallback }) => {
           Photos
         </h1>
         <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {allPhotos.map((photo, idx) => (
-            <div
-              className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
-              key={photo.src}
-              ref={
-                idx === allPhotos.length - 1 ? intersectionObserverRef : null
+          {allPhotos.map((photo, idx) => {
+            const date = new Date(photo.creationTime).toLocaleDateString(
+              "en-us",
+              {
+                dateStyle: "short",
               }
-            >
-              <Image
-                src={photo.src}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                className="duration-300 hover:scale-110 hover:duration-150"
-                alt=""
-                placeholder="blur"
-                blurDataURL={photo.blurDataUrl}
-              />
-            </div>
-          ))}
+            );
+            return (
+              <div
+                className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
+                key={photo.src}
+                ref={
+                  idx === allPhotos.length - 1 ? intersectionObserverRef : null
+                }
+              >
+                <Image
+                  src={photo.src}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                  className="duration-300 hover:scale-110 hover:duration-150"
+                  alt=""
+                  placeholder="blur"
+                  blurDataURL={photo.blurDataUrl}
+                />
+                <div className="absolute left-0 bottom-0">
+                  <span>{date}</span>
+                  <span>{photo.description}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
         {isValidating && lastToken ? (
           <div className="absolute bottom-6 left-0 right-0 flex animate-pulse items-center justify-center gap-1.5 text-center">

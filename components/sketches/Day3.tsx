@@ -1,6 +1,6 @@
 import React from "react";
 const Vessel = () => {
-  const [paths, setPaths] = React.useState([]);
+  const [paths, setPaths] = React.useState<string[]>([]);
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
     setMounted(true);

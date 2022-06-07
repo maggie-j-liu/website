@@ -1,4 +1,4 @@
-const Video = (props) => {
+const Video = (props: any) => {
   return (
     <video
       style={{ width: props.width + "px", height: props.height + "px" }}

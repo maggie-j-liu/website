@@ -1,7 +1,7 @@
 import * as React from "react";
 const r = "r",
   l = "l";
-const genString = (iterations) => {
+const genString = (iterations: number) => {
   let curr = [r],
     next;
   for (let i = 0; i < iterations; i++) {
@@ -23,7 +23,7 @@ let dir = 0;
 let currX = 0,
   currY = 0;
 
-const Dragon = ({ iterations }) => {
+const Dragon = ({ iterations }: { iterations: number }) => {
   const [drawnPoints, setDrawnPoints] = React.useState(1);
   const [points, setPoints] = React.useState("0, 0");
   const [allPoints, setAllPoints] = React.useState(["0, 0"]);

@@ -8,22 +8,22 @@ const colors = [
 ];
 const Crystal = () => {
   const NUM_POINTS = 50;
-  const [points, setPoints] = React.useState<number[][]>(() => {
-    const initialPoints: number[][] = [];
+  const [points, setPoints] = React.useState<Delaunay.Point[]>(() => {
+    const initialPoints: Delaunay.Point[] = [];
     for (let i = 0; i < NUM_POINTS; i++) {
       initialPoints.push([Math.random() * 200, Math.random() * 200]);
     }
     return initialPoints;
   });
   const [mounted, setMounted] = React.useState(false);
-  const svgRef = React.useRef();
+  const svgRef = React.useRef<SVGSVGElement>(null);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
   React.useEffect(() => {
-    if (!svgRef.current) return;
+    if (!svgRef.current) return () => {};
     const svgArea = d3.select(svgRef.current);
     svgArea.on("mousemove", (event) => {
       const mousePos = d3.pointer(event);

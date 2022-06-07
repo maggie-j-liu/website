@@ -1,8 +1,14 @@
 import React from "react";
 import colorModes from "@/utils/colorModes";
-const ColorModeContext = React.createContext(undefined);
+const ColorModeContext = React.createContext<
+  | undefined
+  | {
+      colorMode: string;
+      setColorMode: Function;
+    }
+>(undefined);
 export const ColorModeProvider: React.FC = ({ children }) => {
-  const [colorMode, rawSetColorMode] = React.useState(undefined);
+  const [colorMode, rawSetColorMode] = React.useState<string>(colorModes.light);
 
   // returns dark or light
   const getMediaQueryPreference = () => {
@@ -13,10 +19,11 @@ export const ColorModeProvider: React.FC = ({ children }) => {
     if (hasMediaQueryPreference) {
       return mql.matches ? colorModes.dark : colorModes.light;
     }
+    return colorModes.light;
   };
 
   // stores preference from localstorage
-  const storeUserSetPreference = (pref) => {
+  const storeUserSetPreference = (pref: string) => {
     localStorage.setItem("theme", pref);
   };
 
@@ -39,7 +46,7 @@ export const ColorModeProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const setColorMode = (pref) => {
+  const setColorMode = (pref: string) => {
     rawSetColorMode(pref);
     storeUserSetPreference(pref);
     if (pref === colorModes.dark) {
@@ -58,6 +65,12 @@ export const ColorModeProvider: React.FC = ({ children }) => {
   );
 };
 
-const useColorMode = () => React.useContext(ColorModeContext);
+const useColorMode = () => {
+  const context = React.useContext(ColorModeContext);
+  if (!context) {
+    throw new Error("useColorMode must be used within a ColorModeProvider");
+  }
+  return context;
+};
 
 export default useColorMode;

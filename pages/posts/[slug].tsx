@@ -50,7 +50,7 @@ export default function PostPage({
     () => getMDXComponent(source, frontMatter),
     [source, frontMatter]
   );
-  const hoverRef = useRef<HTMLDivElement>(null);
+  const hoverRef = useRef<HTMLDivElement | null>(null);
   return (
     <HoverRefContext.Provider value={hoverRef}>
       <Head>
@@ -67,6 +67,7 @@ export default function PostPage({
         </h1>
         <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-6 dark:bg-dark-900 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
           <div className="prose !max-w-none prose-code:before:content-none prose-code:after:content-none dark:prose-invert dark:prose-dark">
+            {/* @ts-ignore */}
             <Content components={MDXComponents} />
           </div>
           <Reactive reactionText={frontMatter.reactiveText} />
@@ -90,6 +91,9 @@ export default function PostPage({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) {
+    throw new Error("params is undefined");
+  }
   const posts = getSortedPosts();
   const postIndex = posts.findIndex((post) => post.slug === params.slug);
   const post = posts[postIndex];
@@ -102,7 +106,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // get headings
   const lines = content.split("\n");
   const slugger = new Slugger();
-  const headings = [];
+  const headings: { text: string; anchor: string }[] = [];
   lines.forEach((line) => {
     const matches = line.match(/#{1,6} /);
     if (matches !== null) {
@@ -113,7 +117,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // fetch code from github
   if (data?.code && typeof data.code === "object") {
-    const codelinks = {};
+    const codelinks: { [key: string]: string } = {};
     for (const [key, value] of Object.entries(data.code)) {
       let link = value as string;
       if (!link.startsWith("https://github.com")) {

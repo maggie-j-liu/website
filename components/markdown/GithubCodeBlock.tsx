@@ -1,5 +1,14 @@
 import { CodeBlock, CodeBlockHeader } from "./CodeBlock";
-const GithubCodeBlock = ({ children, language, link, ...props }) => {
+const GithubCodeBlock = ({
+  children,
+  language,
+  link,
+  ...props
+}: {
+  children: string;
+  language: string;
+  link: string;
+}) => {
   const cleanedLink = link
     .replace("https://github.com/", "")
     .replace(/\/blob\/[^\/]*/, "");

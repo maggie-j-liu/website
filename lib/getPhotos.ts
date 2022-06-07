@@ -1,5 +1,8 @@
 import { Redis } from "@upstash/redis";
-const parseEnv = (envVar: string) => {
+const parseEnv = (envVar?: string) => {
+  if (!envVar) {
+    throw new Error("Missing environment variable");
+  }
   if (envVar.startsWith('"') && envVar.endsWith('"')) {
     return envVar.slice(1, -1);
   }
@@ -88,6 +91,8 @@ ${JSON.stringify(res, null, 2)}
     photos.push({
       src: `${item.baseUrl}=w600`,
       blurDataUrl: dataUrl,
+      creationTime: item.mediaMetadata.creationTime,
+      description: item.mediaMetadata.description,
     });
   }
   return {

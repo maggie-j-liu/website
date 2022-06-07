@@ -1,7 +1,7 @@
 import visit from "unist-util-visit";
 
 const footnotes = () => {
-  return (tree, file) => {
+  return (tree: any, file: any) => {
     // get footnote definitions
     const footnoteDefs = new Map();
     visit(tree, "footnoteDefinition", (node: any) => {

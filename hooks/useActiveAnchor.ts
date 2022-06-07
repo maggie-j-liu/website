@@ -1,10 +1,12 @@
 import React from "react";
 
 const useActiveAnchor = (itemIds: string[]) => {
-  let [activeAnchor, setActiveAnchor] = React.useState(undefined);
+  let [activeAnchor, setActiveAnchor] = React.useState<string | undefined>(
+    undefined
+  );
   React.useEffect(() => {
     if (!itemIds.length) {
-      return null;
+      return () => {};
     }
     function onScroll() {
       const viewport = window.innerHeight;

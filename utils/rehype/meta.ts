@@ -3,11 +3,11 @@ import visit from "unist-util-visit";
 const rehypeMetaAsAttribute = () => {
   return transform;
 };
-const transform = (tree) => {
+const transform = (tree: any) => {
   visit(tree, "element", onelement);
 };
 const re = /\b([-\w]+)(?:=(?:"([^"]*)"|'([^']*)'|([^"'\s]+)))?/g;
-const onelement = (node) => {
+const onelement = (node: any) => {
   let match;
   if (node.tagName === "code" && node.data && node.data.meta) {
     re.lastIndex = 0; // Reset regex.

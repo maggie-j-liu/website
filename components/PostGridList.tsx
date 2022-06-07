@@ -3,8 +3,6 @@ import Link from "next/link";
 import { postsDir } from "@/utils/routes";
 import formatDate from "@/utils/formatDate";
 import { PostMeta } from "@/lib/types";
-import { motion } from "framer-motion";
-import useBoop from "@/hooks/useBoop";
 
 const TagSection = ({ tags }: { tags: string[] }) => {
   const totalTags = tags.length;

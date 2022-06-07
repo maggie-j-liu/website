@@ -1,6 +1,6 @@
 export interface PostMeta {
   slug: string;
-  data;
+  data: any;
 }
 
 export interface Post extends PostMeta {

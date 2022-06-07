@@ -4,7 +4,7 @@ const Typing = ({ children }: { children: string[] }) => {
   const [typed, setTyped] = React.useState("");
   const [backwards, setBackwards] = React.useState(false);
   const [wordIdx, setWordIdx] = React.useState(0);
-  const prefixes = [];
+  const prefixes: string[] = [];
   for (let i = 1; i < children.length; i++) {
     for (let j = 0; j < children[i].length && j < children[i - 1].length; j++) {
       if (children[i][j] !== children[i - 1][j]) {

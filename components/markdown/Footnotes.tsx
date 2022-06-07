@@ -1,23 +1,32 @@
 import useHoverRef from "@/hooks/useHoverRef";
-import { Children, cloneElement, useEffect, useMemo, useState } from "react";
+import {
+  Children,
+  cloneElement,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import ReactDOM from "react-dom";
 
 const footnoteHoverDisplayName = "FootnoteHoverComponent";
 
-const Portal = ({ HoverComponent }) => {
+const Portal = ({ HoverComponent }: { HoverComponent: ReactNode }) => {
   const hoverRef = useHoverRef();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
   if (!mounted) return null;
+  if (!hoverRef.current) return null;
   return ReactDOM.createPortal(HoverComponent, hoverRef.current);
 };
 
-export const FootNote = (props) => {
+export const FootNote = (props: any) => {
   const [hovered, setHovered] = useState(false);
   const children = Children.toArray(props.children);
-  let HoverChild = null;
+  let HoverChild: any = null;
   const newChildren = children.filter((child) => {
     // @ts-ignore
     if (child?.type?.displayName === footnoteHoverDisplayName) {
@@ -50,7 +59,15 @@ export const FootNote = (props) => {
   );
 };
 
-export const FootnoteHover = ({ children, hovered, identifier }) => {
+export const FootnoteHover = ({
+  children,
+  hovered,
+  identifier,
+}: {
+  children: ReactElement;
+  hovered: boolean;
+  identifier: string;
+}) => {
   return (
     <div
       className={`not-prose pointer-events-none fixed right-16 bottom-8 z-10 ${

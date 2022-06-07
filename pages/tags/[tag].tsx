@@ -22,6 +22,9 @@ const TagsPage = ({ tag, posts }: { tag: string; posts: PostMeta[] }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) {
+    throw new Error("params is undefined");
+  }
   const tag = params.tag as string;
   const posts = getPostsMetaWithTag(tag);
   return {

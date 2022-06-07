@@ -1,9 +1,12 @@
 import React from "react";
 const Watch = () => {
-  const eyesRef = React.useRef(null);
-  const [bounds, setBounds] = React.useState(null);
+  const eyesRef = React.useRef<SVGSVGElement>(null);
+  const [bounds, setBounds] = React.useState<{ x: number; y: number } | null>(
+    null
+  );
   const [rotate, setRotate] = React.useState(0);
   React.useEffect(() => {
+    if (!eyesRef.current) return;
     const boundingRect = eyesRef.current.getBoundingClientRect();
     setBounds({
       x: boundingRect.x + boundingRect.width / 2,

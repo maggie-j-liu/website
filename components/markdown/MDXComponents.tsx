@@ -9,7 +9,7 @@ import { FootnoteHover, FootNote } from "./Footnotes";
 const MDXComponents = {
   pre,
   ...AnchorLink,
-  a: (props) => {
+  a: (props: any) => {
     if (props["data-footnote-ref"] || props["data-footnote-backref"]) {
       return <a {...props} />;
     }
@@ -17,7 +17,7 @@ const MDXComponents = {
   },
   img: Image,
   video: Video,
-  p: (props) => {
+  p: (props: any) => {
     if (
       typeof props.children !== "string" &&
       (props.children.type === "img" ||

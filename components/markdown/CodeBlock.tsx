@@ -39,9 +39,13 @@ export const CodeBlock = ({
     if (!className || lang === "text") linenumbers = false;
     else linenumbers = true;
   }
-  startingnumber = parseInt(start);
-  if (isNaN(startingnumber)) {
+  if (!start) {
     startingnumber = 1;
+  } else {
+    startingnumber = parseInt(start);
+    if (isNaN(startingnumber)) {
+      startingnumber = 1;
+    }
   }
   return (
     <>
@@ -92,7 +96,7 @@ export const CodeBlock = ({
   );
 };
 
-const pre = (props) => {
+const pre = (props: any) => {
   if (props.children?.type === "code") {
     return <CodeBlock {...props.children.props} />;
   }

@@ -10,22 +10,24 @@ export const IMAGES_PATH = path.join(
   "posts"
 );
 
-export const postFiles = fs.readdirSync(POSTS_PATH).reduce((acc, p) => {
-  if (/\.mdx$/.test(p)) {
-    acc.push({
-      path: p,
-      slug: p.replace(/\.mdx$/, ""),
-      file: true,
-    });
-  } else if (
-    fs.statSync(path.join(POSTS_PATH, p)).isDirectory() &&
-    fs.existsSync(path.join(POSTS_PATH, p, "index.mdx"))
-  ) {
-    acc.push({
-      path: path.join(p, "index.mdx"),
-      slug: p.replace(/\.mdx$/, ""),
-      file: false,
-    });
-  }
-  return acc;
-}, []);
+export const postFiles = fs
+  .readdirSync(POSTS_PATH)
+  .reduce((acc: { path: string; slug: string; file: boolean }[], p) => {
+    if (/\.mdx$/.test(p)) {
+      acc.push({
+        path: p,
+        slug: p.replace(/\.mdx$/, ""),
+        file: true,
+      });
+    } else if (
+      fs.statSync(path.join(POSTS_PATH, p)).isDirectory() &&
+      fs.existsSync(path.join(POSTS_PATH, p, "index.mdx"))
+    ) {
+      acc.push({
+        path: path.join(p, "index.mdx"),
+        slug: p.replace(/\.mdx$/, ""),
+        file: false,
+      });
+    }
+    return acc;
+  }, []);
