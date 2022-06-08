@@ -8,6 +8,16 @@ const parseEnv = (envVar?: string) => {
   }
   return envVar;
 };
+
+export interface Photo {
+  src: string;
+  blurDataUrl: string;
+  creationTime: string;
+  description: string;
+  width: number;
+  height: number;
+}
+
 const getPhotos = async (pageToken?: string) => {
   const redis = new Redis({
     url: parseEnv(process.env.UPSTASH_REDIS_REST_URL),
@@ -80,7 +90,7 @@ ${JSON.stringify(res, null, 2)}
   }
   const arrayBuffers = await Promise.all(dataUrlPromises);
 
-  const photos = [];
+  const photos: Photo[] = [];
   for (let i = 0; i < photosRes.mediaItems.length; i++) {
     const item = photosRes.mediaItems[i];
     if (!item.mimeType.startsWith("image")) continue;
@@ -89,10 +99,12 @@ ${JSON.stringify(res, null, 2)}
     const mime = photosRes.mediaItems[i].mimeType;
     const dataUrl = `data:${mime};base64,${base64}`;
     photos.push({
-      src: `${item.baseUrl}=w600`,
+      src: `${item.baseUrl}`,
       blurDataUrl: dataUrl,
       creationTime: item.mediaMetadata.creationTime,
-      description: item.mediaMetadata.description,
+      description: item.description ?? "",
+      width: item.mediaMetadata.width,
+      height: item.mediaMetadata.height,
     });
   }
   return {

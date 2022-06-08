@@ -1,9 +1,10 @@
 import NavBar from "@/components/NavBar";
 import Image from "next/image";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import getPhotos from "@/lib/getPhotos";
+import getPhotos, { Photo } from "@/lib/getPhotos";
+import Modal from "@/components/Modal";
 
 const fetcher = async (input: RequestInfo, init?: RequestInit) => {
   const res = await fetch(input, init);
@@ -20,6 +21,7 @@ const fetcher = async (input: RequestInfo, init?: RequestInit) => {
 const Photos = ({
   fallback,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [modalImage, setModalImage] = useState<Photo | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
   const { data, error, setSize, isValidating } = useSWRInfinite(
     (pageIndex, previousPageData) => {
@@ -89,24 +91,67 @@ const Photos = ({
         <h1 className="mx-auto mt-4 text-center text-4xl font-bold text-primary-900 dark:text-primary-200 sm:text-5xl">
           Photos
         </h1>
+        <Modal open={modalImage !== null} onClose={() => setModalImage(null)}>
+          {modalImage ? (
+            <div className="flex h-full w-full max-w-6xl items-center gap-8 rounded-lg bg-white p-8 dark:bg-dark-200">
+              <div
+                className="relative h-full w-max"
+                style={{
+                  aspectRatio: `${modalImage.width} / ${modalImage.height}`,
+                }}
+              >
+                <Image
+                  src={`${modalImage.src}=w${modalImage.width}-h${modalImage.height}`}
+                  alt=""
+                  blurDataURL={modalImage.blurDataUrl}
+                  placeholder="blur"
+                  style={{ backgroundRepeat: "no-repeat" }}
+                  width={modalImage.width}
+                  height={modalImage.height}
+                />
+              </div>
+
+              <div>
+                <span className="font-semibold uppercase text-primary-700">
+                  {new Date(modalImage.creationTime).toLocaleDateString(
+                    "en-US",
+                    {
+                      dateStyle: "long",
+                    }
+                  )}
+                </span>
+                {modalImage.description ? (
+                  <p className="text-xl dark:text-dark-900">
+                    {modalImage.description}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </Modal>
         <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {allPhotos.map((photo, idx) => {
             const date = new Date(photo.creationTime).toLocaleDateString(
-              "en-us",
+              "en-US",
               {
                 dateStyle: "short",
               }
             );
             return (
-              <div
+              <button
                 className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
                 key={photo.src}
                 ref={
                   idx === allPhotos.length - 1 ? intersectionObserverRef : null
                 }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalImage(photo);
+                }}
+                type="button"
               >
                 <Image
-                  src={photo.src}
+                  src={photo.src + "=w600"}
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
@@ -119,7 +164,7 @@ const Photos = ({
                   <span>{date}</span>
                   <span>{photo.description}</span>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
