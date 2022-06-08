@@ -13,8 +13,8 @@ const Modal = ({
   return (
     <Dialog open={open} onClose={onClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
-      <div className="fixed inset-0 flex items-center justify-center p-8">
-        <Dialog.Panel className="h-full w-max">{children}</Dialog.Panel>
+      <div className="fixed inset-0 flex items-center justify-center px-4 py-24 md:px-8 md:py-16">
+        <Dialog.Panel className="relative h-full">{children}</Dialog.Panel>
       </div>
     </Dialog>
   );

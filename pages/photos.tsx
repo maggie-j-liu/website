@@ -93,9 +93,29 @@ const Photos = ({
         </h1>
         <Modal open={modalImage !== null} onClose={() => setModalImage(null)}>
           {modalImage ? (
-            <div className="flex h-full w-full max-w-6xl items-center gap-8 rounded-lg bg-white p-8 dark:bg-dark-200">
+            <div className="flex h-full max-w-6xl flex-col justify-center gap-4 rounded-lg bg-white p-4 dark:bg-dark-200 dark:text-dark-900 md:p-8">
+              <button
+                className="absolute top-3 right-3"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalImage(null);
+                }}
+              >
+                <svg className="h-6 w-6 " viewBox="0 0 24 24">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+
               <div
-                className="relative h-full w-max"
+                className="max-h-[calc(100%-6rem)] self-center"
                 style={{
                   aspectRatio: `${modalImage.width} / ${modalImage.height}`,
                 }}
@@ -111,7 +131,7 @@ const Photos = ({
                 />
               </div>
 
-              <div>
+              <div className="max-h-24 overflow-y-auto">
                 <span className="font-semibold uppercase text-primary-700">
                   {new Date(modalImage.creationTime).toLocaleDateString(
                     "en-US",
@@ -121,15 +141,13 @@ const Photos = ({
                   )}
                 </span>
                 {modalImage.description ? (
-                  <p className="text-xl dark:text-dark-900">
-                    {modalImage.description}
-                  </p>
+                  <p className="text-lg">{modalImage.description}</p>
                 ) : null}
               </div>
             </div>
           ) : null}
         </Modal>
-        <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <div className="mt-4 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {allPhotos.map((photo, idx) => {
             const date = new Date(photo.creationTime).toLocaleDateString(
               "en-US",
@@ -138,33 +156,36 @@ const Photos = ({
               }
             );
             return (
-              <button
-                className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
-                key={photo.src}
-                ref={
-                  idx === allPhotos.length - 1 ? intersectionObserverRef : null
-                }
-                onClick={(e) => {
-                  e.preventDefault();
-                  setModalImage(photo);
-                }}
-                type="button"
-              >
-                <Image
-                  src={photo.src + "=w600"}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  className="duration-300 hover:scale-110 hover:duration-150"
-                  alt=""
-                  placeholder="blur"
-                  blurDataURL={photo.blurDataUrl}
-                />
-                <div className="absolute left-0 bottom-0">
-                  <span>{date}</span>
-                  <span>{photo.description}</span>
-                </div>
-              </button>
+              <div key={photo.src} className="group">
+                <span className="text-sm font-semibold text-dark-400 group-hover:text-dark-500 dark:text-dark-500 dark:group-hover:text-dark-400">
+                  {date}
+                </span>
+
+                <button
+                  className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
+                  ref={
+                    idx === allPhotos.length - 1
+                      ? intersectionObserverRef
+                      : null
+                  }
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalImage(photo);
+                  }}
+                  type="button"
+                >
+                  <Image
+                    src={photo.src + "=w600"}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    className="duration-300 group-hover:scale-110 group-hover:duration-150"
+                    alt=""
+                    placeholder="blur"
+                    blurDataURL={photo.blurDataUrl}
+                  />
+                </button>
+              </div>
             );
           })}
         </div>
