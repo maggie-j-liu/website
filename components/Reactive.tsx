@@ -8,7 +8,13 @@ const generateArray = (obj: { [key: string]: string }) => {
   return keys.map((key) => obj[key]);
 };
 
-const Reactive = ({ reactionText }: { reactionText: string }) => {
+const Reactive = ({
+  reactionText,
+  slug,
+}: {
+  reactionText: string;
+  slug: string;
+}) => {
   React.useEffect(() => {
     reactive.install({
       firebaseConfig: {
@@ -26,7 +32,7 @@ const Reactive = ({ reactionText }: { reactionText: string }) => {
         tailwindConfig.theme.extend.colors.secondary
       ),
     });
-  }, [reactionText]);
+  }, [reactionText, slug]);
 
   return <div id="reactive_widget" />;
 };

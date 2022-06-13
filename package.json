@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.4",
-    "@maggieliu/reactive": "^1.2.13",
+    "@maggieliu/reactive": "^1.2.14",
     "@next/bundle-analyzer": "^11.0.1",
     "@upstash/redis": "^1.6.1",
     "d3": "^7.1.0",

@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/react': ^1.6.4
-  '@maggieliu/reactive': ^1.2.13
+  '@maggieliu/reactive': ^1.2.14
   '@next/bundle-analyzer': ^11.0.1
   '@tailwindcss/typography': ^0.5.2
   '@types/d3': ^7.4.0
@@ -48,7 +48,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.6.4_zpnidt7m3osuk7shl3s4oenomq
-  '@maggieliu/reactive': 1.2.13
+  '@maggieliu/reactive': 1.2.14
   '@next/bundle-analyzer': 11.1.3
   '@upstash/redis': 1.6.1
   d3: 7.3.0
@@ -205,8 +205,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@maggieliu/reactive/1.2.13:
-    resolution: {integrity: sha512-ZTBoPqQeX1TsTCEVu1Gqbil+LZ/K1jYZqq6Pvi+jvOGuJQySbssMqfnFnZ0iAeNnDuEeACnm5vys34wes2DLDg==}
+  /@maggieliu/reactive/1.2.14:
+    resolution: {integrity: sha512-GxtPU+TBKCAFxuirN/qb5QLCowRmIFeYhBSJ6DY4E3napWDpkNq4eE5zeI9CKleLTDFo82BRE93KP2WnXpFTng==}
     dependencies:
       sirv-cli: 1.0.14
     dev: false
@@ -2261,7 +2261,7 @@ packages:
     dev: true
 
   /get-port/3.2.0:
-    resolution: {integrity: sha1-3Xzn3hh8Bsi/NTeWrHHgmfCYDrw=}
+    resolution: {integrity: sha512-x5UJKlgeUiNT8nyo/AcnwLnZuZNcSjSw0kogRB+Whd1fjjFq4B1hySFxSFWWSn4mIBzg3sRNUDFYc4g5gjPoLg==}
     engines: {node: '>=4'}
     dev: false
 
