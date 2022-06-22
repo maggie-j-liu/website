@@ -184,6 +184,7 @@ const Photos = ({
                     alt=""
                     placeholder="blur"
                     blurDataURL={photo.blurDataUrl}
+                    unoptimized
                   />
                 </button>
               </div>
