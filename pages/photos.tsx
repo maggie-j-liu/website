@@ -128,6 +128,7 @@ const Photos = ({
                   style={{ backgroundRepeat: "no-repeat" }}
                   width={modalImage.width}
                   height={modalImage.height}
+                  unoptimized
                 />
               </div>
 
