@@ -18,6 +18,10 @@ const fetcher = async (input: RequestInfo, init?: RequestInit) => {
   return res.json();
 };
 
+const loader = ({ src, width }: { src: string; width: number }) => {
+  return `${src}=w${width}`;
+};
+
 const Photos = ({
   fallback,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -121,14 +125,14 @@ const Photos = ({
                 }}
               >
                 <Image
-                  src={`${modalImage.src}=w${modalImage.width}-h${modalImage.height}`}
+                  src={modalImage.src}
                   alt=""
                   blurDataURL={modalImage.blurDataUrl}
                   placeholder="blur"
                   style={{ backgroundRepeat: "no-repeat" }}
                   width={modalImage.width}
                   height={modalImage.height}
-                  unoptimized
+                  loader={loader}
                 />
               </div>
 
@@ -176,7 +180,7 @@ const Photos = ({
                   type="button"
                 >
                   <Image
-                    src={photo.src + "=w600"}
+                    src={photo.src}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
@@ -184,7 +188,7 @@ const Photos = ({
                     alt=""
                     placeholder="blur"
                     blurDataURL={photo.blurDataUrl}
-                    unoptimized
+                    loader={loader}
                   />
                 </button>
               </div>
