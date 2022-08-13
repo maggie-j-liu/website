@@ -41,7 +41,20 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </section>
           <section className="my-8 space-y-4 text-lg">
             <p>
-              Hello world! I'm Maggie, a high school junior. I enjoy coding{" "}
+              Hello world! I'm Maggie, a high school senior. Currently, I'm
+              organizing{" "}
+              <a
+                href="https://lelandhacks.com"
+                className="font-medium text-yellow-600 hover:text-yellow-700 dark:text-yellow-300 dark:hover:text-yellow-200"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Leland Hacks
+              </a>
+              ; if you're in the Bay Area, sign up! I'd love to meet you.
+            </p>
+            <p>
+              I enjoy coding{" "}
               <Link href="/tags/USACO">
                 <a
                   className={
