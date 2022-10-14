@@ -157,6 +157,7 @@ const Photos = ({
             const date = new Date(photo.creationTime).toLocaleDateString(
               "en-US",
               {
+                timeZone: "America/Los_Angeles",
                 dateStyle: "short",
               }
             );
