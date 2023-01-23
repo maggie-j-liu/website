@@ -97,46 +97,50 @@ const Photos = ({
         </h1>
         <Modal open={modalImage !== null} onClose={() => setModalImage(null)}>
           {modalImage ? (
-            <div className="flex h-full max-w-6xl flex-col justify-center gap-4 rounded-lg bg-white p-4 dark:bg-dark-200 dark:text-dark-900 md:p-8">
+            <div className="flex h-full flex-col">
               <button
-                className="absolute top-3 right-3"
+                className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1.5"
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   setModalImage(null);
                 }}
               >
-                <svg className="h-6 w-6 " viewBox="0 0 24 24">
+                <svg className="h-5 w-5 text-gray-900" viewBox="0 0 24 24">
                   <path
                     fill="none"
                     stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
                     d="M6 18L18 6M6 6l12 12"
                   ></path>
                 </svg>
               </button>
-
-              <div
-                className="max-h-[calc(100%-6rem)] self-center"
-                style={{
-                  aspectRatio: `${modalImage.width} / ${modalImage.height}`,
-                }}
-              >
-                <Image
-                  src={modalImage.src}
-                  alt=""
-                  blurDataURL={modalImage.blurDataUrl}
-                  placeholder="blur"
-                  style={{ backgroundRepeat: "no-repeat" }}
-                  width={modalImage.width}
-                  height={modalImage.height}
-                  loader={loader}
-                />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="w-fit rounded-md bg-gray-900/70 px-4 py-1 text-gray-100">
+                  {new Date(modalImage.creationTime).toLocaleDateString(
+                    "en-US",
+                    {
+                      dateStyle: "long",
+                    }
+                  )}
+                  {modalImage.description
+                    ? " -- " + modalImage.description
+                    : ""}
+                </div>
               </div>
-
-              <div className="max-h-24 overflow-y-auto">
+              <Image
+                className="max-h-full w-auto"
+                src={modalImage.src}
+                alt=""
+                blurDataURL={modalImage.blurDataUrl}
+                placeholder="blur"
+                width={modalImage.width}
+                height={modalImage.height}
+                loader={loader}
+              />
+              {/* <div>
                 <span className="font-semibold uppercase text-primary-700">
                   {new Date(modalImage.creationTime).toLocaleDateString(
                     "en-US",
@@ -148,11 +152,11 @@ const Photos = ({
                 {modalImage.description ? (
                   <p className="text-lg">{modalImage.description}</p>
                 ) : null}
-              </div>
+              </div> */}
             </div>
           ) : null}
         </Modal>
-        <div className="mt-4 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-4 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {allPhotos.map((photo, idx) => {
             const date = new Date(photo.creationTime).toLocaleDateString(
               "en-US",
@@ -168,7 +172,7 @@ const Photos = ({
                 </span>
 
                 <button
-                  className="relative aspect-square w-full overflow-hidden rounded-lg xl:aspect-[7/8]"
+                  className="aspect-square w-full overflow-hidden rounded-lg outline outline-1 outline-gray-500/40 hover:cursor-zoom-in xl:aspect-[7/8]"
                   ref={
                     idx === allPhotos.length - 1
                       ? intersectionObserverRef
@@ -182,10 +186,9 @@ const Photos = ({
                 >
                   <Image
                     src={photo.src}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                    className="duration-300 group-hover:scale-110 group-hover:duration-150"
+                    width={photo.width}
+                    height={photo.height}
+                    className="h-full w-full object-cover duration-300 group-hover:scale-110 group-hover:duration-150"
                     alt=""
                     placeholder="blur"
                     blurDataURL={photo.blurDataUrl}

@@ -15,8 +15,8 @@ const TagsLayout = ({
     <div className={divClassName}>
       {tags.map((tag, index) => (
         <span key={tag}>
-          <Link href={`/${tagsDir}/${tag}`}>
-            <a className={`uppercase ${linkClassName}`}>{tag}</a>
+          <Link href={`/${tagsDir}/${tag}`} className={`uppercase ${linkClassName}`}>
+            {tag}
           </Link>
           {index != totalTags - 1 && <span className={"mx-2"}>•</span>}
         </span>

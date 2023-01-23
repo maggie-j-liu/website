@@ -3,7 +3,7 @@ import GitHub from "@/components/GitHub";
 import PageLayout from "@/layouts/PageLayout";
 import useColorMode from "@/hooks/useColorMode";
 import colorModes from "@/utils/colorModes";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import vidnotes from "@/projects/vidnotes.png";
 import cloudlinq from "@/projects/cloudlinq.png";
 import reactive from "@/projects/reactive.png";

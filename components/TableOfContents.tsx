@@ -14,49 +14,45 @@ const TableOfContents = ({ headings }: { headings: Heading[] }) => {
   const normalStyle = "hover:text-dark-900 dark:hover:text-dark-100";
   const link = useLink();
   if (!headings.length) return null;
-  return (
-    <>
-      <ul className={"sticky top-12 py-8 text-sm text-dark-400"}>
-        <h2
-          className={
-            "mb-2 text-sm font-bold uppercase tracking-wider text-primary-500 dark:text-primary-300"
-          }
-        >
-          Table of Contents
-        </h2>
-        {headings.map(({ text, anchor }) => {
-          return (
-            <li key={anchor}>
-              {link.query.slug ? (
-                <Link
-                  href={{
-                    ...link,
-                    hash: anchor,
-                  }}
-                >
-                  <a
-                    className={`${
-                      activeAnchor === anchor ? activeStyle : normalStyle
-                    } block py-1`}
-                  >
-                    {text}
-                  </a>
-                </Link>
-              ) : (
-                <a
-                  className={`${
-                    activeAnchor === anchor ? activeStyle : normalStyle
-                  } block py-1`}
-                >
-                  {text}
-                </a>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
+  return <>
+    <ul className={"sticky top-12 py-8 text-sm text-dark-400"}>
+      <h2
+        className={
+          "mb-2 text-sm font-bold uppercase tracking-wider text-primary-500 dark:text-primary-300"
+        }
+      >
+        Table of Contents
+      </h2>
+      {headings.map(({ text, anchor }) => {
+        return (
+          <li key={anchor}>
+            {link.query.slug ? (
+              (<Link
+                href={{
+                  ...link,
+                  hash: anchor,
+                }}
+                className={`${
+                  activeAnchor === anchor ? activeStyle : normalStyle
+                } block py-1`}>
+
+                {text}
+
+              </Link>)
+            ) : (
+              <a
+                className={`${
+                  activeAnchor === anchor ? activeStyle : normalStyle
+                } block py-1`}
+              >
+                {text}
+              </a>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </>;
 };
 
 export default TableOfContents;

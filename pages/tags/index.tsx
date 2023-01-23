@@ -39,8 +39,8 @@ const TagIndex = ({ tags }: { tags: string[] }) => {
           >
             {sortedTags.map(({ tag, count }) => (
               <div key={tag} className={"py-1 pr-4 text-base uppercase"}>
-                <Link href={`/${tagsDir}/${tag}`}>
-                  <a className={"postlist-tag-link mr-1"}>{tag}</a>
+                <Link href={`/${tagsDir}/${tag}`} className={"postlist-tag-link mr-1"}>
+                  {tag}
                 </Link>
                 <span className={"font-semibold"}>
                   {" ("}

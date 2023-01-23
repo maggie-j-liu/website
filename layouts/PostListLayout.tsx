@@ -27,14 +27,12 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
                   as={`/${postsDir}/${post.slug}`}
                   href={`/${postsDir}/[slug]`}
                   key={post.slug}
-                >
-                  <a
-                    className={
-                      "text-2xl font-semibold tracking-tight text-primary-600 dark:text-primary-400"
-                    }
-                  >
-                    {post.data.title}
-                  </a>
+                  className={
+                    "text-2xl font-semibold tracking-tight text-primary-600 dark:text-primary-400"
+                  }>
+
+                  {post.data.title}
+
                 </Link>
                 {dedupedTags.length > 0 && (
                   <TagsLayout

@@ -55,14 +55,13 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             </p> */}
             <p>
               Hello world! I'm Maggie, a high school senior. I enjoy coding{" "}
-              <Link href="/tags/USACO">
-                <a
-                  className={
-                    "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
-                  }
-                >
-                  competitively
-                </a>
+              <Link
+                href="/tags/USACO"
+                className={
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
+                }
+              >
+                competitively
               </Link>
               , building{" "}
               <a
@@ -106,23 +105,21 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 things
               </a>{" "}
               and making{" "}
-              <Link href="/posts/crystal">
-                <a
-                  className={
-                    "font-medium text-primary-700 contrast-50 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
-                  }
-                >
-                  (generative)
-                </a>
+              <Link
+                href="/posts/crystal"
+                className={
+                  "font-medium text-primary-700 contrast-50 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
+                }
+              >
+                (generative)
               </Link>{" "}
-              <Link href="/posts/spirit">
-                <a
-                  className={
-                    "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
-                  }
-                >
-                  art
-                </a>
+              <Link
+                href="/posts/spirit"
+                className={
+                  "font-medium text-primary-700 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-500"
+                }
+              >
+                art
               </Link>
               !
             </p>
@@ -154,10 +151,11 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             </p>
             <p>
               Check out{" "}
-              <Link href="/projects">
-                <a className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
-                  ~/projects
-                </a>
+              <Link
+                href="/projects"
+                className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400"
+              >
+                ~/projects
               </Link>{" "}
               or my GitHub (
               <a

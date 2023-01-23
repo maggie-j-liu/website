@@ -1,5 +1,5 @@
 import React, { Children, ComponentType } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/legacy/image";
 import { FiLink } from "react-icons/fi";
 import { SiGithub, SiDevpost, SiProducthunt } from "react-icons/si";
 import { IconType } from "react-icons";

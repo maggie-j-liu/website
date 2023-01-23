@@ -15,21 +15,21 @@ const NavBar = () => {
           className={`navbar flex items-center space-x-3 text-xs sm:space-x-8 sm:text-lg`}
         >
           <Link href="/">
-            <a>
-              <Logo />
-            </a>
+
+            <Logo />
+
           </Link>
           <Link href={`/projects`}>
-            <a>~/projects</a>
+            ~/projects
           </Link>
           <Link href={`/${postsDir}`}>
-            <a>~/{postsDir}</a>
+            ~/{postsDir}
           </Link>
           <Link href={`/photos`}>
-            <a>~/photos</a>
+            ~/photos
           </Link>
           <Link href={`/${tagsDir}`}>
-            <a>~/{tagsDir}</a>
+            ~/{tagsDir}
           </Link>
         </div>
         <div className={`navbar flex items-center space-x-2 sm:space-x-6`}>

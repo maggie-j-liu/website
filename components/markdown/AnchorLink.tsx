@@ -38,17 +38,15 @@ const LinkBase = React.forwardRef<any, any>(({ size, href, onClick }, ref) => {
 
 const CustomLink = ({ anchor, size }: CustomLinkProps) => {
   const link = useLink();
-  return (
-    <>
-      {link.pathname ? (
-        <Link href={{ ...link, hash: anchor }} passHref>
-          <LinkBase size={size} />
-        </Link>
-      ) : (
+  return <>
+    {link.pathname ? (
+      <Link href={{ ...link, hash: anchor }} passHref legacyBehavior>
         <LinkBase size={size} />
-      )}
-    </>
-  );
+      </Link>
+    ) : (
+      <LinkBase size={size} />
+    )}
+  </>;
 };
 
 type HeadingProps = {

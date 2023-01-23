@@ -22,10 +22,12 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
                 "text-lg opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100 sm:text-xl"
               }
             >
-              <Link href={`/${postsDir}/${post.slug}`}>
-                <a className="static before:absolute before:inset-0 before:rounded-2xl">
-                  {post.data.title}
-                </a>
+              <Link
+                href={`/${postsDir}/${post.slug}`}
+                className="static before:absolute before:inset-0 before:rounded-2xl">
+
+                {post.data.title}
+
               </Link>
             </div>
             <div className={"flex items-center text-xs sm:text-sm"}>
