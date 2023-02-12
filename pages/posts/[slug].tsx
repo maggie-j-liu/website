@@ -70,7 +70,7 @@ export default function PostPage({
             {/* @ts-ignore */}
             <Content components={MDXComponents} />
           </div>
-          <Reactive slug={slug} reactionText={frontMatter.reactiveText} />
+          {/* <Reactive slug={slug} reactionText={frontMatter.reactiveText} /> */}
         </div>
         {headings.length !== 0 && (
           <div
