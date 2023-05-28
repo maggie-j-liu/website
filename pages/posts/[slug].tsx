@@ -62,10 +62,18 @@ export default function PostPage({
       </Head>
       <NavBar />
       <div className="mx-auto grid w-full max-w-7xl grid-cols-5 gap-10 bg-white pt-28 dark:bg-dark-900 sm:px-8 md:px-16 2xl:px-0">
-        <h1 className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-6 text-center text-4xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 sm:text-5xl lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
+        <h1
+          className={`col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-center px-6 text-center text-4xl font-bold text-primary-900 dark:text-primary-400 sm:px-10 sm:text-5xl ${
+            headings.length !== 0 ? "lg:col-end-5" : ""
+          } lg:pr-0 2xl:col-start-2 2xl:pl-0`}
+        >
           {frontMatter.title}
         </h1>
-        <div className="col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-6 dark:bg-dark-900 sm:px-10 lg:col-end-5 lg:pr-0 2xl:col-start-2 2xl:pl-0">
+        <div
+          className={`col-start-1 col-end-6 mx-auto w-full max-w-3xl justify-self-stretch bg-white px-6 dark:bg-dark-900 sm:px-10 ${
+            headings.length !== 0 ? "lg:col-end-5" : ""
+          } lg:pr-0 2xl:col-start-2 2xl:pl-0`}
+        >
           <div className="prose !max-w-none prose-code:before:content-none prose-code:after:content-none dark:prose-invert dark:prose-dark">
             {/* @ts-ignore */}
             <Content components={MDXComponents} />
@@ -81,7 +89,11 @@ export default function PostPage({
             <TableOfContents headings={headings} />
           </div>
         )}
-        <div className="col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 lg:col-end-5 lg:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3">
+        <div
+          className={`col-start-1 col-end-6 row-start-3 mx-auto w-full max-w-3xl justify-self-stretch px-10 ${
+            headings.length !== 0 ? "lg:col-end-5" : ""
+          } lg:pr-0 2xl:col-end-2 2xl:row-start-2 2xl:row-end-3`}
+        >
           <SideBar prev={prev} curr={{ slug, data: frontMatter }} next={next} />
         </div>
         <div id="hover-portal" ref={hoverRef}></div>

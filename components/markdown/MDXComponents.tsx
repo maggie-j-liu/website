@@ -20,6 +20,7 @@ const MDXComponents = {
   p: (props: any) => {
     if (
       typeof props.children !== "string" &&
+      props.children !== undefined &&
       (props.children.type === "img" ||
         props.children.props?.src !== undefined ||
         props.children.type?.displayName === "MarkdownImage")

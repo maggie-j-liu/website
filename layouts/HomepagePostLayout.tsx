@@ -24,31 +24,34 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
             >
               <Link
                 href={`/${postsDir}/${post.slug}`}
-                className="static before:absolute before:inset-0 before:rounded-2xl">
-
+                className="static before:absolute before:inset-0 before:rounded-2xl"
+              >
                 {post.data.title}
-
               </Link>
             </div>
             <div className={"flex items-center text-xs sm:text-sm"}>
               {post.data.date && (
-                <div
-                  className={
-                    "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                  }
-                >
-                  {formatDate(post.data.date)}
-                </div>
+                <Link href={`${postsDir}/${post.slug}`} tabIndex={-1}>
+                  <div
+                    className={
+                      "opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                    }
+                  >
+                    {formatDate(post.data.date)}
+                  </div>
+                </Link>
               )}
               {dedupedTags.length > 0 && (
                 <>
-                  <div
-                    className={
-                      "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
-                    }
-                  >
-                    |
-                  </div>
+                  <Link href={`${postsDir}/${post.slug}`} tabIndex={-1}>
+                    <div
+                      className={
+                        "mx-2 opacity-50 group-hover:opacity-70 group-focus-visible:opacity-70"
+                      }
+                    >
+                      |
+                    </div>
+                  </Link>
                   <div>
                     <TagsLayout
                       tags={dedupedTags}
@@ -61,13 +64,15 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
                 </>
               )}
             </div>
-            <div
-              className={
-                "mt-2 text-sm opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
-              }
-            >
-              {post.data.preview}
-            </div>
+            {post.data.preview?.length > 0 ? (
+              <div
+                className={
+                  "mt-2 text-sm opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                }
+              >
+                {post.data.preview}
+              </div>
+            ) : null}
           </li>
         );
       })}
