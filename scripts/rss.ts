@@ -26,8 +26,8 @@ const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
       }</description>
       <dc:creator>${cdata("Maggie Liu")}</dc:creator>
       <pubDate>${new Date(post.data.date).toUTCString()}</pubDate>
-      <link>${BASE_URL}/${post.slug}</link>
-      <guid>${BASE_URL}/${post.slug}</guid>
+      <link>${BASE_URL}/posts/${post.slug}</link>
+      <guid>${BASE_URL}/posts/${post.slug}</guid>
       ${(post.data.tags ?? [])
         .map((tag: string) => `<category>${cdata(tag)}</category>`)
         .join("\n      ")}
