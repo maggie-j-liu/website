@@ -28,7 +28,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             }
           >
             <h1 className={"text-4xl font-semibold"}>Maggie Liu.</h1>
-            <h3 className={"text-2xl"}>
+            {/* <h3 className={"text-2xl"}>
               <Typing>
                 {[
                   "I'm a competitive programmer.",
@@ -37,9 +37,9 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                   "I'm a problem solver.",
                 ]}
               </Typing>
-            </h3>
+            </h3> */}
           </section>
-          <section className="my-8 space-y-4 text-lg">
+          <section className="mb-8 mt-6 space-y-4 text-lg">
             {/* <p>
               Currently, I'm
               organizing{" "}
@@ -54,7 +54,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               ; if you're in the Bay Area, sign up! I'd love to meet you.
             </p> */}
             <p>
-              Hello world! I'm Maggie, a high school senior. I enjoy coding{" "}
+              Hello world! I'm Maggie, a college freshman at MIT. I enjoy coding{" "}
               <Link
                 href="/tags/USACO"
                 className={
@@ -122,32 +122,6 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                 art
               </Link>
               !
-            </p>
-            <p>
-              I'm an executive at the{" "}
-              <a
-                href="https://joincpi.org"
-                target="_blank"
-                rel="noreferrer"
-                className={
-                  "font-medium text-secondary-700 hover:text-secondary-500 dark:text-secondary-500 dark:hover:text-secondary-400"
-                }
-              >
-                Competitive Programming Initiative
-              </a>
-              , helping promote competitive programming through resources such
-              as the{" "}
-              <a
-                href="https://usaco.guide"
-                target="_blank"
-                rel="noreferrer"
-                className={
-                  "font-medium text-secondary-700 hover:text-secondary-500 dark:text-secondary-500 dark:hover:text-secondary-400"
-                }
-              >
-                USACO Guide
-              </a>
-              .
             </p>
             <p>
               Check out{" "}
