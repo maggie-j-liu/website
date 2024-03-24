@@ -25,9 +25,9 @@ const NavBar = () => {
           <Link href={`/${postsDir}`}>
             ~/{postsDir}
           </Link>
-          <Link href={`/photos`}>
+          <a target="_blank" rel="noreferrer" href="https://uwu.cx">
             ~/photos
-          </Link>
+          </a>
           <Link href={`/${tagsDir}`}>
             ~/{tagsDir}
           </Link>
