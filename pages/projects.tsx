@@ -30,7 +30,7 @@ const Projects = () => {
         <h1 className={"pt-12 text-4xl font-semibold"}>Projects</h1>
         <div className="mt-4 space-y-12">
           <Project
-            url="https://octolink.me"
+            url="https://octolink.vercel.app"
             github="octolink"
             className="bg-gradient-to-tr from-cyan-100 to-teal-50 dark:from-cyan-800 dark:to-teal-800"
           >
