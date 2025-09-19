@@ -54,7 +54,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               ; if you're in the Bay Area, sign up! I'd love to meet you.
             </p> */}
             <p>
-              Hello world! I'm Maggie, a sophomore at MIT. I enjoy coding{" "}
+              Hello world! I'm Maggie, a junior at MIT. I enjoy coding{" "}
               <Link
                 href="/tags/USACO"
                 className={
